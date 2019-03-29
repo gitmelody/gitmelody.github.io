@@ -239,7 +239,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">6</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">4</span></a>
 
   </li>
         
@@ -383,7 +383,7 @@
                 
               
 
-              <time title="创建时间：2019-03-29 20:23:32 / 修改时间：20:27:45" itemprop="dateCreated datePublished" datetime="2019-03-29T20:23:32+08:00">2019-03-29</time>
+              <time title="创建时间：2019-03-29 20:23:32 / 修改时间：21:59:28" itemprop="dateCreated datePublished" datetime="2019-03-29T20:23:32+08:00">2019-03-29</time>
             
 
             
@@ -461,43 +461,18 @@
 </blockquote>
 <h3 id="Git的安装过程"><a href="#Git的安装过程" class="headerlink" title="Git的安装过程"></a>Git的安装过程</h3><p>首先到<a href="https://www.git-scm.com/download/" target="_blank" rel="noopener">Git下载</a>页面下载Git，这里建议下载64-bit Git for Windows Setup版本，涉及到一些环境变量的配置，安装版可以自动配置环境变量，省去手动配置的烦恼（32位系统则选择32-bit版）。</p>
 <h3 id="NodeJS的安装过程"><a href="#NodeJS的安装过程" class="headerlink" title="NodeJS的安装过程"></a>NodeJS的安装过程</h3><p>到<a href="http://nodejs.cn/download/" target="_blank" rel="noopener">NodeJS下载</a>页面下载NodeJS，可以选择Windows 安装包 (.msi) x64版，原因同上。</p>
-<h3 id="安装博客框架"><a href="#安装博客框架" class="headerlink" title="安装博客框架"></a>安装博客框架</h3><p>可以选择Hexo，Jekyll等博客框架。这里以<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a>为例(参考文档，博客主题在这个官网中可以查看）。<br>打开终端，执行如下命令安装（这一步需要管理员模式）：</p>
-<blockquote>
-<p>npm install -g hexo</p>
-</blockquote>
+<h3 id="安装博客框架"><a href="#安装博客框架" class="headerlink" title="安装博客框架"></a>安装博客框架</h3><p>可以选择Hexo，Jekyll等博客框架。这里以<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a>为例(参考文档，博客主题在这个官网中可以查看）。<br>打开终端，执行如下命令安装（这一步需要管理员模式）：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure></p>
 <p>在本地新建一个目录，执行init命令初始化Hexo和Git：</p>
-<blockquote>
-<p>hexo init<br>git init</p>
-</blockquote>
-<p>Hexo常用命令：</p>
-<blockquote>
-<p>Hexo初始化<br>hexo init<br>简写 hexo g  编译到静态页面<br>hexo generate<br>简写 hexo d  部署到Github上<br>hexo deploy<br>简写 hexo s  使用本地浏览器查看 ( <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> )<br>hexo server<br>创建新的Page<br>hexo new </p>
-</blockquote>
-<h3 id="配置Github"><a href="#配置Github" class="headerlink" title="配置Github"></a>配置Github</h3><p>创建一个Repository，名字必须为<strong>your_user_name</strong>.github.io。（加粗部分替换为自己的用户名）<br>下面配置SSH Key方便后续上传博客代码。<br>在本地Git Bash中输入如下命令建立SSH Key（下面的引号记得改为英文的）：</p>
-<blockquote>
-<p>ssh-keygen -t rsa -C “邮箱地址” -f ~/.ssh/github_blog_keys</p>
-</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
+<h3 id="配置Github"><a href="#配置Github" class="headerlink" title="配置Github"></a>配置Github</h3><p>创建一个Repository，名字必须为<strong>your_user_name</strong>.github.io。（加粗部分替换为自己的用户名）<br>下面配置SSH Key方便后续上传博客代码。<br>在本地Git Bash中输入如下命令建立SSH Key：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"邮箱地址"</span> -f ~/.ssh/github_blog_keys</span><br></pre></td></tr></table></figure></p>
 <p>中间会提示你输入文件，密码，可以不用管，直接回车即可。配置成功后，打开生成的ssh-key，新生成的公钥就是~/.ssh/github_blog_keys.pub。到在自己的<strong>账户设置</strong>中，找到 <strong>SSH and GPG keys</strong> ，点击<strong>New SSH Key</strong> 添加新的Key。将刚刚生成的公钥文件中的内容复制这里即可。</p>
-<p>之后我们需要配置自己的Username和Email：</p>
-<blockquote>
-<p>git config –global user.name “your_user_name”<br>git config –global user.email “your_email”</p>
-</blockquote>
-<p>之后将本地仓库再关联到远程仓库，首先复制远程仓库地址，到Git Bash中执行下述命令，这一步要保证当前打开的路径是Hexo的路径：</p>
-<blockquote>
-<p>git remote add origin <a href="https://github.com/your_user_name/your_user_name.github.io.git" target="_blank" rel="noopener">https://github.com/your_user_name/your_user_name.github.io.git</a> </p>
-</blockquote>
-<h3 id="开始编写"><a href="#开始编写" class="headerlink" title="开始编写"></a>开始编写</h3><p>下面就可以开始编写自己的博客了。<br>执行下面命令新建Hexo页面。</p>
-<blockquote>
-<p>hexo new “HelloWorld”</p>
-</blockquote>
-<p>之后会在项目的/source/_post/下看到HelloWorld.md文件，使用MarkDown语言编辑这个文件即可。编辑完毕保存退出，执行下述命令开始编译项目并上传：</p>
-<blockquote>
-<p>hexo g -d</p>
-</blockquote>
-<p>打开连接<a href="https://your_user_name.github.io" target="_blank" rel="noopener">https://your_user_name.github.io</a> 就能看到你的博客了。<br>也可以在本地看看效果：</p>
-<blockquote>
-<p>hexo s</p>
-</blockquote>
+<p>之后我们需要配置自己的Username和Email：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"your_user_name"</span> </span><br><span class="line">git config --global user.email <span class="string">"your_email"</span></span><br></pre></td></tr></table></figure></p>
+<p>之后将本地仓库再关联到远程仓库，首先复制远程仓库地址，到Git Bash中执行下述命令，这一步要保证当前打开的路径是Hexo的路径：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/your_user_name/your_user_name.github.io.git</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置Hexo"><a href="#配置Hexo" class="headerlink" title="配置Hexo"></a>配置Hexo</h3><p>打开Hexo下的_config.yml文件，在文件末尾添加：<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repository:</span> <span class="string">git@github.com:your_user_name/your_user_name.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure></p>
+<p>并修改title，url，theme等配置。</p>
+<h3 id="开始编写"><a href="#开始编写" class="headerlink" title="开始编写"></a>开始编写</h3><p>下面就可以开始编写自己的博客了。<br>执行下面命令新建Hexo页面。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"HelloWorld"</span></span><br></pre></td></tr></table></figure></p>
+<p>之后会在项目的/source/_post/下看到HelloWorld.md文件，使用MarkDown语言编辑这个文件即可。编辑完毕保存退出，执行下述命令开始编译项目并上传：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure></p>
+<p>打开连接<a href="https://your_user_name.github.io" target="_blank" rel="noopener">https://your_user_name.github.io</a> 就能看到你的博客了。<br>也可以在本地看看效果：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure></p>
 <p>打开连接<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 即可看到效果。</p>
 <h2 id="3-配置域名（可选）"><a href="#3-配置域名（可选）" class="headerlink" title="3. 配置域名（可选）"></a>3. 配置域名（可选）</h2><p>首先得需要一个域名（还得是备案过的）。这里以腾讯云的域名为例。在云解析服务中，选择你的域名点击右侧的<strong>解析</strong>，进入域名的配置页面。点击上方的<strong>添加记录</strong>，<strong>主机类型</strong>可以选www或者@，<strong>记录类型</strong>选择CNAME，<strong>记录值</strong>为your_user_name.github.io. （注意末尾有个点），之后<strong>保存</strong>即可。<br>在你的项目中的/source/目录下创建CNAME文件，文件内容是你的一级域名，如下所示：</p>
 <blockquote>
@@ -505,6 +480,16 @@
 </blockquote>
 <p>保存编译上传项目，过几分钟后即可配置成功。<br>如果要开启HTTPS，则还需要购买SSH证书（有免费的证书），例如可以选择阿里云，腾讯云或CloudFlare的免费HTTPS服务。这里以腾讯云为例，选择为期一年的免费版SSH证书。<br>在云产品中找到<strong>SSH 证书管理</strong>，点击<strong>申请免费证书</strong>，选择左侧的免费一年的证书。按照上面的要求输入相关信息，点击<strong>下一步</strong>，等待几分钟审核通过（也可能好久）。<br>回到<a href="https://github.com/your_user_name/your_user_name.github.io" target="_blank" rel="noopener">https://github.com/your_user_name/your_user_name.github.io</a> 中，进入<strong>仓库设置</strong>页面，下拉找到<strong>GitHub Pages</strong>，在<strong>Custom domain</strong>中输入自己的域名，并开启<strong>Enforce HTTPS</strong>。</p>
 <p>到此结束，可以收工了。</p>
+<h2 id="附录A-Hexo"><a href="#附录A-Hexo" class="headerlink" title="附录A Hexo"></a>附录A Hexo</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>Hexo初始化<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure></p>
+<p>编译到静态页面<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate </span><br><span class="line"><span class="comment"># 简写 hexo g</span></span><br></pre></td></tr></table></figure></p>
+<p>部署到Github上<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy </span><br><span class="line"><span class="comment"># 简写 hexo d</span></span><br></pre></td></tr></table></figure></p>
+<p>使用本地浏览器查看 ( <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> )<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo server </span><br><span class="line"><span class="comment"># 简写 hexo s</span></span><br></pre></td></tr></table></figure></p>
+<p>创建新的Page<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置主题-config-yml"><a href="#配置主题-config-yml" class="headerlink" title="配置主题 _config.yml"></a>配置主题 _config.yml</h3><p>首先给Hexo配置一个<a href="https://hexo.io/themes/" target="_blank" rel="noopener">主题</a>，之后就可以在Hexo的主题的目录下看到_config.yml文件。<br>以<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">NexT主题</a>为例，目录下的_config.yml文件中有如下选项</p>
+<ul>
+<li>menu 可以访问的目录</li>
+<li>schemes 排版方式</li>
+</ul>
 
           
         
@@ -623,10 +608,6 @@
                     
                   
                     
-                    
-                      
-                    
-                      
                     
                       
                     
