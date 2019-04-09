@@ -98,18 +98,18 @@
 
 
 
-  <meta name="description" content="经过几天的研究，我终于搭起了一个Github博客网站。这篇文章将从以下几个步骤分别介绍博客的搭建。   前期准备 环境部署 配置域名（可选）   1. 前期准备首先，你需要拥有以下内容：  Github账号个人域名（可选）  Github账号可以到Github官网申请，过程很简单，这里就不赘述了。个人域名可以选择阿里云，腾讯云等域名产品，需要备案，申请过程也就不说了，这个不是必选，有需要的可以搞一">
+  <meta name="description" content="经过几天的研究，我终于搭起了一个Github博客网站。这篇文章将从以下几个步骤分别介绍博客的搭建。   前期准备 环境部署 配置域名（可选） 附录   1. 前期准备首先，你需要拥有以下内容：  Github账号个人域名（可选）  Github账号可以到Github官网申请，过程很简单，这里就不赘述了。个人域名可以选择阿里云，腾讯云等域名产品，需要备案，申请过程也就不说了，这个不是必选，有需要的可">
 <meta name="keywords" content="Git,Github,Blog,博客">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Github 博客搭建">
 <meta property="og:url" content="https://withz.github.io/2019/03/29/GitBlogInit/index.html">
 <meta property="og:site_name" content="Withz">
-<meta property="og:description" content="经过几天的研究，我终于搭起了一个Github博客网站。这篇文章将从以下几个步骤分别介绍博客的搭建。   前期准备 环境部署 配置域名（可选）   1. 前期准备首先，你需要拥有以下内容：  Github账号个人域名（可选）  Github账号可以到Github官网申请，过程很简单，这里就不赘述了。个人域名可以选择阿里云，腾讯云等域名产品，需要备案，申请过程也就不说了，这个不是必选，有需要的可以搞一">
+<meta property="og:description" content="经过几天的研究，我终于搭起了一个Github博客网站。这篇文章将从以下几个步骤分别介绍博客的搭建。   前期准备 环境部署 配置域名（可选） 附录   1. 前期准备首先，你需要拥有以下内容：  Github账号个人域名（可选）  Github账号可以到Github官网申请，过程很简单，这里就不赘述了。个人域名可以选择阿里云，腾讯云等域名产品，需要备案，申请过程也就不说了，这个不是必选，有需要的可">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-29T13:59:28.300Z">
+<meta property="og:updated_time" content="2019-04-09T06:28:43.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Github 博客搭建">
-<meta name="twitter:description" content="经过几天的研究，我终于搭起了一个Github博客网站。这篇文章将从以下几个步骤分别介绍博客的搭建。   前期准备 环境部署 配置域名（可选）   1. 前期准备首先，你需要拥有以下内容：  Github账号个人域名（可选）  Github账号可以到Github官网申请，过程很简单，这里就不赘述了。个人域名可以选择阿里云，腾讯云等域名产品，需要备案，申请过程也就不说了，这个不是必选，有需要的可以搞一">
+<meta name="twitter:description" content="经过几天的研究，我终于搭起了一个Github博客网站。这篇文章将从以下几个步骤分别介绍博客的搭建。   前期准备 环境部署 配置域名（可选） 附录   1. 前期准备首先，你需要拥有以下内容：  Github账号个人域名（可选）  Github账号可以到Github官网申请，过程很简单，这里就不赘述了。个人域名可以选择阿里云，腾讯云等域名产品，需要备案，申请过程也就不说了，这个不是必选，有需要的可">
 
 
 
@@ -385,12 +385,24 @@
                 
               
 
-              <time title="创建时间：2019-03-29 20:23:32 / 修改时间：21:59:28" itemprop="dateCreated datePublished" datetime="2019-03-29T20:23:32+08:00">2019-03-29</time>
+              <time title="创建时间：2019-03-29 20:23:32" itemprop="dateCreated datePublished" datetime="2019-03-29T20:23:32+08:00">2019-03-29</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-09 14:28:43" itemprop="dateModified" datetime="2019-04-09T14:28:43+08:00">2019-04-09</time>
               
             
           </span>
@@ -448,6 +460,7 @@
 <li>前期准备</li>
 <li>环境部署</li>
 <li>配置域名（可选）</li>
+<li>附录</li>
 </ol>
 </blockquote>
 <h2 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1. 前期准备"></a>1. 前期准备</h2><p>首先，你需要拥有以下内容：</p>
@@ -468,7 +481,8 @@
 <p>中间会提示你输入文件，密码，可以不用管，直接回车即可。配置成功后，打开生成的ssh-key，新生成的公钥就是~/.ssh/github_blog_keys.pub。到在自己的<strong>账户设置</strong>中，找到 <strong>SSH and GPG keys</strong> ，点击<strong>New SSH Key</strong> 添加新的Key。将刚刚生成的公钥文件中的内容复制这里即可。</p>
 <p>之后我们需要配置自己的Username和Email：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"your_user_name"</span> </span><br><span class="line">git config --global user.email <span class="string">"your_email"</span></span><br></pre></td></tr></table></figure></p>
 <p>之后将本地仓库再关联到远程仓库，首先复制远程仓库地址，到Git Bash中执行下述命令，这一步要保证当前打开的路径是Hexo的路径：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/your_user_name/your_user_name.github.io.git</span><br></pre></td></tr></table></figure></p>
-<h3 id="配置Hexo"><a href="#配置Hexo" class="headerlink" title="配置Hexo"></a>配置Hexo</h3><p>打开Hexo下的_config.yml文件，在文件末尾添加：<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repository:</span> <span class="string">git@github.com:your_user_name/your_user_name.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="配置Hexo"><a href="#配置Hexo" class="headerlink" title="配置Hexo"></a>配置Hexo</h3><p>在Hexo目录下执行下面这句，安装该扩展程序。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p>打开Hexo下的_config.yml文件，在文件末尾添加：<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repository:</span> <span class="string">git@github.com:your_user_name/your_user_name.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure></p>
 <p>并修改title，url，theme等配置。</p>
 <h3 id="开始编写"><a href="#开始编写" class="headerlink" title="开始编写"></a>开始编写</h3><p>下面就可以开始编写自己的博客了。<br>执行下面命令新建Hexo页面。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"HelloWorld"</span></span><br></pre></td></tr></table></figure></p>
 <p>之后会在项目的/source/_post/下看到HelloWorld.md文件，使用MarkDown语言编辑这个文件即可。编辑完毕保存退出，执行下述命令开始编译项目并上传：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure></p>
@@ -490,7 +504,12 @@
 <li>menu 可以访问的目录</li>
 <li>schemes 排版方式</li>
 </ul>
-
+<h3 id="创建分类与标签"><a href="#创建分类与标签" class="headerlink" title="创建分类与标签"></a>创建分类与标签</h3><p>使用如下两个命令分别创建分类与标签：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建分类</span></span><br><span class="line">hexo new page categories</span><br><span class="line"><span class="comment"># 创建标签</span></span><br><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure></p>
+<p>创建完成后，需要在主题配置中开启相应的选项（例如NexT主题中的menu）。</p>
+<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><h5 id="图片本地化插件"><a href="#图片本地化插件" class="headerlink" title="图片本地化插件"></a>图片本地化插件</h5><p>在Hexo目录下执行下面语句：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure></p>
+<p>之后配置根目录下的_config.yml中：<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span><span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<p>之后再创建文章的时候，就会同时在同一目录下创建一个与文章同名的文件夹，里面可以存放文章中使用到的图片。在文章中引用文件夹下的图片pic.jpg方法如下：<br><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">image</span>](<span class="link">pic.jpg</span>)</span><br></pre></td></tr></table></figure></p>
+<h5 id="评论插件"><a href="#评论插件" class="headerlink" title="评论插件"></a>评论插件</h5><h5 id="图片放大插件"><a href="#图片放大插件" class="headerlink" title="图片放大插件"></a>图片放大插件</h5><h5 id="数学公式插件"><a href="#数学公式插件" class="headerlink" title="数学公式插件"></a>数学公式插件</h5><h5 id="网易云插件"><a href="#网易云插件" class="headerlink" title="网易云插件"></a>网易云插件</h5><h5 id="统计插件"><a href="#统计插件" class="headerlink" title="统计插件"></a>统计插件</h5>
       
     </div>
 
@@ -675,7 +694,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前期准备"><span class="nav-number">1.</span> <span class="nav-text">1. 前期准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-环境部署"><span class="nav-number">2.</span> <span class="nav-text">2. 环境部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git的安装过程"><span class="nav-number">2.1.</span> <span class="nav-text">Git的安装过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NodeJS的安装过程"><span class="nav-number">2.2.</span> <span class="nav-text">NodeJS的安装过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装博客框架"><span class="nav-number">2.3.</span> <span class="nav-text">安装博客框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Github"><span class="nav-number">2.4.</span> <span class="nav-text">配置Github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Hexo"><span class="nav-number">2.5.</span> <span class="nav-text">配置Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始编写"><span class="nav-number">2.6.</span> <span class="nav-text">开始编写</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-配置域名（可选）"><span class="nav-number">3.</span> <span class="nav-text">3. 配置域名（可选）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录A-Hexo"><span class="nav-number">4.</span> <span class="nav-text">附录A Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-number">4.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置主题-config-yml"><span class="nav-number">4.2.</span> <span class="nav-text">配置主题 _config.yml</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前期准备"><span class="nav-number">1.</span> <span class="nav-text">1. 前期准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-环境部署"><span class="nav-number">2.</span> <span class="nav-text">2. 环境部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git的安装过程"><span class="nav-number">2.1.</span> <span class="nav-text">Git的安装过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NodeJS的安装过程"><span class="nav-number">2.2.</span> <span class="nav-text">NodeJS的安装过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装博客框架"><span class="nav-number">2.3.</span> <span class="nav-text">安装博客框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Github"><span class="nav-number">2.4.</span> <span class="nav-text">配置Github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Hexo"><span class="nav-number">2.5.</span> <span class="nav-text">配置Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始编写"><span class="nav-number">2.6.</span> <span class="nav-text">开始编写</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-配置域名（可选）"><span class="nav-number">3.</span> <span class="nav-text">3. 配置域名（可选）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录A-Hexo"><span class="nav-number">4.</span> <span class="nav-text">附录A Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-number">4.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置主题-config-yml"><span class="nav-number">4.2.</span> <span class="nav-text">配置主题 _config.yml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建分类与标签"><span class="nav-number">4.3.</span> <span class="nav-text">创建分类与标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装插件"><span class="nav-number">4.4.</span> <span class="nav-text">安装插件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#图片本地化插件"><span class="nav-number">4.4.0.1.</span> <span class="nav-text">图片本地化插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#评论插件"><span class="nav-number">4.4.0.2.</span> <span class="nav-text">评论插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#图片放大插件"><span class="nav-number">4.4.0.3.</span> <span class="nav-text">图片放大插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数学公式插件"><span class="nav-number">4.4.0.4.</span> <span class="nav-text">数学公式插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#网易云插件"><span class="nav-number">4.4.0.5.</span> <span class="nav-text">网易云插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#统计插件"><span class="nav-number">4.4.0.6.</span> <span class="nav-text">统计插件</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
