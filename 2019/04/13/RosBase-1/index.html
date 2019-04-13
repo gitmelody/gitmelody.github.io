@@ -96,20 +96,25 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Withz">
-<meta property="og:url" content="https://withz.github.io/archives/2019/03/index.html">
+  <meta name="description" content="近期做的东西和ROS有关，因此想做一些关于ROS的笔记。这篇文章主要分为以下几个部分。   ROS简介 ROS的工程架构 ROS的计算图集 ROS工具包 未完结   1. ROS简介ROS（Robot OS）是运行在Ubuntu上的次级系统，它内部由多个节点构成，每个节点即一个进程。这些节点之间各自分工，又相互合作，共同完成一些列任务。一般一个ROS工程由master节点和多个子节点构成，mast">
+<meta name="keywords" content="ROS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ROS 基础">
+<meta property="og:url" content="https://withz.github.io/2019/04/13/RosBase-1/index.html">
 <meta property="og:site_name" content="Withz">
+<meta property="og:description" content="近期做的东西和ROS有关，因此想做一些关于ROS的笔记。这篇文章主要分为以下几个部分。   ROS简介 ROS的工程架构 ROS的计算图集 ROS工具包 未完结   1. ROS简介ROS（Robot OS）是运行在Ubuntu上的次级系统，它内部由多个节点构成，每个节点即一个进程。这些节点之间各自分工，又相互合作，共同完成一些列任务。一般一个ROS工程由master节点和多个子节点构成，mast">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-13T14:57:35.360Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Withz">
+<meta name="twitter:title" content="ROS 基础">
+<meta name="twitter:description" content="近期做的东西和ROS有关，因此想做一些关于ROS的笔记。这篇文章主要分为以下几个部分。   ROS简介 ROS的工程架构 ROS的计算图集 ROS工具包 未完结   1. ROS简介ROS（Robot OS）是运行在Ubuntu上的次级系统，它内部由多个节点构成，每个节点即一个进程。这些节点之间各自分工，又相互合作，共同完成一些列任务。一般一个ROS工程由master节点和多个子节点构成，mast">
 
 
 
 
 
 
-  <link rel="canonical" href="https://withz.github.io/archives/2019/03/">
+  <link rel="canonical" href="https://withz.github.io/2019/04/13/RosBase-1/">
 
 
 
@@ -119,7 +124,7 @@
   };
 </script>
 
-  <title>归档 | Withz</title>
+  <title>ROS 基础 | Withz</title>
   
 
 
@@ -167,7 +172,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -262,7 +267,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -344,101 +349,347 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 2 篇日志。 继续努力。
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2019/04/13/RosBase-1/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Peng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Withz">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/03/29/GitBlogInit/" itemprop="url">
-            
-              <span itemprop="name">Github 博客搭建</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">ROS 基础
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-29T20:23:32+08:00" content="2019-03-29">
-          03-29
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-13 20:45:23 / 修改时间：22:57:35" itemprop="dateCreated datePublished" datetime="2019-04-13T20:45:23+08:00">2019-04-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ROS/" itemprop="url" rel="index"><span itemprop="name">ROS</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <p>近期做的东西和ROS有关，因此想做一些关于ROS的笔记。这篇文章主要分为以下几个部分。</p>
+<blockquote>
+<ol>
+<li>ROS简介</li>
+<li>ROS的工程架构</li>
+<li>ROS的计算图集</li>
+<li>ROS工具包</li>
+<li>未完结</li>
+</ol>
+</blockquote>
+<h2 id="1-ROS简介"><a href="#1-ROS简介" class="headerlink" title="1. ROS简介"></a>1. ROS简介</h2><p>ROS（Robot OS）是运行在Ubuntu上的次级系统，它内部由多个节点构成，每个节点即一个进程。这些节点之间各自分工，又相互合作，共同完成一些列任务。一般一个ROS工程由master节点和多个子节点构成，master负责管理各个节点，而子节点则负责各自具体的任务。</p>
+<h2 id="2-ROS的工程架构-Ros-structure"><a href="#2-ROS的工程架构-Ros-structure" class="headerlink" title="2. ROS的工程架构[^Ros_structure]"></a>2. ROS的工程架构[^Ros_structure]</h2><p>对于一个ROS工程，它一般分为三部分：</p>
+<ul>
+<li>build：编译产生的中间文件；</li>
+<li>devel：编译的结果文件；</li>
+<li>src：源代码目录。</li>
+</ul>
+<p><strong>项目架构概览</strong></p>
+<blockquote>
+<ul>
+<li>/catkin_ws<ul>
+<li>/build</li>
+<li>/devel</li>
+<li>/src<ul>
+<li>/folder_1<ul>
+<li>/package_1</li>
+<li>/package_2</li>
+</ul>
+</li>
+<li>/folder_2<ul>
+<li>/package_3</li>
+</ul>
+</li>
+<li>/package_4</li>
+<li>/metapackage</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>一个ROS工程的src部分，是由一个个Package组成的。每个Package一般对应一个应用或是一个节点。另外还有一类特殊的Package，叫做Metapackage，即虚包，它们没有自己的内容，但是由很多依赖，因此常用来做功能集使用。</p>
+<p><strong>Package架构概览</strong>：</p>
+<blockquote>
+<ul>
+<li>/package<ul>
+<li>/msg<ul>
+<li>x.msg</li>
+</ul>
+</li>
+<li>/srv<ul>
+<li>x.srv</li>
+</ul>
+</li>
+<li>/action<ul>
+<li>x.action</li>
+</ul>
+</li>
+<li>/scripts<ul>
+<li>x.py</li>
+<li>x.sh</li>
+</ul>
+</li>
+<li>/launch<ul>
+<li>x.launch</li>
+</ul>
+</li>
+<li>/config<ul>
+<li>x.yaml</li>
+</ul>
+</li>
+<li>/include<ul>
+<li>x.h</li>
+</ul>
+</li>
+<li>/src<ul>
+<li>x.cpp</li>
+</ul>
+</li>
+<li>/other_dirs<ul>
+<li>other_files</li>
+</ul>
+</li>
+<li>CMakeLists.txt</li>
+<li>package.xml</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>ROS支持C++和Python开发。在一个Package下，script下一般存放python文件，src、include文件夹下面分别存放了c++的.cpp文件和.h文件。launch文件夹下存放了ROS的启动文件，这些启动文件描述了这个包的启动过程中需要定义的参数，需要依赖的其它的包等内容。config文件夹下存放了一些配置文件，通过yaml语言定义。ROS自带了三种通信方式，其中msg描述了通过topic方式通信过程中的数据格式，srv、action则分别保存了service和action通信的数据格式。</p>
+<h2 id="3-ROS的计算图集"><a href="#3-ROS的计算图集" class="headerlink" title="3. ROS的计算图集"></a>3. ROS的计算图集</h2><p>计算图集，也叫通信架构，是ROS节点之间通信的工具。ROS节点之间的通信方式共有三种。</p>
+<p><strong>Topic</strong><br>Topic是最常见的通信方式，topic是一个独立于节点的存在。每个节点既可以发布topic，也可以订阅topic。发布者会始终无条件的发布消息，所以不论有没有其他节点在订阅消息，都会按照一定频率发布topic。并且topic的发布者可以不只是一个节点，偶尔也会有多个节点在同一个topic上发布消息。当然，订阅topic的节点也可以是多个。</p>
+<p>一个节点如果想发布topic，必须先创建一个msg，这个msg就像是一个结构体，节点可以在这个msg中存放一些数据，然后发布到topic上。另一个节点如果想订阅这个topic，就必须按照这个msg的结构进行监听。</p>
+<p>msg文件结构<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">float32 x</span><br><span class="line">float32 y</span><br></pre></td></tr></table></figure></p>
+<p><strong>Service</strong><br>当进行一些复杂的，计算量大的任务时，Topic却无法胜任这种情况了，因为Topic是不论有没有订阅者，发布者都会无条件发布消息，这就会导致大量的计算资源被浪费了。而Service这种通信方式正是弥补了这一缺陷。Service会根据服务请求者的请求，按需执行，因此大大节约了计算资源。</p>
+<p>Service由服务的提供方提供相应服务，而请求方需要按照srv文件中定义的格式向服务提供方请求服务。</p>
+<p>srv文件结构<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 请求格式</span></span><br><span class="line">uint32 id</span><br><span class="line">---</span><br><span class="line"><span class="comment">// 响应格式</span></span><br><span class="line">float32 x</span><br><span class="line">float32 y</span><br></pre></td></tr></table></figure></p>
+<p><strong>Action</strong><br>对于一些执行时间较长的服务，服务的请求方还需要知道服务的实时进度。这时候Action就派上用场了。Action除了像服务那样按需执行外，在执行的过程中，也会按照一定的频率向请求方发送一些其他的数据，这些数据都是在action文件中定义的。</p>
+<p>action文件结构<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 请求格式</span></span><br><span class="line">uint32 id</span><br><span class="line">---</span><br><span class="line"><span class="comment">// 结果格式</span></span><br><span class="line">float32 x</span><br><span class="line">float32 y</span><br><span class="line">---</span><br><span class="line"><span class="comment">// 中间反馈格式</span></span><br><span class="line"><span class="built_in">string</span> state</span><br></pre></td></tr></table></figure></p>
+<p>数据格式文件中的数据类型<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span></span><br><span class="line"><span class="built_in">string</span></span><br><span class="line">int8, int16, int32, int64</span><br><span class="line">uint8, uint16, uint32, uint64</span><br><span class="line">float32, float64</span><br><span class="line">time, duration</span><br><span class="line">variable-length <span class="built_in">array</span>[], fixed-length <span class="built_in">array</span>[C]</span><br><span class="line">other msg files</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-ROS工具包"><a href="#4-ROS工具包" class="headerlink" title="4. ROS工具包"></a>4. ROS工具包</h2><p>Gazebo 物理仿真工具<br>可以对机器人进行物理仿真，可以对机器人设置重量，碰撞模型，转动惯量等设置。</p>
+<p>Rviz 机器人可视化工具<br>主要用于机器人调试，数据可视化操作。</p>
+<p>MoveIt! 机械臂路径规划工具<br>专门用于机械臂控制使用，里面集成了大量的关于机械臂的工具包。</p>
+<p>Rqt ROS代码调试工具<br>提供了一系列代码调试工具：</p>
+<blockquote>
+<p>rqt_graph  绘制计算图（通信架构图）<br>rqt_plot 绘制数据变化曲线<br>rqt_console  查看日志的工具<br>rqt_*  其他工具</p>
+</blockquote>
+<h2 id="5-未完结"><a href="#5-未完结" class="headerlink" title="5. 未完结"></a>5. 未完结</h2>
+      
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechat.png" alt="Peng 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="Peng 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ROS/" rel="tag"># ROS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/29/GitBlogInit/" rel="next" title="Github 博客搭建">
+                <i class="fa fa-chevron-left"></i> Github 博客搭建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MzY0MS8yMDE4MA=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -458,8 +709,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -564,6 +824,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ROS简介"><span class="nav-text">1. ROS简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ROS的工程架构-Ros-structure"><span class="nav-text">2. ROS的工程架构[^Ros_structure]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-ROS的计算图集"><span class="nav-text">3. ROS的计算图集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-ROS工具包"><span class="nav-text">4. ROS工具包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-未完结"><span class="nav-text">5. 未完结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -728,6 +1005,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
 
   
 
@@ -743,6 +1024,23 @@
 
   
 
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2019/04/13/RosBase-1/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
 
 
   
