@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Django Init]]></title>
     <url>%2F2020%2F01%2F08%2FDjango-Init%2F</url>
-    <content type="text"><![CDATA[初遇 Django12pip install djangopip install django-admin]]></content>
+    <content type="text"><![CDATA[开始 Django123pip install djangopip install django-admindjango-admin startproject ProjectName 这里使用Pycharm配置项目。打开manager.py文件，点击Add Configuration...-&gt;+-&gt;Python，右侧编辑Name，起个名字，Script Path填写刚刚创建的manage.py，Parameter填写runserver 0.0.0.0:9080-&gt;OK-&gt;运行网站。 或使用命令行运行项目。1python manager.py runserver 0.0.0.0:9080 打开localhost:9080即可访问该项目。首次访问项目自动生成db.sqlite3用于作为数据库。]]></content>
       <categories>
         <category>Web后端</category>
       </categories>
