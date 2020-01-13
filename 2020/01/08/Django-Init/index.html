@@ -104,10 +104,12 @@
 <meta property="og:site_name" content="Withz">
 <meta property="og:description" content="安装 Django 并创建项目在Python 3的环境下，首先安装Django，并创建第一个项目ProjectName 123pip install djangopip install django-admindjango-admin startproject ProjectName 这里使用Pycharm配置项目。打开manager.py文件，点击Add Configuration...-&amp;gt">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-13T07:46:52.472Z">
+<meta property="og:image" content="https://withz.github.io/2020/01/08/Django-Init/django_run.jpg">
+<meta property="og:updated_time" content="2020-01-13T07:50:19.033Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django 创建项目">
 <meta name="twitter:description" content="安装 Django 并创建项目在Python 3的环境下，首先安装Django，并创建第一个项目ProjectName 123pip install djangopip install django-admindjango-admin startproject ProjectName 这里使用Pycharm配置项目。打开manager.py文件，点击Add Configuration...-&amp;gt">
+<meta name="twitter:image" content="https://withz.github.io/2020/01/08/Django-Init/django_run.jpg">
 
 
 
@@ -429,7 +431,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-01-13 15:46:52" itemprop="dateModified" datetime="2020-01-13T15:46:52+08:00">2020-01-13</time>
+                <time title="修改时间：2020-01-13 15:50:19" itemprop="dateModified" datetime="2020-01-13T15:50:19+08:00">2020-01-13</time>
               
             
           </span>
@@ -491,7 +493,7 @@
         <h3 id="安装-Django-并创建项目"><a href="#安装-Django-并创建项目" class="headerlink" title="安装 Django 并创建项目"></a>安装 Django 并创建项目</h3><p>在Python 3的环境下，首先安装Django，并创建第一个项目<code>ProjectName</code></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install django</span><br><span class="line">pip install django-admin</span><br><span class="line">django-admin startproject ProjectName</span><br></pre></td></tr></table></figure>
 <p>这里使用Pycharm配置项目。打开<code>manager.py</code>文件，点击<code>Add Configuration...</code>-&gt;<code>+</code>-&gt;<code>Python</code>，右侧编辑Name，起个名字，Script Path填写刚刚创建的<code>manage.py</code>，Parameter填写<code>runserver 0.0.0.0:9080</code>-&gt;<code>OK</code>-&gt;运行网站。以后点一下旁边的绿三角形就可以运行了。</p>
-<p>!(运行)[django_run.jpg]</p>
+<p><img src="/2020/01/08/Django-Init/django_run.jpg" alt="run_django"></p>
 <p>或使用命令行运行项目。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manager.py runserver 0.0.0.0:9080</span><br></pre></td></tr></table></figure></p>
 <p>使用浏览器打开<code>localhost:9080</code>即可访问该项目。首次访问项目自动生成<code>db.sqlite3</code>用于作为数据库。</p>
 <h3 id="如何开发-Django"><a href="#如何开发-Django" class="headerlink" title="如何开发 Django"></a>如何开发 Django</h3><p>Django遵循MVC思想，即Model、View、Controller相互协作的工作。模型（Model）：与数据库相结合，提空访问、操作数据库的服务；模板（视图，View）：与用户界面相结合，负责向用户渲染操作界面；控制器（Controller）：主要负责业务逻辑，做剩下的工作。</p>
