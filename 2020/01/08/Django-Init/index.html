@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="开始 Django123pip install djangopip install django-admindjango-admin startproject ProjectName 这里使用Pycharm配置项目。打开manager.py文件，点击Add Configuration...-&amp;gt;+-&amp;gt;Python，右侧编辑Name，起个名字，Script Path填写刚刚创建的manag">
+  <meta name="description" content="安装 Django 并创建项目在Python 3的环境下，首先安装Django，并创建第一个项目ProjectName 123pip install djangopip install django-admindjango-admin startproject ProjectName 这里使用Pycharm配置项目。打开manager.py文件，点击Add Configuration...-&amp;gt">
 <meta name="keywords" content="Django,Web后端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Django Init">
+<meta property="og:title" content="Django 创建项目">
 <meta property="og:url" content="https://withz.github.io/2020/01/08/Django-Init/index.html">
 <meta property="og:site_name" content="Withz">
-<meta property="og:description" content="开始 Django123pip install djangopip install django-admindjango-admin startproject ProjectName 这里使用Pycharm配置项目。打开manager.py文件，点击Add Configuration...-&amp;gt;+-&amp;gt;Python，右侧编辑Name，起个名字，Script Path填写刚刚创建的manag">
+<meta property="og:description" content="安装 Django 并创建项目在Python 3的环境下，首先安装Django，并创建第一个项目ProjectName 123pip install djangopip install django-admindjango-admin startproject ProjectName 这里使用Pycharm配置项目。打开manager.py文件，点击Add Configuration...-&amp;gt">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-12T06:57:18.236Z">
+<meta property="og:updated_time" content="2020-01-13T07:46:52.472Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Django Init">
-<meta name="twitter:description" content="开始 Django123pip install djangopip install django-admindjango-admin startproject ProjectName 这里使用Pycharm配置项目。打开manager.py文件，点击Add Configuration...-&amp;gt;+-&amp;gt;Python，右侧编辑Name，起个名字，Script Path填写刚刚创建的manag">
+<meta name="twitter:title" content="Django 创建项目">
+<meta name="twitter:description" content="安装 Django 并创建项目在Python 3的环境下，首先安装Django，并创建第一个项目ProjectName 123pip install djangopip install django-admindjango-admin startproject ProjectName 这里使用Pycharm配置项目。打开manager.py文件，点击Add Configuration...-&amp;gt">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Django Init | Withz</title>
+  <title>Django 创建项目 | Withz</title>
   
 
 
@@ -386,7 +386,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Django Init
+          <h1 class="post-title" itemprop="name headline">Django 创建项目
 
               
             
@@ -429,7 +429,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-01-12 14:57:18" itemprop="dateModified" datetime="2020-01-12T14:57:18+08:00">2020-01-12</time>
+                <time title="修改时间：2020-01-13 15:46:52" itemprop="dateModified" datetime="2020-01-13T15:46:52+08:00">2020-01-13</time>
               
             
           </span>
@@ -488,10 +488,51 @@
       
 
       
-        <h3 id="开始-Django"><a href="#开始-Django" class="headerlink" title="开始 Django"></a>开始 Django</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install django</span><br><span class="line">pip install django-admin</span><br><span class="line">django-admin startproject ProjectName</span><br></pre></td></tr></table></figure>
-<p>这里使用Pycharm配置项目。打开<code>manager.py</code>文件，点击<code>Add Configuration...</code>-&gt;<code>+</code>-&gt;<code>Python</code>，右侧编辑Name，起个名字，Script Path填写刚刚创建的<code>manage.py</code>，Parameter填写<code>runserver 0.0.0.0:9080</code>-&gt;<code>OK</code>-&gt;运行网站。</p>
+        <h3 id="安装-Django-并创建项目"><a href="#安装-Django-并创建项目" class="headerlink" title="安装 Django 并创建项目"></a>安装 Django 并创建项目</h3><p>在Python 3的环境下，首先安装Django，并创建第一个项目<code>ProjectName</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install django</span><br><span class="line">pip install django-admin</span><br><span class="line">django-admin startproject ProjectName</span><br></pre></td></tr></table></figure>
+<p>这里使用Pycharm配置项目。打开<code>manager.py</code>文件，点击<code>Add Configuration...</code>-&gt;<code>+</code>-&gt;<code>Python</code>，右侧编辑Name，起个名字，Script Path填写刚刚创建的<code>manage.py</code>，Parameter填写<code>runserver 0.0.0.0:9080</code>-&gt;<code>OK</code>-&gt;运行网站。以后点一下旁边的绿三角形就可以运行了。</p>
+<p>!(运行)[django_run.jpg]</p>
 <p>或使用命令行运行项目。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manager.py runserver 0.0.0.0:9080</span><br></pre></td></tr></table></figure></p>
-<p>打开<code>localhost:9080</code>即可访问该项目。首次访问项目自动生成<code>db.sqlite3</code>用于作为数据库。</p>
+<p>使用浏览器打开<code>localhost:9080</code>即可访问该项目。首次访问项目自动生成<code>db.sqlite3</code>用于作为数据库。</p>
+<h3 id="如何开发-Django"><a href="#如何开发-Django" class="headerlink" title="如何开发 Django"></a>如何开发 Django</h3><p>Django遵循MVC思想，即Model、View、Controller相互协作的工作。模型（Model）：与数据库相结合，提空访问、操作数据库的服务；模板（视图，View）：与用户界面相结合，负责向用户渲染操作界面；控制器（Controller）：主要负责业务逻辑，做剩下的工作。</p>
+<p>下面，我们按照如下结构创建文件。</p>
+<ul>
+<li>Root<ul>
+<li><code>app</code><ul>
+<li><code>index.py</code></li>
+</ul>
+</li>
+<li>ProjectName<ul>
+<li>asgi.py</li>
+<li><code>setting.py</code></li>
+<li><code>urls.py</code></li>
+<li>wsgi.py</li>
+</ul>
+</li>
+<li><code>views</code><ul>
+<li><code>index.html</code></li>
+</ul>
+</li>
+<li>db.sqlite</li>
+<li>manage.py</li>
+</ul>
+</li>
+</ul>
+<p>其中，app目录下存放控制器的相关文件，views目录下存放模板的相关文件。</p>
+<h3 id="配置-URLs"><a href="#配置-URLs" class="headerlink" title="配置 URLs"></a>配置 URLs</h3><p>URL，就是访问网页的链接。打开<code>ProjectName</code>-&gt;<code>urls.py</code>中，配置如下内容。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> app.index <span class="keyword">import</span> index</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">''</span>, index),</span><br><span class="line">    path(<span class="string">'admin/'</span>, admin.site.urls),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="创建第一个页面"><a href="#创建第一个页面" class="headerlink" title="创建第一个页面"></a>创建第一个页面</h3><p>首先创建一个后端控制器。在<code>app</code>-&gt;<code>index.py</code>中，编辑如下内容。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></span><br><span class="line">    context = &#123;&#125;</span><br><span class="line">    context[<span class="string">'hello'</span>] = <span class="string">'hello'</span></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'index.html'</span>, context)</span><br></pre></td></tr></table></figure></p>
+<p>这样一个控制器就创建好了。这个控制器包含了待渲染的变量的值，准备将该值渲染给前端页面。</p>
+<p>在<code>views</code>-&gt;<code>index.html</code>中，编辑如下内容。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; hello &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这个文件即是前端的页面，包含了一个<code></code>变量。这个变量由后端控制器负责输送。</p>
+<p>编辑完成后，执行<code>python manager.py runserver 0.0.0.0:9080</code>查看结果。</p>
+<h3 id="如何使用数据库"><a href="#如何使用数据库" class="headerlink" title="如何使用数据库"></a>如何使用数据库</h3><p>使用数据库，要用到模型（Model）。下面创建模型。Django规定，创建模型需要创建相应的APP，同时通过模型才可以访问和操作数据库。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">django-admin startapp NetModel</span><br></pre></td></tr></table></figure>
+<p>在<code>Settings.py</code>中的<code>INSTALLED_APPS</code>下，添加刚刚创建的<code>NetModel</code>。</p>
+<p>在<code>NetModel</code>-&gt;<code>models.py</code>中，编辑如下内容。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your models here.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NetModel</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    id = models.IntegerField(default=<span class="number">1</span>, primary_key=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="数据库的编辑工具"><a href="#数据库的编辑工具" class="headerlink" title="数据库的编辑工具"></a>数据库的编辑工具</h3><p>编辑SQLite文件，可以使用<a href="https://pan.baidu.com/s/1ypyacdZ627xASvCKTUUbQw" target="_blank" rel="noopener"><code>SQLite Expert Professional 5</code></a>（提取码：9itj）。</p>
 
       
     </div>
@@ -756,7 +797,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#开始-Django"><span class="nav-text">开始 Django</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Django-并创建项目"><span class="nav-text">安装 Django 并创建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何开发-Django"><span class="nav-text">如何开发 Django</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-URLs"><span class="nav-text">配置 URLs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建第一个页面"><span class="nav-text">创建第一个页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用数据库"><span class="nav-text">如何使用数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库的编辑工具"><span class="nav-text">数据库的编辑工具</span></a></li></ol></div>
             
 
           </div>
