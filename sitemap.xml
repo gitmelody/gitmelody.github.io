@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://withz.github.io/2020/01/30/DjangoFirst/</loc>
+    
+    <lastmod>2020-01-30T14:09:16.212Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://withz.github.io/2020/01/17/GitUse/</loc>
     
     <lastmod>2020-01-28T14:29:10.548Z</lastmod>
