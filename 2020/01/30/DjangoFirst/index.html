@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Withz">
 <meta property="og:description" content="django-admin 的基本命令12345678910django-admin startproject django-admin startapp django-admin check django-admin test django-admin runserver django-admin shell django-admin makemigrations django-admin mig">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-30T14:10:36.091Z">
+<meta property="og:updated_time" content="2020-01-30T14:11:58.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django 入门">
 <meta name="twitter:description" content="django-admin 的基本命令12345678910django-admin startproject django-admin startapp django-admin check django-admin test django-admin runserver django-admin shell django-admin makemigrations django-admin mig">
@@ -412,7 +412,7 @@
                 
               
 
-              <time title="创建时间：2020-01-30 17:35:32 / 修改时间：22:10:36" itemprop="dateCreated datePublished" datetime="2020-01-30T17:35:32+08:00">2020-01-30</time>
+              <time title="创建时间：2020-01-30 17:35:32 / 修改时间：22:11:58" itemprop="dateCreated datePublished" datetime="2020-01-30T17:35:32+08:00">2020-01-30</time>
             
 
             
@@ -504,10 +504,10 @@
 <p>之后再配置项目路由器：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'my_app'</span>, include(<span class="string">'my_app.urls'</span>))</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
 <h2 id="Django-的模型"><a href="#Django-的模型" class="headerlink" title="Django 的模型"></a>Django 的模型</h2><p>模型（Models）是用于对接数据库的接口，在所有的MVC应用中都是如此。Django的模型的定义如下：</p>
 <h3 id="数据类型："><a href="#数据类型：" class="headerlink" title="数据类型："></a>数据类型：</h3><ul>
-<li>整型：IntegerField</li>
-<li>文本：TextField</li>
-<li>日期：DataTimeField</li>
-<li>自增ID：AutoField</li>
+<li>整型：<code>IntegerField</code></li>
+<li>文本：<code>TextField</code></li>
+<li>日期：<code>DataTimeField</code></li>
+<li>自增ID：<code>AutoField</code></li>
 </ul>
 <h3 id="属性："><a href="#属性：" class="headerlink" title="属性："></a>属性：</h3><ul>
 <li>主键：primary_key</li>
@@ -528,7 +528,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> my_app.models <span class="keyword">import</span> MyModel</span><br><span class="line">admin.site.register(MyModel)</span><br></pre></td></tr></table></figure>
 <p>之后管理页面就出现刚刚的选项了。</p>
 <h2 id="Django-的视图"><a href="#Django-的视图" class="headerlink" title="Django 的视图"></a>Django 的视图</h2><h3 id="静态视图"><a href="#静态视图" class="headerlink" title="静态视图"></a>静态视图</h3><p>在My_App下创建template文件夹，在该文件夹下创建index.html，编辑index.html。</p>
-<h3 id="动态视图"><a href="#动态视图" class="headerlink" title="动态视图"></a>动态视图</h3><p>使用模板系统基本语法<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 变量标签：&#123;&#123; 变量 &#125;&#125;</span><br><span class="line">- <span class="keyword">for</span>循环标签：&#123;% <span class="keyword">for</span> x <span class="keyword">in</span> list %&#125;, &#123;% endfor %&#125;</span><br><span class="line">- <span class="keyword">if</span>-<span class="keyword">else</span>标签：&#123;% <span class="keyword">if</span> %&#125;, &#123;% <span class="keyword">else</span> %&#125;, &#123;% endif %&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="动态视图"><a href="#动态视图" class="headerlink" title="动态视图"></a>动态视图</h3><p>使用模板系统基本语法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">变量标签：&#123;&#123; 变量 &#125;&#125;</span><br><span class="line">for循环标签：&#123;% for x in list %&#125;, &#123;% endfor %&#125;</span><br><span class="line">if-else标签：&#123;% if %&#125;, &#123;% else %&#125;, &#123;% endif %&#125;</span><br></pre></td></tr></table></figure></p>
 <p>模板渲染：<br>前端将相应标签填写好，后台给相应的标签赋值：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_them</span><span class="params">(request)</span>:</span></span><br><span class="line">    get_all = MyModel.objects.all()</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'index.html'</span>, &#123;</span><br><span class="line">        <span class="string">'label_list'</span>: get_all</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure></p>
 <h3 id="依据ID进行路由跳转"><a href="#依据ID进行路由跳转" class="headerlink" title="依据ID进行路由跳转"></a>依据ID进行路由跳转</h3><p>在app的urls里面修改：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path, include</span><br><span class="line"><span class="keyword">import</span> my_app.views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'get_one/&lt;int:c_id&gt;'</span>, my_app.views.hello)</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
 <p>相应修改：</p>
