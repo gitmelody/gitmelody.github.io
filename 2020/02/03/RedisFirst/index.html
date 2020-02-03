@@ -96,25 +96,24 @@
 
 
 
-  <meta name="description" content="近期做的东西和ROS有关，因此想做一些关于ROS的笔记。这篇文章主要分为以下几个部分。   ROS简介 ROS的工程架构 ROS的计算图集 ROS工具包 未完结   1. ROS简介ROS（Robot OS）是运行在Ubuntu上的次级系统，它内部由多个节点构成，每个节点即一个进程。这些节点之间各自分工，又相互合作，共同完成一些列任务。一般一个ROS工程由master节点和多个子节点构成，mast">
-<meta name="keywords" content="ROS">
+  <meta name="description" content="NoSQLNoSQL是一类新出现的数据库，不支持SQL语法，也不是关系型数据库，而是基于KEY-VALUE方式存储数据。他们没有通用的语言，而是各自有各自的语法和用法。他们往往适用于关系简单，而对事务强的业务有很好的支持。 NoSQL数据库常见的有：  Mongodb Redis Hadoop  Redis 简介官方网站参考文档  支持数据的持有化 不仅支持key-value，还支持list，se">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ROS 基础">
-<meta property="og:url" content="https://withz.github.io/2019/04/13/RosBase-1/index.html">
+<meta property="og:title" content="RedisFirst">
+<meta property="og:url" content="https://withz.github.io/2020/02/03/RedisFirst/index.html">
 <meta property="og:site_name" content="Withz">
-<meta property="og:description" content="近期做的东西和ROS有关，因此想做一些关于ROS的笔记。这篇文章主要分为以下几个部分。   ROS简介 ROS的工程架构 ROS的计算图集 ROS工具包 未完结   1. ROS简介ROS（Robot OS）是运行在Ubuntu上的次级系统，它内部由多个节点构成，每个节点即一个进程。这些节点之间各自分工，又相互合作，共同完成一些列任务。一般一个ROS工程由master节点和多个子节点构成，mast">
+<meta property="og:description" content="NoSQLNoSQL是一类新出现的数据库，不支持SQL语法，也不是关系型数据库，而是基于KEY-VALUE方式存储数据。他们没有通用的语言，而是各自有各自的语法和用法。他们往往适用于关系简单，而对事务强的业务有很好的支持。 NoSQL数据库常见的有：  Mongodb Redis Hadoop  Redis 简介官方网站参考文档  支持数据的持有化 不仅支持key-value，还支持list，se">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-25T14:49:18.010Z">
+<meta property="og:updated_time" content="2020-02-03T08:13:19.097Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ROS 基础">
-<meta name="twitter:description" content="近期做的东西和ROS有关，因此想做一些关于ROS的笔记。这篇文章主要分为以下几个部分。   ROS简介 ROS的工程架构 ROS的计算图集 ROS工具包 未完结   1. ROS简介ROS（Robot OS）是运行在Ubuntu上的次级系统，它内部由多个节点构成，每个节点即一个进程。这些节点之间各自分工，又相互合作，共同完成一些列任务。一般一个ROS工程由master节点和多个子节点构成，mast">
+<meta name="twitter:title" content="RedisFirst">
+<meta name="twitter:description" content="NoSQLNoSQL是一类新出现的数据库，不支持SQL语法，也不是关系型数据库，而是基于KEY-VALUE方式存储数据。他们没有通用的语言，而是各自有各自的语法和用法。他们往往适用于关系简单，而对事务强的业务有很好的支持。 NoSQL数据库常见的有：  Mongodb Redis Hadoop  Redis 简介官方网站参考文档  支持数据的持有化 不仅支持key-value，还支持list，se">
 
 
 
 
 
 
-  <link rel="canonical" href="https://withz.github.io/2019/04/13/RosBase-1/">
+  <link rel="canonical" href="https://withz.github.io/2020/02/03/RedisFirst/">
 
 
 
@@ -124,7 +123,7 @@
   };
 </script>
 
-  <title>ROS 基础 | Withz</title>
+  <title>RedisFirst | Withz</title>
   
 
 
@@ -369,7 +368,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2019/04/13/RosBase-1/">
+    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2020/02/03/RedisFirst/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Peng">
@@ -386,7 +385,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ROS 基础
+          <h1 class="post-title" itemprop="name headline">RedisFirst
 
               
             
@@ -412,24 +411,12 @@
                 
               
 
-              <time title="创建时间：2019-04-13 20:45:23" itemprop="dateCreated datePublished" datetime="2019-04-13T20:45:23+08:00">2019-04-13</time>
+              <time title="创建时间：2020-02-03 10:58:39 / 修改时间：16:13:19" itemprop="dateCreated datePublished" datetime="2020-02-03T10:58:39+08:00">2020-02-03</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-01-25 22:49:18" itemprop="dateModified" datetime="2020-01-25T22:49:18+08:00">2020-01-25</time>
               
             
           </span>
@@ -446,7 +433,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ROS/" itemprop="url" rel="index"><span itemprop="name">ROS</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a></span>
 
                 
                 
@@ -488,114 +475,59 @@
       
 
       
-        <p>近期做的东西和ROS有关，因此想做一些关于ROS的笔记。这篇文章主要分为以下几个部分。</p>
-<blockquote>
-<ol>
-<li>ROS简介</li>
-<li>ROS的工程架构</li>
-<li>ROS的计算图集</li>
-<li>ROS工具包</li>
-<li>未完结</li>
-</ol>
-</blockquote>
-<h2 id="1-ROS简介"><a href="#1-ROS简介" class="headerlink" title="1. ROS简介"></a>1. ROS简介</h2><p>ROS（Robot OS）是运行在Ubuntu上的次级系统，它内部由多个节点构成，每个节点即一个进程。这些节点之间各自分工，又相互合作，共同完成一些列任务。一般一个ROS工程由master节点和多个子节点构成，master负责管理各个节点，而子节点则负责各自具体的任务。</p>
-<h2 id="2-ROS的工程架构"><a href="#2-ROS的工程架构" class="headerlink" title="2. ROS的工程架构"></a>2. ROS的工程架构</h2><p>对于一个ROS工程，它一般分为三部分：</p>
+        <h2 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h2><p>NoSQL是一类新出现的数据库，不支持SQL语法，也不是关系型数据库，而是基于KEY-VALUE方式存储数据。他们没有通用的语言，而是各自有各自的语法和用法。他们往往适用于关系简单，而对事务强的业务有很好的支持。</p>
+<p>NoSQL数据库常见的有：</p>
 <ul>
-<li>build：编译产生的中间文件；</li>
-<li>devel：编译的结果文件；</li>
-<li>src：源代码目录。</li>
+<li>Mongodb</li>
+<li>Redis</li>
+<li>Hadoop</li>
 </ul>
-<p><strong>项目架构概览</strong></p>
-<blockquote>
+<h3 id="Redis-简介"><a href="#Redis-简介" class="headerlink" title="Redis 简介"></a>Redis 简介</h3><p><a href="http://www.redis.cn" target="_blank" rel="noopener">官方网站</a><br><a href="http://doc.redisfans.com" target="_blank" rel="noopener">参考文档</a></p>
 <ul>
-<li>/catkin_ws<ul>
-<li>/build</li>
-<li>/devel</li>
-<li>/src<ul>
-<li>/folder_1<ul>
-<li>/package_1</li>
-<li>/package_2</li>
+<li>支持数据的持有化</li>
+<li>不仅支持key-value，还支持list，set，zset，hash等结构。</li>
+<li>支持数据备份</li>
+<li>性能极高</li>
+<li>拥有丰富的数据类型</li>
+<li>操作都是原子性的</li>
 </ul>
-</li>
-<li>/folder_2<ul>
-<li>/package_3</li>
+<p>Redis常常用来做缓存，其读写效率很高，适用于社交平台等大型系统等。</p>
+<h2 id="Redis-安装与配置"><a href="#Redis-安装与配置" class="headerlink" title="Redis 安装与配置"></a>Redis 安装与配置</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>打开配置文件<code>redis.conf</code></p>
+<p>bind：绑定的IP<br>port：绑定的端口<br>daemonizs：是否为守护进程（改为yes）<br>dbfilename：数据存储文件名<br>dir：存储路径<br>logfile：日志文件<br>database：数据库数量<br>slaveof：设置主从（一般不用）</p>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接运行</span></span><br><span class="line">sudo redis-server /etc/redis/redis.conf</span><br><span class="line">ps -ef | grep redis <span class="comment"># 得到PID号</span></span><br><span class="line">sudo <span class="built_in">kill</span> -9  PID号</span><br><span class="line"><span class="comment"># 以服务方式运行</span></span><br><span class="line">sudo service redis start</span><br><span class="line">sudo service redis stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入redis，默认进入0号数据库</span></span><br><span class="line">redis-cli</span><br><span class="line"></span><br><span class="line"><span class="comment"># redis-cli 命令</span></span><br><span class="line">ping  <span class="comment"># ping数据库</span></span><br><span class="line">select 5  <span class="comment"># 切换数据库</span></span><br></pre></td></tr></table></figure>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ul>
+<li>string：字符串，可以接受任意二进制数据，最大可容纳512MB。</li>
+<li>hash：哈希，用于存储对象，包含属性、值，值的类型为string。</li>
+<li>list：列表，每个元素都是string，按照插入顺序排序。</li>
+<li>set：集和（无序），元素具有唯一性，且不可修改。</li>
+<li>zset：有序集和，元素具有唯一性，且每个元素具有一个权重，并按照权重从小到大排序，也是没有修改操作。</li>
 </ul>
-</li>
-<li>/package_4</li>
-<li>/metapackage</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<p>一个ROS工程的src部分，是由一个个Package组成的。每个Package一般对应一个应用或是一个节点。另外还有一类特殊的Package，叫做Metapackage，即虚包，它们没有自己的内容，但是由很多依赖，因此常用来做功能集使用。</p>
-<p><strong>Package架构概览</strong>：</p>
-<blockquote>
-<ul>
-<li>/package<ul>
-<li>/msg<ul>
-<li>x.msg</li>
-</ul>
-</li>
-<li>/srv<ul>
-<li>x.srv</li>
-</ul>
-</li>
-<li>/action<ul>
-<li>x.action</li>
-</ul>
-</li>
-<li>/scripts<ul>
-<li>x.py</li>
-<li>x.sh</li>
-</ul>
-</li>
-<li>/launch<ul>
-<li>x.launch</li>
-</ul>
-</li>
-<li>/config<ul>
-<li>x.yaml</li>
-</ul>
-</li>
-<li>/include<ul>
-<li>x.h</li>
-</ul>
-</li>
-<li>/src<ul>
-<li>x.cpp</li>
-</ul>
-</li>
-<li>/other_dirs<ul>
-<li>other_files</li>
-</ul>
-</li>
-<li>CMakeLists.txt</li>
-<li>package.xml</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<p>ROS支持C++和Python开发。在一个Package下，script下一般存放python文件，src、include文件夹下面分别存放了c++的.cpp文件和.h文件。launch文件夹下存放了ROS的启动文件，这些启动文件描述了这个包的启动过程中需要定义的参数，需要依赖的其它的包等内容。config文件夹下存放了一些配置文件，通过yaml语言定义。ROS自带了三种通信方式，其中msg描述了通过topic方式通信过程中的数据格式，srv、action则分别保存了service和action通信的数据格式。</p>
-<h2 id="3-ROS的计算图集"><a href="#3-ROS的计算图集" class="headerlink" title="3. ROS的计算图集"></a>3. ROS的计算图集</h2><p>计算图集，也叫通信架构，是ROS节点之间通信的工具。ROS节点之间的通信方式共有三种。</p>
-<p><strong>Topic</strong><br>Topic是最常见的通信方式，topic是一个独立于节点的存在。每个节点既可以发布topic，也可以订阅topic。发布者会始终无条件的发布消息，所以不论有没有其他节点在订阅消息，都会按照一定频率发布topic。并且topic的发布者可以不只是一个节点，偶尔也会有多个节点在同一个topic上发布消息。当然，订阅topic的节点也可以是多个。</p>
-<p>一个节点如果想发布topic，必须先创建一个msg，这个msg就像是一个结构体，节点可以在这个msg中存放一些数据，然后发布到topic上。另一个节点如果想订阅这个topic，就必须按照这个msg的结构进行监听。</p>
-<p>msg文件结构<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">float32 x</span><br><span class="line">float32 y</span><br></pre></td></tr></table></figure></p>
-<p><strong>Service</strong><br>当进行一些复杂的，计算量大的任务时，Topic却无法胜任这种情况了，因为Topic是不论有没有订阅者，发布者都会无条件发布消息，这就会导致大量的计算资源被浪费了。而Service这种通信方式正是弥补了这一缺陷。Service会根据服务请求者的请求，按需执行，因此大大节约了计算资源。</p>
-<p>Service由服务的提供方提供相应服务，而请求方需要按照srv文件中定义的格式向服务提供方请求服务。</p>
-<p>srv文件结构<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 请求格式</span></span><br><span class="line">uint32 id</span><br><span class="line">---</span><br><span class="line"><span class="comment">// 响应格式</span></span><br><span class="line">float32 x</span><br><span class="line">float32 y</span><br></pre></td></tr></table></figure></p>
-<p><strong>Action</strong><br>对于一些执行时间较长的服务，服务的请求方还需要知道服务的实时进度。这时候Action就派上用场了。Action除了像服务那样按需执行外，在执行的过程中，也会按照一定的频率向请求方发送一些其他的数据，这些数据都是在action文件中定义的。</p>
-<p>action文件结构<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 请求格式</span></span><br><span class="line">uint32 id</span><br><span class="line">---</span><br><span class="line"><span class="comment">// 结果格式</span></span><br><span class="line">float32 x</span><br><span class="line">float32 y</span><br><span class="line">---</span><br><span class="line"><span class="comment">// 中间反馈格式</span></span><br><span class="line"><span class="built_in">string</span> state</span><br></pre></td></tr></table></figure></p>
-<p>数据格式文件中的数据类型<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span></span><br><span class="line"><span class="built_in">string</span></span><br><span class="line">int8, int16, int32, int64</span><br><span class="line">uint8, uint16, uint32, uint64</span><br><span class="line">float32, float64</span><br><span class="line">time, duration</span><br><span class="line">variable-length <span class="built_in">array</span>[], fixed-length <span class="built_in">array</span>[C]</span><br><span class="line">other msg files</span><br></pre></td></tr></table></figure></p>
-<h2 id="4-ROS工具包"><a href="#4-ROS工具包" class="headerlink" title="4. ROS工具包"></a>4. ROS工具包</h2><p>Gazebo 物理仿真工具<br>可以对机器人进行物理仿真，可以对机器人设置重量，碰撞模型，转动惯量等设置。</p>
-<p>Rviz 机器人可视化工具<br>主要用于机器人调试，数据可视化操作。</p>
-<p>MoveIt! 机械臂路径规划工具<br>专门用于机械臂控制使用，里面集成了大量的关于机械臂的工具包。</p>
-<p>Rqt ROS代码调试工具<br>提供了一系列代码调试工具：</p>
-<blockquote>
-<p>rqt_graph  绘制计算图（通信架构图）<br>rqt_plot 绘制数据变化曲线<br>rqt_console  查看日志的工具<br>rqt_*  其他工具</p>
-</blockquote>
-<h2 id="5-未完结（停止更新）"><a href="#5-未完结（停止更新）" class="headerlink" title="5. 未完结（停止更新）"></a>5. 未完结（停止更新）</h2>
+<h3 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h3><p>基本操作<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 键命令</span></span><br><span class="line">keys pattern  <span class="comment"># 支持正则表达式</span></span><br><span class="line">keys *  <span class="comment"># 查看所有键</span></span><br><span class="line">keys <span class="string">'a*'</span>  <span class="comment"># 查看所有a开头的键</span></span><br><span class="line">exists key  <span class="comment"># 查看是否存在键</span></span><br><span class="line"><span class="built_in">type</span> key  <span class="comment"># 查看类型</span></span><br><span class="line">del key  <span class="comment"># 删除键</span></span><br><span class="line">expire key seconds  <span class="comment"># 设置过期时间</span></span><br><span class="line">ttl key  <span class="comment"># 查看键的剩余时间</span></span><br></pre></td></tr></table></figure></p>
+<p>字符串操作<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 保存</span></span><br><span class="line"><span class="built_in">set</span> key value</span><br><span class="line">setex key seconds value  <span class="comment"># 设置过期时间</span></span><br><span class="line">mset key1 value1 key2 value2  <span class="comment"># 设置多个键值</span></span><br><span class="line">append key value  <span class="comment"># 追加值</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取</span></span><br><span class="line">get key  <span class="comment"># 如果不存在返回(nil)</span></span><br><span class="line">mget key1 key2 key3</span><br></pre></td></tr></table></figure></p>
+<p>哈希操作<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置</span></span><br><span class="line">hset key field value  <span class="comment"># 设置单个属性</span></span><br><span class="line">hmset key field1 value1 field2 value2  <span class="comment"># 设置多个值</span></span><br><span class="line"><span class="comment"># 获取</span></span><br><span class="line">hkeys key  <span class="comment"># 获取属性</span></span><br><span class="line">hget key field  <span class="comment"># 获取值</span></span><br><span class="line">hmget key field1 field2  <span class="comment"># 获取多个值</span></span><br><span class="line">hvals key  <span class="comment"># 获取所有值</span></span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line">hdel key field1 field2  <span class="comment"># 删除属性</span></span><br></pre></td></tr></table></figure></p>
+<p>执行hset可能会抛出无法保存快照的错误，可以执行如下命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config <span class="built_in">set</span> stop-writes-on-bgsave-error no</span><br></pre></td></tr></table></figure></p>
+<p>列表操作<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 插入</span></span><br><span class="line">lpush key value1 value2  <span class="comment"># 左侧插入</span></span><br><span class="line">rpush key value1 value2  <span class="comment"># 右侧插入</span></span><br><span class="line">linsert key before/after old_key new_key  <span class="comment"># 在old_key前/后插入数据new_key</span></span><br><span class="line"><span class="comment"># 显示</span></span><br><span class="line">lrange key start stop  <span class="comment"># 从几到几，-1表示最后一个</span></span><br><span class="line"><span class="comment"># 修改</span></span><br><span class="line">lset key index value </span><br><span class="line">lrem key count value  <span class="comment"># 删除几个某元素，0表生所有；&gt;0表示从左向右；&lt;0表示从右向左</span></span><br></pre></td></tr></table></figure></p>
+<p>集和操作<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 增加</span></span><br><span class="line">sadd key value1 value2  </span><br><span class="line"><span class="comment"># 获取</span></span><br><span class="line">smmbers key  <span class="comment"># 获取所有元素</span></span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line">srem key value1 value2  <span class="comment"># 删除某些元素</span></span><br></pre></td></tr></table></figure></p>
+<p>有序集和<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 增加</span></span><br><span class="line">zadd key score1 member1 score2 member2</span><br><span class="line"><span class="comment"># 获取</span></span><br><span class="line">zrange key start stop </span><br><span class="line">zrangebyscore key min max  <span class="comment"># 查看权重在区间的元素</span></span><br><span class="line">zscore key member  <span class="comment"># 查看权值</span></span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line">zrem key member1 member2</span><br><span class="line">zremrangebyscore key min max  <span class="comment"># 删除权重在区间的元素</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="与-Pyhton-交互"><a href="#与-Pyhton-交互" class="headerlink" title="与 Pyhton 交互"></a>与 Pyhton 交互</h3><p>安装Redis包<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install redis</span><br></pre></td></tr></table></figure></p>
+<p>使用<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> redis <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接数据库，参数：主机名；端口；数据库编号</span></span><br><span class="line">sr = StrictRedis(host=<span class="string">'localhost'</span>, port=<span class="number">6379</span>, db=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">res = sr.set(<span class="string">'key'</span>, <span class="string">'value'</span>)  <span class="comment"># 返回布尔值，表示是否成功。</span></span><br><span class="line">res = sr.get(<span class="string">'key'</span>)  <span class="comment"># 如果有，返回该值；没有，返回None</span></span><br><span class="line">res = sr.delete(<span class="string">'key'</span>)  <span class="comment"># 返回删除成功的数量</span></span><br><span class="line">res = sr.keys(pattern=<span class="string">'*'</span>)  <span class="comment"># 返回列表</span></span><br></pre></td></tr></table></figure></p>
+<p>配置Django中保存session到Redis<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install django-redis-sessions</span><br></pre></td></tr></table></figure></p>
+<p>在setting.py中配置Redis<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SESSION_ENGINE = <span class="string">'redis_sessions.session'</span></span><br><span class="line">SESSION_REDIS_HOST = <span class="string">'localhost'</span></span><br><span class="line">SESSION_REDIS_PORT  =  <span class="number">6379</span></span><br><span class="line">SESSION_REDIS_DB = <span class="number">2</span></span><br><span class="line">SESSION_REDIS_PASSWORD = <span class="string">''</span> </span><br><span class="line"><span class="comment"># 键前缀</span></span><br><span class="line">SESSION_REDIS_PREFIX = <span class="string">'session'</span></span><br></pre></td></tr></table></figure></p>
+<p>使用方法依然不变<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">request.session[<span class="string">'key'</span>] = <span class="number">1</span></span><br><span class="line">num = request.session[<span class="string">'key'</span>]</span><br></pre></td></tr></table></figure></p>
+<h2 id="Redis-主从"><a href="#Redis-主从" class="headerlink" title="Redis 主从"></a>Redis 主从</h2><p>在Redis中，主从的数据是共享的，也就是实现了数据的冗余保存，这样可以防止一台机器挂掉后数据丢失的问题。一个Redis主机可以有多个从机，一个从机也可以有多个从机。写数据要在主机中，从机可以读取数据。这样也可以实现数据的读写分离。一般情况下，一个网站的数据读写比例为 10:1 ，因此可以配置多个从机用于读取数据。</p>
+<p>主机配置可以保存不变，只是IP地址应该使用局域网或公网IP。配置完成运行服务。<br>从机配置，并启动。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bind 本机IP</span><br><span class="line">slaveof 主机IP 主机PORT</span><br><span class="line">port 从机PORT，不能与主机冲突</span><br></pre></td></tr></table></figure></p>
+<p>查看某机角色以及状态。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h 某机IP -p 某机PORT info Replication</span><br></pre></td></tr></table></figure></p>
+<h2 id="Redis-集群"><a href="#Redis-集群" class="headerlink" title="Redis 集群"></a>Redis 集群</h2><p>当用户量达到一定量级时，就需要将Redis服务规模升级为集群。</p>
+<h3 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h3><p>首先配置3个配置文件，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">port 7000</span><br><span class="line">bind 本机IP</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile 7000.pid</span><br><span class="line">cluster-enabled yes</span><br><span class="line">cluster-config-file 7000_node.conf</span><br><span class="line">cluster-node-timeout 15000</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">port 7001</span><br><span class="line">bind 本机IP</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile 7001.pid</span><br><span class="line">cluster-enabled yes</span><br><span class="line">cluster-config-file 7001_node.conf</span><br><span class="line">cluster-node-timeout 15000</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">port 7002</span><br><span class="line">bind 本机IP</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile 7002.pid</span><br><span class="line">cluster-enabled yes</span><br><span class="line">cluster-config-file 7002_node.conf</span><br><span class="line">cluster-node-timeout 15000</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+<p>之后依据这3个配置文件启动3个Redis服务。</p>
+<p>使用命令运行集群<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 复制程序</span></span><br><span class="line">sudo cp /usr/share/doc/redis-tools/examples/redis-trib.rb /usr/<span class="built_in">local</span>/bin</span><br><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line">sudo gem install redis</span><br><span class="line"><span class="comment"># 安装Ruby，保证是最新版</span></span><br><span class="line">sudo apt-get install ruby</span><br><span class="line"><span class="comment"># 创建集群</span></span><br><span class="line">redis-trib.rb create --replicas 1  IP_1:PORT_1 IP_2:PORT_2 IP_3:PORT_3</span><br></pre></td></tr></table></figure></p>
+<p>创建完成后，会输出几个Redis主机和从机，几个主机分别存储一部分数据，按数据槽存储，槽编号范围是0 ~ 16383。</p>
+<h3 id="与Python交互"><a href="#与Python交互" class="headerlink" title="与Python交互"></a>与Python交互</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install redis-cluster</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rediscluster <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">startup_nodes = [</span><br><span class="line">    &#123;<span class="string">'host'</span>: <span class="string">''</span>, <span class="string">'port'</span>: PORT_1&#125;  <span class="comment"># Redis主机</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">src = StrictRedisCluster(</span><br><span class="line">    startup_nodes=startup_nodes,</span><br><span class="line">    decode_responses=<span class="literal">True</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">result = src.set(<span class="string">'key'</span>,<span class="string">'val'</span>)</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -616,12 +548,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/ROS/" rel="tag"># ROS</a>
-          
-        </div>
-      
 
       
       
@@ -631,8 +557,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/29/GitBlogInit/" rel="next" title="Github 博客搭建">
-                <i class="fa fa-chevron-left"></i> Github 博客搭建
+              <a href="/2020/01/30/DjangoFirst/" rel="next" title="Django 入门">
+                <i class="fa fa-chevron-left"></i> Django 入门
               </a>
             
           </div>
@@ -640,10 +566,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/01/08/Django-Init/" rel="prev" title="Django 创建项目">
-                Django 创建项目 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -838,7 +760,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ROS简介"><span class="nav-text">1. ROS简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ROS的工程架构"><span class="nav-text">2. ROS的工程架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-ROS的计算图集"><span class="nav-text">3. ROS的计算图集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-ROS工具包"><span class="nav-text">4. ROS工具包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-未完结（停止更新）"><span class="nav-text">5. 未完结（停止更新）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NoSQL"><span class="nav-text">NoSQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-简介"><span class="nav-text">Redis 简介</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-安装与配置"><span class="nav-text">Redis 安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动"><span class="nav-text">启动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis"><span class="nav-text">Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据操作"><span class="nav-text">数据操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与-Pyhton-交互"><span class="nav-text">与 Pyhton 交互</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-主从"><span class="nav-text">Redis 主从</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-集群"><span class="nav-text">Redis 集群</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置过程"><span class="nav-text">配置过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与Python交互"><span class="nav-text">与Python交互</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1031,7 +953,7 @@
   
     <script>
   window.livereOptions = {
-    refer: '2019/04/13/RosBase-1/'
+    refer: '2020/02/03/RedisFirst/'
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];
