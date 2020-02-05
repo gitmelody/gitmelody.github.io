@@ -2,9 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://withz.github.io/2020/02/04/DockerFirst/</loc>
+    
+    <lastmod>2020-02-05T14:25:08.448Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://withz.github.io/2020/01/17/GitUse/</loc>
+    
+    <lastmod>2020-02-04T14:12:06.516Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://withz.github.io/2020/01/14/WebInfoA/</loc>
+    
+    <lastmod>2020-02-04T13:52:50.562Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://withz.github.io/2019/03/29/GitBlogInit/</loc>
+    
+    <lastmod>2020-02-04T13:52:16.415Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://withz.github.io/2020/02/04/ALI-IOT/</loc>
     
-    <lastmod>2020-02-04T13:29:06.807Z</lastmod>
+    <lastmod>2020-02-04T13:52:06.586Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://withz.github.io/2020/02/03/RedisFirst/</loc>
+    
+    <lastmod>2020-02-04T13:51:51.510Z</lastmod>
     
   </url>
   
@@ -12,27 +47,6 @@
     <loc>https://withz.github.io/2020/01/30/DjangoFirst/</loc>
     
     <lastmod>2020-02-03T13:34:32.701Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://withz.github.io/2020/01/14/WebInfoA/</loc>
-    
-    <lastmod>2020-02-03T13:33:38.761Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://withz.github.io/2020/02/03/RedisFirst/</loc>
-    
-    <lastmod>2020-02-03T13:24:57.141Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://withz.github.io/2020/01/17/GitUse/</loc>
-    
-    <lastmod>2020-01-28T14:29:10.548Z</lastmod>
     
   </url>
   
@@ -47,13 +61,6 @@
     <loc>https://withz.github.io/2019/04/13/RosBase-1/</loc>
     
     <lastmod>2020-01-25T14:49:18.010Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://withz.github.io/2019/03/29/GitBlogInit/</loc>
-    
-    <lastmod>2020-01-25T14:48:28.991Z</lastmod>
     
   </url>
   
