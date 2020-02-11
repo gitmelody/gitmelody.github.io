@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Withz">
 <meta property="og:description" content="绪论Django 3 官方参考文档点击进入 Django 2.2 官方参考文档点击进入 Django 2.2 其他参考文档点击进入 Django 1.11 官方参考文档点击进入（英文） Django 1.11 中文参考文档点击进入  Django 2 及后续版本不再支持 Python 2； Django 3 及后续版本不再支持 Python 3.5 及以下版本。  Django 1 与 2 的区别">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-03T13:34:32.701Z">
+<meta property="og:updated_time" content="2020-02-11T11:33:57.847Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django 入门">
 <meta name="twitter:description" content="绪论Django 3 官方参考文档点击进入 Django 2.2 官方参考文档点击进入 Django 2.2 其他参考文档点击进入 Django 1.11 官方参考文档点击进入（英文） Django 1.11 中文参考文档点击进入  Django 2 及后续版本不再支持 Python 2； Django 3 及后续版本不再支持 Python 3.5 及以下版本。  Django 1 与 2 的区别">
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">10</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">11</span></a>
 
   </li>
 
@@ -429,7 +429,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-02-03 21:34:32" itemprop="dateModified" datetime="2020-02-03T21:34:32+08:00">2020-02-03</time>
+                <time title="修改时间：2020-02-11 19:33:57" itemprop="dateModified" datetime="2020-02-11T19:33:57+08:00">2020-02-11</time>
               
             
           </span>
@@ -811,6 +811,9 @@
 </table>
 <h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><h3 id="模型编辑"><a href="#模型编辑" class="headerlink" title="模型编辑"></a>模型编辑</h3><h3 id="视图编辑"><a href="#视图编辑" class="headerlink" title="视图编辑"></a>视图编辑</h3><h3 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h3><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="虚环境"><a href="#虚环境" class="headerlink" title="虚环境"></a>虚环境</h3><h4 id="虚环境的安装"><a href="#虚环境的安装" class="headerlink" title="虚环境的安装"></a>虚环境的安装</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install virtualenv           <span class="comment"># 虚环境</span></span><br><span class="line">sudo pip install virtualenvwrapper    <span class="comment"># 虚环境扩展</span></span><br></pre></td></tr></table></figure>
 <h4 id="虚环境的常用命令"><a href="#虚环境的常用命令" class="headerlink" title="虚环境的常用命令"></a>虚环境的常用命令</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkvirtualenv -p python3 name  <span class="comment"># 创建虚环境</span></span><br><span class="line">deactivate                    <span class="comment"># 退出虚环境</span></span><br><span class="line">workon name                   <span class="comment"># 进入虚环境</span></span><br><span class="line">rmvirtualenv name             <span class="comment"># 删除虚环境</span></span><br></pre></td></tr></table></figure>
+<p>CMD下进入虚环境：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./venv/Scripts/activate.bat</span><br></pre></td></tr></table></figure>
+<p>PowerShell下进入虚环境：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 首先开启脚本运行权限（管理员模式）</span></span><br><span class="line">Set-ExecutionPolicy RemoteSigned</span><br><span class="line"><span class="comment"># 开启脚本</span></span><br><span class="line">./venv/Scripts/activate.psl</span><br></pre></td></tr></table></figure></p>
 <h4 id="查看虚环境下已安装的包"><a href="#查看虚环境下已安装的包" class="headerlink" title="查看虚环境下已安装的包"></a>查看虚环境下已安装的包</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip list                      <span class="comment"># 列出所有的包</span></span><br><span class="line">pip freeze &gt; requirements.txt <span class="comment"># 输出安装的包（到文件）</span></span><br></pre></td></tr></table></figure>
 <h3 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h3><h4 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h4><p>开启日志文件，需要修改mysql.conf文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 实时查看日志文件</span><br><span class="line">tail -f mysql.log</span><br></pre></td></tr></table></figure></p>
 
@@ -939,7 +942,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
