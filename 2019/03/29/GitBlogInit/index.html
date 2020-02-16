@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Withz">
 <meta property="og:description" content="经过几天的研究，我终于搭起了一个Github博客网站。这篇文章将从以下几个步骤分别介绍博客的搭建。   前期准备 环境部署 配置域名（可选） 配置到个人服务器（可选） 附录   1. 前期准备首先，你需要拥有以下内容：  Github账号个人域名（可选）个人服务器（可选）  Github账号可以到Github官网申请，过程很简单，这里就不赘述了。个人域名可以选择阿里云，腾讯云等域名产品，申请过程也">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-09T11:33:23.360Z">
+<meta property="og:updated_time" content="2020-02-16T02:22:10.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Github 博客搭建">
 <meta name="twitter:description" content="经过几天的研究，我终于搭起了一个Github博客网站。这篇文章将从以下几个步骤分别介绍博客的搭建。   前期准备 环境部署 配置域名（可选） 配置到个人服务器（可选） 附录   1. 前期准备首先，你需要拥有以下内容：  Github账号个人域名（可选）个人服务器（可选）  Github账号可以到Github官网申请，过程很简单，这里就不赘述了。个人域名可以选择阿里云，腾讯云等域名产品，申请过程也">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">8</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">9</span></a>
 
   </li>
         
@@ -279,7 +279,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">14</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">15</span></a>
 
   </li>
 
@@ -429,7 +429,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-02-09 19:33:23" itemprop="dateModified" datetime="2020-02-09T19:33:23+08:00">2020-02-09</time>
+                <time title="修改时间：2020-02-16 10:22:10" itemprop="dateModified" datetime="2020-02-16T10:22:10+08:00">2020-02-16</time>
               
             
           </span>
@@ -575,6 +575,9 @@
 <h5 id="Live2D插件"><a href="#Live2D插件" class="headerlink" title="Live2D插件"></a>Live2D插件</h5><p>首先安装Live2D插件：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure></p>
 <p>这里推荐到<a href="https://github.com/xiazeyu/live2d-widget-models" target="_blank" rel="noopener">xiazeyu</a>这里找一个喜欢的模型安装一下，我随便选一个为例：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save live2d-widget-model-hibiki</span><br></pre></td></tr></table></figure></p>
 <p>回到博客的<code>_config.yml</code>文件中，在最后添加代码，具体可以看<a href="https://github.com/EYHN/hexo-helper-live2d" target="_blank" rel="noopener">EYHN</a>里面的介绍：<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Live2D</span></span><br><span class="line"><span class="comment">## https://github.com/EYHN/hexo-helper-live2d</span></span><br><span class="line"><span class="attr">live2d:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># enable: false</span></span><br><span class="line"><span class="attr">  scriptFrom:</span> <span class="string">local</span> <span class="comment"># 默认</span></span><br><span class="line"><span class="attr">  pluginRootPath:</span> <span class="string">live2dw/</span> <span class="comment"># 插件在站点上的根目录(相对路径)</span></span><br><span class="line"><span class="attr">  pluginJsPath:</span> <span class="string">lib/</span> <span class="comment"># 脚本文件相对与插件根目录路径</span></span><br><span class="line"><span class="attr">  pluginModelPath:</span> <span class="string">assets/</span> <span class="comment"># 模型文件相对与插件根目录路径</span></span><br><span class="line">  <span class="comment"># scriptFrom: jsdelivr # jsdelivr CDN</span></span><br><span class="line">  <span class="comment"># scriptFrom: unpkg # unpkg CDN</span></span><br><span class="line">  <span class="comment"># scriptFrom: https://cdn.jsdelivr.net/npm/live2d-widget@3.x/lib/L2Dwidget.min.js # 你的自定义 url</span></span><br><span class="line"><span class="attr">  tagMode:</span> <span class="literal">false</span> <span class="comment"># 标签模式, 是否仅替换 live2d tag标签而非插入到所有页面中</span></span><br><span class="line"><span class="attr">  debug:</span> <span class="literal">false</span> <span class="comment"># 调试, 是否在控制台输出日志</span></span><br><span class="line"><span class="attr">  model:</span></span><br><span class="line"><span class="attr">    use:</span> <span class="string">live2d-widget-model-hibiki</span> <span class="comment"># npm-module package name</span></span><br><span class="line">    <span class="comment"># use: wanko # 博客根目录/live2d_models/ 下的目录名</span></span><br><span class="line">    <span class="comment"># use: ./wives/wanko # 相对于博客根目录的路径</span></span><br><span class="line">    <span class="comment"># use: https://cdn.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json # 你的自定义 url</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="pdf-插件"><a href="#pdf-插件" class="headerlink" title="pdf 插件"></a>pdf 插件</h5><p>安装PDF插件：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-pdf</span><br></pre></td></tr></table></figure></p>
+<p>在主题配置文件<code>next/_config.yml</code>中找到PDF配置，打开开关。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">pdf:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Default height</span></span><br><span class="line"><span class="attr">  height:</span> <span class="number">500</span><span class="string">px</span></span><br><span class="line"><span class="attr">  pdfobject:</span></span><br><span class="line">    <span class="comment"># Use 2.1.1 as default, jsdelivr as default CDN, works everywhere even in China</span></span><br><span class="line"><span class="attr">    cdn:</span> <span class="string">//cdn.jsdelivr.net/npm/pdfobject@2.1.1/pdfobject.min.js</span></span><br><span class="line">    <span class="comment"># CDNJS, provided by cloudflare, maybe the best CDN, but not works in China</span></span><br><span class="line">    <span class="comment">#cdn: //cdnjs.cloudflare.com/ajax/libs/pdfobject/2.1.1/pdfobject.min.js</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -697,7 +700,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -730,7 +733,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -834,7 +839,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前期准备"><span class="nav-text">1. 前期准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-环境部署"><span class="nav-text">2. 环境部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git的安装过程"><span class="nav-text">Git的安装过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NodeJS的安装过程"><span class="nav-text">NodeJS的安装过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装博客框架"><span class="nav-text">安装博客框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Github"><span class="nav-text">配置Github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Hexo"><span class="nav-text">配置Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始编写"><span class="nav-text">开始编写</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-配置域名（可选）"><span class="nav-text">3. 配置域名（可选）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-配置到个人服务器（可选，Ubuntu版）"><span class="nav-text">4. 配置到个人服务器（可选，Ubuntu版）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录A-Hexo"><span class="nav-text">附录A Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置主题-config-yml"><span class="nav-text">配置主题 _config.yml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建分类与标签"><span class="nav-text">创建分类与标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装插件"><span class="nav-text">安装插件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#图片本地化插件"><span class="nav-text">图片本地化插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#评论插件"><span class="nav-text">评论插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#搜索插件"><span class="nav-text">搜索插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态壁纸"><span class="nav-text">动态壁纸</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Live2D插件"><span class="nav-text">Live2D插件</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前期准备"><span class="nav-text">1. 前期准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-环境部署"><span class="nav-text">2. 环境部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git的安装过程"><span class="nav-text">Git的安装过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NodeJS的安装过程"><span class="nav-text">NodeJS的安装过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装博客框架"><span class="nav-text">安装博客框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Github"><span class="nav-text">配置Github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Hexo"><span class="nav-text">配置Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始编写"><span class="nav-text">开始编写</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-配置域名（可选）"><span class="nav-text">3. 配置域名（可选）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-配置到个人服务器（可选，Ubuntu版）"><span class="nav-text">4. 配置到个人服务器（可选，Ubuntu版）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录A-Hexo"><span class="nav-text">附录A Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置主题-config-yml"><span class="nav-text">配置主题 _config.yml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建分类与标签"><span class="nav-text">创建分类与标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装插件"><span class="nav-text">安装插件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#图片本地化插件"><span class="nav-text">图片本地化插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#评论插件"><span class="nav-text">评论插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#搜索插件"><span class="nav-text">搜索插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态壁纸"><span class="nav-text">动态壁纸</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Live2D插件"><span class="nav-text">Live2D插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#pdf-插件"><span class="nav-text">pdf 插件</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1374,6 +1379,32 @@
   
 
   
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '600px'
+        });
+      });
+    },
+  });
+}
+</script>
+
 
   
 

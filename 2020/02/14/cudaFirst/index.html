@@ -96,18 +96,20 @@
 
 
 
-  <meta name="description" content="CUDA参考书：  CUDA C Programming Guide CUDA Best Practice Guide  社区：Cuda-zone 概述CPU 计算现代CPU技术和架构都已经有了性能上的优化：流水线技术，分支预测，超标量，乱序执行，存储器层次，矢量操作，多核处理等。CPU内部包含多个核心，共享三级缓存，访存控制，外设接口等。 并行计算并行计算的编程模型有：  共享存储模型 线程模型">
+  <meta name="description" content="CUDA参考书：  CUDA C Programming Guide CUDA Best Practice Guide  社区：Cuda-zone CUDA 基础CPU 计算现代CPU技术和架构都已经有了性能上的优化：流水线技术，分支预测，超标量，乱序执行，存储器层次，矢量操作，多核处理等。CPU内部包含多个核心，共享三级缓存，访存控制，外设接口等。 并行计算并行计算的编程模型有：  共享存储模型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cudaFirst">
 <meta property="og:url" content="https://withz.github.io/2020/02/14/cudaFirst/index.html">
 <meta property="og:site_name" content="Withz">
-<meta property="og:description" content="CUDA参考书：  CUDA C Programming Guide CUDA Best Practice Guide  社区：Cuda-zone 概述CPU 计算现代CPU技术和架构都已经有了性能上的优化：流水线技术，分支预测，超标量，乱序执行，存储器层次，矢量操作，多核处理等。CPU内部包含多个核心，共享三级缓存，访存控制，外设接口等。 并行计算并行计算的编程模型有：  共享存储模型 线程模型">
+<meta property="og:description" content="CUDA参考书：  CUDA C Programming Guide CUDA Best Practice Guide  社区：Cuda-zone CUDA 基础CPU 计算现代CPU技术和架构都已经有了性能上的优化：流水线技术，分支预测，超标量，乱序执行，存储器层次，矢量操作，多核处理等。CPU内部包含多个核心，共享三级缓存，访存控制，外设接口等。 并行计算并行计算的编程模型有：  共享存储模型">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://withz.github.io/2020/02/14/cudaFirst/cuda_info.jpg">
-<meta property="og:updated_time" content="2020-02-15T07:56:25.842Z">
+<meta property="og:image" content="https://withz.github.io/2020/02/14/cudaFirst/comp_1.png">
+<meta property="og:image" content="https://withz.github.io/2020/02/14/cudaFirst/comp_2.png">
+<meta property="og:updated_time" content="2020-02-16T04:37:33.126Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cudaFirst">
-<meta name="twitter:description" content="CUDA参考书：  CUDA C Programming Guide CUDA Best Practice Guide  社区：Cuda-zone 概述CPU 计算现代CPU技术和架构都已经有了性能上的优化：流水线技术，分支预测，超标量，乱序执行，存储器层次，矢量操作，多核处理等。CPU内部包含多个核心，共享三级缓存，访存控制，外设接口等。 并行计算并行计算的编程模型有：  共享存储模型 线程模型">
+<meta name="twitter:description" content="CUDA参考书：  CUDA C Programming Guide CUDA Best Practice Guide  社区：Cuda-zone CUDA 基础CPU 计算现代CPU技术和架构都已经有了性能上的优化：流水线技术，分支预测，超标量，乱序执行，存储器层次，矢量操作，多核处理等。CPU内部包含多个核心，共享三级缓存，访存控制，外设接口等。 并行计算并行计算的编程模型有：  共享存储模型">
 <meta name="twitter:image" content="https://withz.github.io/2020/02/14/cudaFirst/cuda_info.jpg">
 
 
@@ -261,7 +263,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">8</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">9</span></a>
 
   </li>
         
@@ -280,7 +282,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">14</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">15</span></a>
 
   </li>
 
@@ -430,7 +432,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-02-15 15:56:25" itemprop="dateModified" datetime="2020-02-15T15:56:25+08:00">2020-02-15</time>
+                <time title="修改时间：2020-02-16 12:37:33" itemprop="dateModified" datetime="2020-02-16T12:37:33+08:00">2020-02-16</time>
               
             
           </span>
@@ -495,7 +497,7 @@
 <li>CUDA Best Practice Guide</li>
 </ul>
 <p>社区：<br><a href="http://developer.nvidia.com/category/zone/cuda-zone" target="_blank" rel="noopener">Cuda-zone</a></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="CPU-计算"><a href="#CPU-计算" class="headerlink" title="CPU 计算"></a>CPU 计算</h3><p>现代CPU技术和架构都已经有了性能上的优化：流水线技术，分支预测，超标量，乱序执行，存储器层次，矢量操作，多核处理等。CPU内部包含多个核心，共享三级缓存，访存控制，外设接口等。</p>
+<h2 id="CUDA-基础"><a href="#CUDA-基础" class="headerlink" title="CUDA 基础"></a>CUDA 基础</h2><h3 id="CPU-计算"><a href="#CPU-计算" class="headerlink" title="CPU 计算"></a>CPU 计算</h3><p>现代CPU技术和架构都已经有了性能上的优化：流水线技术，分支预测，超标量，乱序执行，存储器层次，矢量操作，多核处理等。CPU内部包含多个核心，共享三级缓存，访存控制，外设接口等。</p>
 <h3 id="并行计算"><a href="#并行计算" class="headerlink" title="并行计算"></a>并行计算</h3><p>并行计算的编程模型有：</p>
 <ul>
 <li>共享存储模型</li>
@@ -526,8 +528,7 @@
 <p>查看版本信息：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvcc --version</span><br></pre></td></tr></table></figure></p>
 <p>编译样例代码：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> NVIDIA*_Samples</span><br><span class="line">make</span><br></pre></td></tr></table></figure></p>
 <p>运行样例：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> bin/x86_64/linux/release/</span><br><span class="line">./vectorAddDrv</span><br></pre></td></tr></table></figure></p>
-<h3 id="GPU-体系架构"><a href="#GPU-体系架构" class="headerlink" title="GPU 体系架构"></a>GPU 体系架构</h3><p>系列命名：Tesla，Fermi，Kepler，Maxwell，Pascal，Volta</p>
-<h4 id="处理器资源"><a href="#处理器资源" class="headerlink" title="处理器资源"></a>处理器资源</h4><p>thread：是CUDA中的最小单位，由一个CUDA Core执行。一个CUDA Core包含一个ALU，相应的register和local memory。</p>
+<h3 id="GPU-体系架构"><a href="#GPU-体系架构" class="headerlink" title="GPU 体系架构"></a>GPU 体系架构</h3><h4 id="处理器资源"><a href="#处理器资源" class="headerlink" title="处理器资源"></a>处理器资源</h4><p>thread：是CUDA中的最小单位，由一个CUDA Core执行。一个CUDA Core包含一个ALU，相应的register和local memory。</p>
 <p>warp：以32个thread组成的一个单元。warp中所有线程并行的执行相同的指令。</p>
 <p>block：由若干thread组成，以及一块shared memory，硬件上则是由一块SM（Streaming Multiprocessors）执行。需要注意的是，大部分thread只是逻辑上并行，并不是所有的thread可以在物理上同时执行。这就导致，同一个block中的线程可能会有不同步调。</p>
 <p>grid：由若干个block构成，除此之外还包含global memory，texture memory等。一个grid由一个设备负责运行。</p>
@@ -751,6 +752,36 @@
 <p>资源占用可以使用相应的计算器计算，<code>CUDA GPU Occupancy Calculator</code>。</p>
 <h3 id="循环展开"><a href="#循环展开" class="headerlink" title="循环展开"></a>循环展开</h3><p>有时为了更好的性能，可以将循环展开：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">16</span>; i++)&#123;</span><br><span class="line">    Sum += A[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 改为</span></span><br><span class="line">Sum += A[<span class="number">0</span>] + A[<span class="number">2</span>] + A[<span class="number">3</span>] + A[<span class="number">4</span>] + A[<span class="number">5</span>] + A[<span class="number">6</span>] ...</span><br></pre></td></tr></table></figure></p>
 <p>这一过程可以由编译器自动实现：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#pramga unroll BLOCK_SIZE</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; BLOCK_SIZE; i++)&#123;</span><br><span class="line">    Sum += A[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#pramga</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="GPU-架构系列"><a href="#GPU-架构系列" class="headerlink" title="GPU 架构系列"></a>GPU 架构系列</h2><p>系列命名：Tesla，Fermi，Kepler，Maxwell，Pascal，Volta，Turing，Ampere</p>
+<h3 id="系列对比"><a href="#系列对比" class="headerlink" title="系列对比"></a>系列对比</h3><p><img src="/2020/02/14/cudaFirst/comp_1.png" alt="对比图1"></p>
+<p><img src="/2020/02/14/cudaFirst/comp_2.png" alt="对比图2"></p>
+<h3 id="Fermi-架构"><a href="#Fermi-架构" class="headerlink" title="Fermi 架构"></a>Fermi 架构</h3><p>Fermi是第一个完整的GPU计算架构，参考配置：</p>
+<ul>
+<li>16个SM，每个SM包含32个CUDA Core；</li>
+<li>每个CUDA Core包含1个ALU和1个FPU；</li>
+<li>6个384位GDDR5 DRAM，支持6GB global memory；</li>
+<li>768KB L2 Cache。</li>
+</ul>
+<p>Fermi架构的部分显卡：GTX 480；GTX 470，GTX 465，GF 100等。</p>
+<h3 id="Kepler-架构"><a href="#Kepler-架构" class="headerlink" title="Kepler 架构"></a>Kepler 架构</h3><p>显卡：GTX600/600M系列和GTX700/700M系列。</p>
+<p>特性：</p>
+<ul>
+<li>Dynamic Parallelism：允许GPU动态的启动新的Grid。有了这个特性，任何kernel内都可以启动其它的kernel了。</li>
+<li>Hyper-Q： 允许多个CPU核同时在单一GPU上启动线程，从而大大提高了GPU的利用率并削减了CPU空闲时间。</li>
+<li>GPUDirect：能够使单个计算机内的GPU或位于网络内不同服务器内的GPU直接交换数据，无需进入CPU系统内存。</li>
+<li>Grid Management Unit：能够使用先进、灵活的GRID管理和调度控制系统。</li>
+</ul>
+<h3 id="Maxwell-架构"><a href="#Maxwell-架构" class="headerlink" title="Maxwell 架构"></a>Maxwell 架构</h3><p>显卡：GTX800/800M系列与GTX750和GTX750TI。</p>
+<p>特性：加入了新的G-SYNC（垂直同步）技术。</p>
+<h3 id="Pascal-架构"><a href="#Pascal-架构" class="headerlink" title="Pascal 架构"></a>Pascal 架构</h3><p>显卡：</p>
+<ul>
+<li>GeForce系列：GTX1050、1050Ti、1060(3G, 5G, 6G)、1070、1070Ti、1080、1080Ti等；</li>
+<li>QUADRO系列：GP100、P6000、P5000、P4000、P2000、P1000、P600、P400等；</li>
+<li>特斯拉系列：P100、P4、P40；</li>
+<li>TITAN XP。</li>
+</ul>
+<h2 id="CUDA-API"><a href="#CUDA-API" class="headerlink" title="CUDA API"></a>CUDA API</h2><p>API：</p>
+<div class="pdf" target="./CUDA.pdf" height></div>
 
       
     </div>
@@ -867,7 +898,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -900,7 +931,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1004,7 +1037,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CUDA"><span class="nav-text">CUDA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU-计算"><span class="nav-text">CPU 计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并行计算"><span class="nav-text">并行计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GPU-开发环境搭建"><span class="nav-text">GPU 开发环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Windows-安装"><span class="nav-text">Windows 安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ubuntu-安装"><span class="nav-text">Ubuntu 安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GPU-体系架构"><span class="nav-text">GPU 体系架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#处理器资源"><span class="nav-text">处理器资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储器资源"><span class="nav-text">存储器资源</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编程模型"><span class="nav-text">编程模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-text">函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访存"><span class="nav-text">访存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方阵相乘示例-1"><span class="nav-text">方阵相乘示例 1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据类型与操作"><span class="nav-text">数据类型与操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#块内线程同步"><span class="nav-text">块内线程同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Wrap-线程束与线程调度"><span class="nav-text">Wrap 线程束与线程调度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存模型"><span class="nav-text">内存模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方阵相乘示例-2"><span class="nav-text">方阵相乘示例 2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原子操作"><span class="nav-text">原子操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调试"><span class="nav-text">调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序优化"><span class="nav-text">程序优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储优化"><span class="nav-text">存储优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#global-memory"><span class="nav-text">global memory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shared-memory"><span class="nav-text">shared memory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵转置"><span class="nav-text">矩阵转置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#texure-memory"><span class="nav-text">texure memory</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SM-资源分割"><span class="nav-text">SM 资源分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环展开"><span class="nav-text">循环展开</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CUDA"><span class="nav-text">CUDA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CUDA-基础"><span class="nav-text">CUDA 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU-计算"><span class="nav-text">CPU 计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并行计算"><span class="nav-text">并行计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GPU-开发环境搭建"><span class="nav-text">GPU 开发环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Windows-安装"><span class="nav-text">Windows 安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ubuntu-安装"><span class="nav-text">Ubuntu 安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GPU-体系架构"><span class="nav-text">GPU 体系架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#处理器资源"><span class="nav-text">处理器资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储器资源"><span class="nav-text">存储器资源</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编程模型"><span class="nav-text">编程模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-text">函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访存"><span class="nav-text">访存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方阵相乘示例-1"><span class="nav-text">方阵相乘示例 1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据类型与操作"><span class="nav-text">数据类型与操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#块内线程同步"><span class="nav-text">块内线程同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Wrap-线程束与线程调度"><span class="nav-text">Wrap 线程束与线程调度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存模型"><span class="nav-text">内存模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方阵相乘示例-2"><span class="nav-text">方阵相乘示例 2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原子操作"><span class="nav-text">原子操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调试"><span class="nav-text">调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序优化"><span class="nav-text">程序优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储优化"><span class="nav-text">存储优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#global-memory"><span class="nav-text">global memory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shared-memory"><span class="nav-text">shared memory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵转置"><span class="nav-text">矩阵转置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#texure-memory"><span class="nav-text">texure memory</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SM-资源分割"><span class="nav-text">SM 资源分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环展开"><span class="nav-text">循环展开</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GPU-架构系列"><span class="nav-text">GPU 架构系列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系列对比"><span class="nav-text">系列对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fermi-架构"><span class="nav-text">Fermi 架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kepler-架构"><span class="nav-text">Kepler 架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maxwell-架构"><span class="nav-text">Maxwell 架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pascal-架构"><span class="nav-text">Pascal 架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CUDA-API"><span class="nav-text">CUDA API</span></a></li></ol></div>
             
 
           </div>
@@ -1544,6 +1577,32 @@
   
 
   
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '600px'
+        });
+      });
+    },
+  });
+}
+</script>
+
 
   
 
