@@ -103,10 +103,21 @@
 <meta property="og:site_name" content="Withz">
 <meta property="og:description" content="编译原理序章翻译程序编译程序是一种翻译程序，它是高级语言翻译为低级语言的过程，这个低级语言可以在计算机上运行。 编译程序有：  诊断编译程序 优化编译程序 交叉编译程序 可变目标编译程序  解释程序把源语言写的源程序作为输入，但不产生目标程序，而是边编译边执行。 计算思维计算思维就是计算机科学的思维方法：  抽象：提取一般过程； 自动化：将思维物化的过程； 问题分解：做全局性决策，再分解为小问题；">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-16T13:57:36.363Z">
+<meta property="og:image" content="https://withz.github.io/2020/02/16/CompileFirst/state_pic.png">
+<meta property="og:image" content="https://withz.github.io/2020/02/16/CompileFirst/test1.png">
+<meta property="og:image" content="https://withz.github.io/2020/02/16/CompileFirst/test2.png">
+<meta property="og:image" content="https://withz.github.io/2020/02/16/CompileFirst/zijifa.png">
+<meta property="og:image" content="https://withz.github.io/2020/02/16/CompileFirst/zijifa-2.png">
+<meta property="og:image" content="https://withz.github.io/2020/02/16/CompileFirst/zijifa-3.png">
+<meta property="og:image" content="https://withz.github.io/2020/02/16/CompileFirst/zijifa-4.png">
+<meta property="og:image" content="https://withz.github.io/2020/02/16/CompileFirst/zijifa-5.png">
+<meta property="og:image" content="https://withz.github.io/2020/02/16/CompileFirst/dfahuajian.png">
+<meta property="og:image" content="https://withz.github.io/2020/02/16/CompileFirst/dfahuajian-2.png">
+<meta property="og:updated_time" content="2020-02-18T08:59:38.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CompileFirst">
 <meta name="twitter:description" content="编译原理序章翻译程序编译程序是一种翻译程序，它是高级语言翻译为低级语言的过程，这个低级语言可以在计算机上运行。 编译程序有：  诊断编译程序 优化编译程序 交叉编译程序 可变目标编译程序  解释程序把源语言写的源程序作为输入，但不产生目标程序，而是边编译边执行。 计算思维计算思维就是计算机科学的思维方法：  抽象：提取一般过程； 自动化：将思维物化的过程； 问题分解：做全局性决策，再分解为小问题；">
+<meta name="twitter:image" content="https://withz.github.io/2020/02/16/CompileFirst/state_pic.png">
 
 
 
@@ -259,7 +270,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">9</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">10</span></a>
 
   </li>
         
@@ -278,7 +289,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">15</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">16</span></a>
 
   </li>
 
@@ -411,12 +422,24 @@
                 
               
 
-              <time title="创建时间：2020-02-16 15:53:50 / 修改时间：21:57:36" itemprop="dateCreated datePublished" datetime="2020-02-16T15:53:50+08:00">2020-02-16</time>
+              <time title="创建时间：2020-02-16 15:53:50" itemprop="dateCreated datePublished" datetime="2020-02-16T15:53:50+08:00">2020-02-16</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-02-18 16:59:38" itemprop="dateModified" datetime="2020-02-18T16:59:38+08:00">2020-02-18</time>
               
             
           </span>
@@ -661,7 +684,238 @@
 <li>E -&gt; (E)</li>
 </ul>
 <p>巴科斯范式(BNF)：</p>
-
+<ul>
+<li>定义符使用<code>::=</code></li>
+<li>表示文法：给出开始符号和产生式</li>
+<li>文法化简：G(E): E -&gt; i|E+E|E*E|(E)</li>
+</ul>
+<p>推导</p>
+<pre><code>*     
+</code></pre><ul>
+<li>α1 $\Longrightarrow$  αn：经过0步或若干步推出<pre><code>+
+</code></pre></li>
+<li>α1 $\Longrightarrow$  αn：经过1步或若干步推出</li>
+</ul>
+<p>句型：S 星推出 阿尔法 是句型。</p>
+<p>句子：仅含有终结符的句型是句子。</p>
+<p>语言：文法G产生的句子的全体是语言。</p>
+<p>L(G) = { α | S +推出 阿尔法, α∈VT*}</p>
+<p>例1：证明(i*i+i)是文法。由E开始推导。<br>例2：给出{a^n b^n | n&gt;=1}的文法。</p>
+<p>最左推导：替换最左边的终结符。<br>最右推导：替换最右边的终结符。<br>语法树：推导树。<br>二义性：</p>
+<ul>
+<li>推导树不一样：二义文法；</li>
+<li>可以由两个文法产生：二义语言。</li>
+</ul>
+<p>无二义文法：<br>E -&gt; T | E + T<br>T -&gt; F | T * F<br>F -&gt; (E) | i</p>
+<p>形式语言（仅有产生式不一样，终结符，非终结符，文法开始符号都一样）：</p>
+<ul>
+<li>0型文法：短语文法，图灵机。产生式：α -&gt; β，α β ∈ (VT ∪ VN)*且至少包含一个非终结符。</li>
+<li>1型文法：上下文有关文法，线性界限自动机。产生式：α -&gt; β，α长度&lt;=β长度，仅S-&gt;ε除外。</li>
+<li>2型文法：上下文无关文法，非确定下推自动机。产生式：A -&gt; β，A∈VN，β∈(VT ∪ VN)*，利用栈分析。</li>
+<li>3型文法：正规文法，有限自动机。产生式：A -&gt; αB或A -&gt; α，α∈VT*，A B∈VN</li>
+</ul>
+<h2 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h2><h3 id="词法分析器"><a href="#词法分析器" class="headerlink" title="词法分析器"></a>词法分析器</h3><p>词法分析器</p>
+<ul>
+<li>功能：输入源程序，输出单词符号</li>
+<li>单词符号种类：<ul>
+<li>基本字，关键字</li>
+<li>标识符：变量名，函数名等</li>
+<li>常数</li>
+<li>运算符</li>
+<li>界符</li>
+</ul>
+</li>
+<li>输出<ul>
+<li>二元组（单词种别，单词自身的值）</li>
+<li>种别：整数编码</li>
+<li>值：标准二进制</li>
+</ul>
+</li>
+</ul>
+<p>词法分析器组成：</p>
+<ul>
+<li>预处理：去除空白，跳格，回车、注释；区分符号区，句末符</li>
+<li>输入缓冲区：接收文件</li>
+<li>扫描器：驱动程序，输出单词符号</li>
+<li>扫描缓冲区：接收预处理输出文本</li>
+</ul>
+<p>扫描器：</p>
+<ul>
+<li>起点指示器</li>
+<li>搜索指示器</li>
+<li>扫描缓冲区：分为两个半区，半区长度为单词最大长度。</li>
+<li>超前搜索：使用限制减轻超前搜索任务<ul>
+<li>基本字</li>
+<li>标识符</li>
+<li>字符串</li>
+<li>常数</li>
+<li>其他</li>
+</ul>
+</li>
+</ul>
+<h3 id="状态转换图"><a href="#状态转换图" class="headerlink" title="状态转换图"></a>状态转换图</h3><p>状态转换图：</p>
+<ul>
+<li>结点：状态</li>
+<li>状态之间用箭头表示，上面标记可能出现的输入字符和字符类</li>
+<li>一张图只包含有限个状态，一个初态，至少一个终态。</li>
+<li>可以用于识别和接收一定的字符串。</li>
+<li>终态有两个圈套起来构成，加*表示退掉最后一个字符。</li>
+<li>只有终态表示返回。</li>
+</ul>
+<p>状态状态实现：</p>
+<ul>
+<li>定义：<ul>
+<li>ch：字符变量，存放最近一个读入字符</li>
+<li>strToken：字符数组</li>
+<li>GetChar：读入下一个字符ch</li>
+<li>GetBC：跳过空白符</li>
+<li>Concat：把ch连入strToken</li>
+<li>IsLetter，IsDisgital：判断是否为字母，数字</li>
+<li>Reserve：检查是否是保留字，并给出编码</li>
+<li>Retract：搜索指针退回一个位置</li>
+<li>InsertId：将标识符插入符号表，给出符号表指针</li>
+<li>InsertConst：将strToken插入常数表，返回常数表指针</li>
+</ul>
+</li>
+<li>实现：</li>
+</ul>
+<p><img src="/2020/02/16/CompileFirst/state_pic.png" alt="状态转换图"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> code, value;</span><br><span class="line"><span class="keyword">char</span> strToken[MAX_VALUE];</span><br><span class="line"></span><br><span class="line">GetChar();</span><br><span class="line">GetBC();</span><br><span class="line"><span class="keyword">if</span>(IsLetter())&#123;  <span class="comment">// 分支 1</span></span><br><span class="line">  <span class="keyword">while</span>(IsLetter() <span class="keyword">or</span> IsDigit())&#123;</span><br><span class="line">    Concat();</span><br><span class="line">    GetChar();</span><br><span class="line">  &#125;</span><br><span class="line">  Retract();</span><br><span class="line">  code = Reserve();</span><br><span class="line">  <span class="keyword">if</span>(code == <span class="number">0</span>)&#123;</span><br><span class="line">    value = InsertId(strToken);</span><br><span class="line">    <span class="keyword">return</span> ($ID, value);</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (code, <span class="literal">NULL</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(IsDigit())&#123;  <span class="comment">// 分支 2</span></span><br><span class="line">  <span class="keyword">while</span>(IsDigit())&#123;</span><br><span class="line">    Concat();</span><br><span class="line">    GetChar();</span><br><span class="line">  &#125;</span><br><span class="line">  Retract();</span><br><span class="line">  value = InsertConst(strToken);</span><br><span class="line">  <span class="keyword">return</span> ($INT, value);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(ch == <span class="string">'='</span>)&#123;   <span class="comment">// 分支 3 </span></span><br><span class="line">  <span class="keyword">return</span> ($ASSIGN, <span class="literal">NULL</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(ch == <span class="string">'+'</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> ($PLUS, <span class="literal">NULL</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(ch == <span class="string">'*'</span>)&#123;</span><br><span class="line">  GetChar();</span><br><span class="line">  <span class="keyword">if</span>(ch == <span class="string">'*'</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> ($POWER, <span class="literal">NULL</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  Retract();</span><br><span class="line">  <span class="keyword">return</span> ($STAR, <span class="literal">NULL</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(ch == <span class="string">','</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> ($COMMA, <span class="literal">NULL</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(ch == <span class="string">'('</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> ($LPAR, <span class="literal">NULL</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(ch == <span class="string">')'</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> ($RPAR, <span class="literal">NULL</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  ProcError();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>状态图的代码化：</p>
+<ul>
+<li><code>curState</code>：现有状态</li>
+<li><code>stateTrans[state][ch]</code>：状态图，state当前状态，ch输入符号，返回下一个状态</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">curState = <span class="string">"初态"</span></span><br><span class="line">GetChar();</span><br><span class="line"><span class="keyword">while</span>(stateTrans[curState][ch] is defined)&#123;</span><br><span class="line">  Concat();</span><br><span class="line">  curState = stateTrans[curState][ch];</span><br><span class="line">  <span class="keyword">if</span> (curState is FINAL_STATE)&#123;</span><br><span class="line">    <span class="keyword">return</span> strToken;</span><br><span class="line">  &#125;</span><br><span class="line">  GetChar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="自动机"><a href="#自动机" class="headerlink" title="自动机"></a>自动机</h2><h3 id="正规集，正规式"><a href="#正规集，正规式" class="headerlink" title="正规集，正规式"></a>正规集，正规式</h3><p>正规集：合法的单词和符号。</p>
+<p>正规式：是表示正规集的方法。</p>
+<p>正规式</p>
+<ul>
+<li>ε和∅都是Σ上的正规式，表示的正规集为{ε}和∅</li>
+<li>对于任意a∈Σ，a是Σ上的正规式，它表示的正规集为{a}</li>
+<li>如果e1和e2都是Σ上的正规式，他们的正规集是L(e1)和L(e2)，则<ul>
+<li>(e1|e2)为正规式，表示的正规集为L(e1)∪L(e2)，并集</li>
+<li>(e1·e2)为正规式，表示的正规集为L(e1)L(e2)，连接</li>
+<li><code>(e1)*</code>为正规式，表示的正规集为<code>( L(e1) )*</code>，闭包</li>
+</ul>
+</li>
+</ul>
+<p>等价：如果两个正规式表示的正规集相同，则两个正规式等价。</p>
+<p>例：证明：<code>(a*b*)=(a|b)*</code></p>
+<p>对于正规式满足：</p>
+<ul>
+<li>或运算交换律</li>
+<li>或运算结合律</li>
+<li>或运算分配律</li>
+<li>连接运算没有交换律</li>
+</ul>
+<h3 id="确定有限自动机-DFA"><a href="#确定有限自动机-DFA" class="headerlink" title="确定有限自动机 DFA"></a>确定有限自动机 DFA</h3><p>确定有限自动机 M = (S, Σ, f, S0, F)</p>
+<ul>
+<li>S：有穷状态集</li>
+<li>Σ：输入字母表（有穷）</li>
+<li>f：状态转换函数  S x Σ -&gt; S，例如f(s, a)=s’，表示当前状态s，输入字符a，转换为后继状态s’</li>
+<li>S0：S0∈S，表示唯一的初态</li>
+<li>F：F包含于S，表示终态的集合，可以为空，表示没有终态</li>
+</ul>
+<p>设，M = ( {0, 1, 2, 3}, {a, b}, f, 0, {3} )</p>
+<p>其中 f 定义为：<br>f(0, a)=1<br>f(0, b)=2<br>f(1, a)=3<br>f(1, b)=2<br>f(2, a)=1<br>f(2, b)=3<br>f(3, a)=3<br>f(3, b)=3</p>
+<p>也可以写成矩阵形式：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>也可以画为状态转换图。</p>
+<p>如果DFA M有m个状态，n个输入字符，则转换图有m个状态节点，每个节点最多有n个箭头射出，每个箭头用Σ上的不同输入字符来标记。</p>
+<p>DFA M所识别的字的全体记为L(M)</p>
+<p><img src="/2020/02/16/CompileFirst/test1.png" alt="测试题"></p>
+<p>DFA 的程序实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">curState = <span class="string">"初态"</span></span><br><span class="line">GetChar();</span><br><span class="line"><span class="keyword">while</span>(stateTrans[curState][ch] is defined)&#123;</span><br><span class="line">  Concat();</span><br><span class="line">  curState = stateTrans[curState][ch];</span><br><span class="line">  <span class="keyword">if</span> (curState is FINAL_STATE)&#123;</span><br><span class="line">    <span class="keyword">return</span> strToken;</span><br><span class="line">  &#125;</span><br><span class="line">  GetChar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="非确定有限自动机-NFA"><a href="#非确定有限自动机-NFA" class="headerlink" title="非确定有限自动机 NFA"></a>非确定有限自动机 NFA</h3><p>非确定有限自动机 NFA，M = (S, Σ, f, S0, F)</p>
+<ul>
+<li>S</li>
+<li>Σ</li>
+<li>f：S x Σ* -&gt; 2^S 的部分映射，f(S, α)=S’，α是一个字，S’是一个状态的集合</li>
+<li>S0：包含于S，是一个非空的初态集</li>
+<li>F</li>
+</ul>
+<p>特点：</p>
+<ul>
+<li>可以有多个初态</li>
+<li>弧上的标记可以是字，甚至是正规式</li>
+<li>同一个字可以出现在多个同状态射出的弧上</li>
+<li>DFA 是 NFA 的特例</li>
+</ul>
+<p><img src="/2020/02/16/CompileFirst/test2.png" alt="练习"></p>
+<h3 id="NFA-转换为-DFA"><a href="#NFA-转换为-DFA" class="headerlink" title="NFA 转换为 DFA"></a>NFA 转换为 DFA</h3><p>如果两个有限自动机M和M’，如果L(M)=L(M’)，则二者等价。判定两个自动机等价的算法是存在的。</p>
+<p>假设NFA M = (S, Σ, δ, S0, F)，改造过程如下</p>
+<ul>
+<li>引入新增初态X和终态Y，X,Y∉S，</li>
+<li>从X到S0中任意一个节点连接一条ε的弧</li>
+<li>从F中任意节点连接一条到Y的ε弧。</li>
+<li>对于 i —-AB—&gt; j 子图，代换为 i –A–&gt; k –B–&gt; j</li>
+<li>子集法</li>
+</ul>
+<p><img src="/2020/02/16/CompileFirst/zijifa.png" alt="子集法"></p>
+<p><img src="/2020/02/16/CompileFirst/zijifa-2.png" alt="子集法"></p>
+<p><img src="/2020/02/16/CompileFirst/zijifa-3.png" alt="子集法"></p>
+<ul>
+<li>确定化</li>
+</ul>
+<p><img src="/2020/02/16/CompileFirst/zijifa-4.png" alt="子集法"></p>
+<p><img src="/2020/02/16/CompileFirst/zijifa-5.png" alt="子集法"></p>
+<p>在状态表中，含有初态的集合视为初态，含有终态的集合视为终态。</p>
+<h3 id="DFA-化简"><a href="#DFA-化简" class="headerlink" title="DFA 化简"></a>DFA 化简</h3><p>假设s和t为M的两个状态，满足如下调剂称为s和t为等价：</p>
+<ul>
+<li>从s出发读到某个字α而终止于终态</li>
+<li>从t出发也能读到α而终止于终态</li>
+</ul>
+<p>把M的状态集划分为不相交的子集，使任何两个不同子集的状态是可区别的，同一子集的任何两个状态是等价的。最后，把每个子集选出一个代表，消去其他状态。</p>
+<p>划分步骤：</p>
+<ul>
+<li>划分S为终态和非终态</li>
+<li>检查每个划分得到的子集是否能进一步划分<ul>
+<li>是否存在一个字符a，使得Ia不会包含在其他子集中</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/02/16/CompileFirst/dfahuajian.png" alt="化简DFA"></p>
+<p><img src="/2020/02/16/CompileFirst/dfahuajian-2.png" alt="化简DFA"></p>
+<h3 id="正规式与有限自动机"><a href="#正规式与有限自动机" class="headerlink" title="正规式与有限自动机"></a>正规式与有限自动机</h3><p>正规式与有限自动机可以等价。</p>
+<h3 id="为-NFA-构造正规式"><a href="#为-NFA-构造正规式" class="headerlink" title="为 NFA 构造正规式"></a>为 NFA 构造正规式</h3><p>假设NFA M = (S, Σ, δ, S0, F)，改造过程如下</p>
+<ul>
+<li>加入X与Y，分别为新的初态和终态。</li>
+<li>i –r1–&gt; j –r2–&gt; k 换为 i –r1r2–&gt; k</li>
+<li>i –r1–&gt; j 和 i –r2–&gt; j 换为 i –r1|r2–&gt; k</li>
+<li>i –r1–&gt; j –r2–&gt; j –r3–&gt; k 换为 i –r1r2*r3–&gt; k</li>
+</ul>
+<h3 id="为正规式构造-NFA"><a href="#为正规式构造-NFA" class="headerlink" title="为正规式构造 NFA"></a>为正规式构造 NFA</h3>
       
     </div>
 
@@ -700,6 +954,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/18/FrontFirst/" rel="prev" title="FrontFirst">
+                FrontFirst <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -773,7 +1031,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -808,7 +1066,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -912,7 +1172,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译原理序章"><span class="nav-text">编译原理序章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#翻译程序"><span class="nav-text">翻译程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释程序"><span class="nav-text">解释程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算思维"><span class="nav-text">计算思维</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级语言"><span class="nav-text">高级语言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法和语义和语用"><span class="nav-text">语法和语义和语用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文法"><span class="nav-text">文法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-text">基本概念</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译原理序章"><span class="nav-text">编译原理序章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#翻译程序"><span class="nav-text">翻译程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释程序"><span class="nav-text">解释程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算思维"><span class="nav-text">计算思维</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级语言"><span class="nav-text">高级语言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法和语义和语用"><span class="nav-text">语法和语义和语用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文法"><span class="nav-text">文法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-text">基本概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#词法分析"><span class="nav-text">词法分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#词法分析器"><span class="nav-text">词法分析器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态转换图"><span class="nav-text">状态转换图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动机"><span class="nav-text">自动机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正规集，正规式"><span class="nav-text">正规集，正规式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确定有限自动机-DFA"><span class="nav-text">确定有限自动机 DFA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非确定有限自动机-NFA"><span class="nav-text">非确定有限自动机 NFA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NFA-转换为-DFA"><span class="nav-text">NFA 转换为 DFA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DFA-化简"><span class="nav-text">DFA 化简</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正规式与有限自动机"><span class="nav-text">正规式与有限自动机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为-NFA-构造正规式"><span class="nav-text">为 NFA 构造正规式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为正规式构造-NFA"><span class="nav-text">为正规式构造 NFA</span></a></li></ol></li></ol></div>
             
 
           </div>
