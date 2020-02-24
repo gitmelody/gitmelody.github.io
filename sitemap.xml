@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://withz.github.io/2020/02/18/FrontFirst/</loc>
+    <loc>https://withz.github.io/2020/02/18/00.remain/FrontFirst/</loc>
     
-    <lastmod>2020-02-18T13:21:08.149Z</lastmod>
+    <lastmod>2020-02-24T05:04:27.678Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://withz.github.io/2020/02/15/00.remain/SecurityFirst/</loc>
+    
+    <lastmod>2020-02-24T05:04:27.678Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://withz.github.io/2020/02/09/00.remain/PythonFirst/</loc>
+    
+    <lastmod>2020-02-24T05:04:27.677Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://withz.github.io/2020/02/19/00.remain/JavaScriptFirst/</loc>
+    
+    <lastmod>2020-02-24T05:04:27.677Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://withz.github.io/2020/02/23/MachineLearnFirst/</loc>
+    
+    <lastmod>2020-02-23T08:20:45.978Z</lastmod>
     
   </url>
   
@@ -12,13 +40,6 @@
     <loc>https://withz.github.io/2020/02/16/CompileFirst/</loc>
     
     <lastmod>2020-02-18T08:59:38.680Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://withz.github.io/2020/02/15/SecurityFirst/</loc>
-    
-    <lastmod>2020-02-16T07:51:09.215Z</lastmod>
     
   </url>
   
@@ -47,13 +68,6 @@
     <loc>https://withz.github.io/2020/02/11/System/</loc>
     
     <lastmod>2020-02-15T07:59:50.733Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://withz.github.io/2020/02/09/PythonFirst/</loc>
-    
-    <lastmod>2020-02-12T09:13:06.890Z</lastmod>
     
   </url>
   
