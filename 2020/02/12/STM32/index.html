@@ -103,10 +103,12 @@
 <meta property="og:site_name" content="Withz">
 <meta property="og:description" content="Keil 标准库创建STM32F103工程首先创建一个项目目录：  STM32F103RBT Project User Device Driver    打开Keil，选择上方的Project-&amp;gt;New uVersion Project，在Project目录下创建工程文件。在打开的面板左侧选择版型，这里选择STM32F1 Series-&amp;gt;STM32F103-&amp;gt;STM32F103C">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-16T02:28:31.960Z">
+<meta property="og:image" content="https://withz.github.io/2020/02/12/STM32/usb-pid.png">
+<meta property="og:updated_time" content="2020-03-01T12:25:08.247Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STM32">
 <meta name="twitter:description" content="Keil 标准库创建STM32F103工程首先创建一个项目目录：  STM32F103RBT Project User Device Driver    打开Keil，选择上方的Project-&amp;gt;New uVersion Project，在Project目录下创建工程文件。在打开的面板左侧选择版型，这里选择STM32F1 Series-&amp;gt;STM32F103-&amp;gt;STM32F103C">
+<meta name="twitter:image" content="https://withz.github.io/2020/02/12/STM32/usb-pid.png">
 
 
 
@@ -278,7 +280,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">19</span></a>
 
   </li>
 
@@ -428,7 +430,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-02-16 10:28:31" itemprop="dateModified" datetime="2020-02-16T10:28:31+08:00">2020-02-16</time>
+                <time title="修改时间：2020-03-01 20:25:08" itemprop="dateModified" datetime="2020-03-01T20:25:08+08:00">2020-03-01</time>
               
             
           </span>
@@ -533,6 +535,148 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> MAIN_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAIN_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stm32f10x.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
 <p>之后打开<code>Manage Project Items</code>按钮，编辑项目目录。这可以按照项目目录创建<code>Groups</code>，并在对应的<code>Files</code>中添加相应<code>.c</code>文件。</p>
 <p>最后编译下载查看效果。</p>
+<h2 id="USB"><a href="#USB" class="headerlink" title="USB"></a>USB</h2><h3 id="USB-协议"><a href="#USB-协议" class="headerlink" title="USB 协议"></a>USB 协议</h3><p><a href="https://blog.csdn.net/songze_lee/article/details/77658094" target="_blank" rel="noopener">USB 协议</a></p>
+<h4 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h4><p>物理层上，USB协议采用差分信号，使用两个数据线<code>D+</code>和<code>D-</code>。</p>
+<p>(VOH&gt;2.8V, VOL&lt;0.3V)<br>信号 1, J状态：<code>D+&gt;VOH, D-&lt;VOL</code>  <code>(D+ = 1, D- = 0)</code><br>信号 0, K状态：<code>D+&lt;VOL, D-&gt;VOH</code>  <code>(D+ = 0, D- = 1)</code><br>Reset：<code>D+&lt;VOL, D-&lt;VOL, time&gt;10ms</code>  <code>(D+ = 0, D- = 0)</code><br>SE0状态：<code>(D+ = 0, D- = 1)</code><br>IDLE状态：空闲状态<br>Suspend：J状态保存3ms以上<br>SYNC：3个K J切换后跟随两位时间的K状态<br>Resume：20ms的K状态+低速EOP<br>SOP：从IDLE切换到K状态<br>EOP：持续2位时间的SE0信号，后跟随一位时间的J状态<br>Keep alive：低速EOP信号</p>
+<p>主机通过设备在D+或D-上的1.5K上拉来检测设备的连接和断开事件，并由此判别设备的速度。</p>
+<p>低速设备：<code>D-</code>被上拉。<br>高速，全速设备：<code>D+</code>被上拉。主机先把高速设备检测为全速设备，然后再通过“Chirp序列”的总线握手机制来识别高速和全速设备</p>
+<h4 id="USB-连接与断开"><a href="#USB-连接与断开" class="headerlink" title="USB 连接与断开"></a>USB 连接与断开</h4><p>在连接时，当主机检测到某一个数据线电平拉高并保持了一段时间，就认为有设备连上来了。主机必需在驱动SE0状态以复位设备之前，立刻采样总线状态来判断设备的速度。</p>
+<p>在断开时，HOST端的D+和D-数据线上的下拉电阻起作用，使得二者都在低电平，主机端看来就是个SE0状态。当数据线上的SE0状态持续一段时间了，就被主机认为是断开状态。</p>
+<h4 id="数据传输"><a href="#数据传输" class="headerlink" title="数据传输"></a>数据传输</h4><p>USB采用NRZI（非归零编码）对发送的数据包进行编码：<br>输入数据0， 编码成“电平翻转”<br>输入数据1， 编码成“电平不变”</p>
+<p>数据流中每6个连续的“1”，就要插入1个“0”，从而保证编码。接收方赋值解码NRZI码流，然后识别出填充位，并丢弃它们。</p>
+<h4 id="USB-传输"><a href="#USB-传输" class="headerlink" title="USB 传输"></a>USB 传输</h4><p>传输又分为四种类型：批量传输、等时(同步)传输、中断传输、控制传输。USB传输数据先发数据低位再发高位数据。</p>
+<p>一个传输有多个事务组成，一个事务由2或3个包组成。</p>
+<h4 id="包"><a href="#包" class="headerlink" title="包"></a>包</h4><p>Packet分四大类： 命令 (Token) 、Packet 帧首 (Start of Frame) 、Packet 数据 (Data) 、Packet 握手 (Handshake) </p>
+<p>包的组成：</p>
+<ul>
+<li>SOP</li>
+<li>SYNC</li>
+<li>Packet Content<ul>
+<li>PID：PID4~7是PID0~4的取反，用来校验PID。</li>
+<li>地址：设备地址和端点地址，设备地址7位，端点地址4位。</li>
+<li>帧号：11位，主机发出一个帧，帧号+1。达到7FFH时重新计数。</li>
+<li>数据：长度从0到1024Byte不等。</li>
+<li>CRC</li>
+</ul>
+</li>
+<li>EOP</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>PID 类型</th>
+<th>PID 名称</th>
+<th>Package 种类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Token 令牌</td>
+<td>OUT/INT/SETUP/SOF</td>
+<td>令牌包，帧首包</td>
+</tr>
+<tr>
+<td>Data 数据</td>
+<td>DATA0/DATA1/DATA2/MDATA</td>
+<td>数据包</td>
+</tr>
+<tr>
+<td>Handshake 握手</td>
+<td>ACK/NAK/STALL/NYET</td>
+<td>握手包</td>
+</tr>
+<tr>
+<td>Special 特殊</td>
+<td>PRE/ERR/SPLIT/PING</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/2020/02/12/STM32/usb-pid.png" alt="USB PID"></p>
+<p>令牌包：用来启动一次USB传输。没有帧号和数据部分。</p>
+<p>输出（OUT）令牌包：用来通知设备将要输出一个数据包<br>输入（IN）令牌包：用来通知设备返回一个数据包<br>建立（SETUP）令牌包：只用在控制传输中，和输出令牌包作用一样，也是通知设备将要输出一个数据包，两者区别在于:<br>SETUP令牌包后只使用DATA0数据包，且只能发送到设备的控制端点，并且设备必须要接收，而OUT令牌包没有这些限制</p>
+<p>帧起始包：在每帧（或微帧）开始时发送，以广播的形式发送，所有USB全速设备和高速设备都可以接收到SOF包。没有地址和数据部分。</p>
+<p>数据包：没有地址和帧号。</p>
+<p>握手包：只有PID部分。</p>
+<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><p>事务可分为3类：<br>Setup transaction：主机用来向设备发送控制命令<br>Data IN transaction：主机用来从设备读取数据<br>Data OUT transaction：主机用来向设备发送数据 </p>
+<p>包组成：<br>Token packet：总是由主机发出<br>Data packet：包含此次transaction的数据负载 </p>
+<h4 id="传输"><a href="#传输" class="headerlink" title="传输"></a>传输</h4><p>四种传输类型：</p>
+<p>批量(大容量数据)传输(Bulk Transfers): 非周期性，突发<br>大容量数据的通信，数据可以占用任意带宽，并容忍延迟 。如USB打印机、扫描仪、大容量储存设备等 </p>
+<p>中断传输(Interrupt Transfers): 周期性，低频率<br>允许有限延迟的通信 如人机接口设备（HID）中的鼠标、键盘、轨迹球等</p>
+<p>等时(同步)传输(Isochronous Transfers): 周期性<br>持续性的传输，用于传输与时效相关的信息，并且在数据中保存时间戳的信息 ,如音频视频设备</p>
+<p>控制传输(Control Transfers): 非周期性，突发<br>用于命令和状态的传输</p>
+<h5 id="批量传输"><a href="#批量传输" class="headerlink" title="批量传输"></a>批量传输</h5><p>批量输出事务</p>
+<p>(1)主机先发出一个OUT令牌包（包含设备地址，端点号）</p>
+<p>(2)然后再发送一个DATA包，这时地址和端点匹配的设备就会收下这个数据包，主机切换到接收模式，等待设备返回握手包</p>
+<p>（3）设备解码令牌包，数据包都准确无误，并且有足够的缓冲区来保存数据后就会使用ACK/NYET握手包来应答主机（只有高速模式才有NYET握手包，他表示本次数据成功接收，但是没有能力接收下一次传输），如果没有足够的缓冲区来保存数据，就返回NAC，告诉主机目前没有缓冲区可用，主机会在稍后时间重新该批量传输事务。如果设备检查到数据正确，但端点处于挂起状态，返回STALL。如果检测到有错误（如校验错误，位填充错误），则不做任何响应，让主机等待超时。</p>
+<p>批量输入事务</p>
+<p>(1)主机首先发送一个IN令牌包（包含设备地址，端点号）</p>
+<p>（2）主机切换到接收数据状态等待设备返回数据。如果设备检测到错误，不做任何响应，主机等待超时。如果此时有地址和端点匹配的设备，并且没有检测到错误，则该设备作出反应：设备有数据需要返回，就将一个数据包放在总线上；如果没有数据需要返回，设备返回NAK响应主机；如果该端点处于挂起状态，设备返回STALL。如果主机收到设备发送的数据包并解码正确后，使用ACK握手包应答设备。如果主机检测到错误，则不做任何响应，设备会检测到超时。注意：USB协议规定，不允许主机使用NAK来拒绝接收数据包。主机收到NAK，知道设备暂时没有数据返回，主机会在稍后时间重新该批量输入事务。</p>
+<p>PING令牌包</p>
+<p>不发送数据，直到等待设备的握手包。</p>
+<h5 id="中断传输"><a href="#中断传输" class="headerlink" title="中断传输"></a>中断传输</h5><p>中断传输是一种保证查询频率的传输。中断端点在端点描述符中要报告它的查询间隔，主机会保证在小于这个时间间隔的范围内安排一次传输。</p>
+<h5 id="等时传输"><a href="#等时传输" class="headerlink" title="等时传输"></a>等时传输</h5><p>等时（同步）传输用在数据量大、对实时性要求高的场合，如音频设备，视频设备等，这些设备对数据的延迟很敏感。对于音频或视频设备数据的100%正确性要求不高，少量的数据错误是可以容忍的，主要是保证数据不能停顿，所以等时传输是不保证数据100%正确的。当数据错误时，不再重传操作。因此等时传输没有应答包，数据是否正确，由数据的CRC校验来确认。</p>
+<h5 id="控制传输"><a href="#控制传输" class="headerlink" title="控制传输"></a>控制传输</h5><p>控制传输可分为三个过程：<br>（1）建立过程<br>（2）数据过程（可选）<br>（3）状态过程</p>
+<p>每个USB设备都必须有控制端点，支持控制传输来进行命令和状态的传输。USB主机驱动将通过控制传输与USB设备的控制端点通信，完成USB设备的枚举和配置</p>
+<p>控制传输是双向的传输，必须有IN和OUT两个方向上的特定端点号的控制端点来完成两个方向上的控制传输 </p>
+<h4 id="USB-标准请求"><a href="#USB-标准请求" class="headerlink" title="USB 标准请求"></a>USB 标准请求</h4><p>标准请求结构体</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">请求类型：</span></span><br><span class="line"><span class="comment">D7：数据传输方向，0 Host -&gt; Device, 1 Device -&gt; Host</span></span><br><span class="line"><span class="comment">D65：请求类型，0 标准，1 类，2 厂商，3 保留</span></span><br><span class="line"><span class="comment">D43210：请求的接收者，0 设备，1 接口，2 端点，3 其他，其余保留</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">u8  bmRequestType;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 请求代码</span></span><br><span class="line">u8  bRequest;</span><br><span class="line">u16 wValue;</span><br><span class="line">u16 wIndex;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数据过程所需传输的字节数</span></span><br><span class="line">u16 wLength;</span><br></pre></td></tr></table></figure>
+<p>请求代码<code>bRequest</code>枚举：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GET_STATUS      = <span class="number">0</span>,</span><br><span class="line">CLEAR_FEATURE   = <span class="number">1</span>,</span><br><span class="line">SET_FEATURE     = <span class="number">3</span>,</span><br><span class="line">SET_ADDRESS     = <span class="number">5</span>,</span><br><span class="line">GET_DESCRIPTOR  = <span class="number">6</span>,</span><br><span class="line">SET_DESCRIPTOR  = <span class="number">7</span>,</span><br><span class="line">GET_CONFIGURATION  = <span class="number">8</span>,</span><br><span class="line">SET_CONFIGURATION  = <span class="number">9</span>,</span><br><span class="line">GET_INTERFACE   = <span class="number">10</span>,</span><br><span class="line">SET_INTERFACE   = <span class="number">11</span>,</span><br><span class="line">SYNCH_FRAME     = <span class="number">12</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="设备枚举和描述符"><a href="#设备枚举和描述符" class="headerlink" title="设备枚举和描述符"></a>设备枚举和描述符</h4><p>当一个USB设备插入主机后，会有以下活动：</p>
+<ul>
+<li>供电</li>
+<li>复位</li>
+<li>获取设备描述符前8 Bytes</li>
+<li>复位</li>
+<li>分配地址</li>
+<li>获取设备描述符</li>
+<li>获取Configuration Descriptor</li>
+<li>获取String Descriptor</li>
+<li>配置</li>
+</ul>
+<p>配置描述符：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">usb_config_descriptor</span> &#123;</span></span><br><span class="line">    __u8  bLength;</span><br><span class="line">    __u8  bDescriptorType;</span><br><span class="line"> </span><br><span class="line">    __le16 wTotalLength;</span><br><span class="line">    __u8  bNumInterfaces;</span><br><span class="line">    __u8  bConfigurationValue;</span><br><span class="line">    __u8  iConfiguration;</span><br><span class="line">    __u8  bmAttributes;</span><br><span class="line">    __u8  bMaxPower;</span><br><span class="line">&#125; __attribute__ ((packed));</span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> USB_DT_CONFIG_SIZE        9</span></span><br></pre></td></tr></table></figure></p>
+<p>接口描述符：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">usb_interface_descriptor</span> &#123;</span></span><br><span class="line">    __u8  bLength;</span><br><span class="line">    __u8  bDescriptorType;</span><br><span class="line"> </span><br><span class="line">    __u8  bInterfaceNumber;</span><br><span class="line">    __u8  bAlternateSetting;</span><br><span class="line">    __u8  bNumEndpoints;</span><br><span class="line">    __u8  bInterfaceClass;</span><br><span class="line">    __u8  bInterfaceSubClass;</span><br><span class="line">    __u8  bInterfaceProtocol;</span><br><span class="line">    __u8  iInterface;</span><br><span class="line">&#125; __attribute__ ((packed));</span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> USB_DT_INTERFACE_SIZE        9</span></span><br></pre></td></tr></table></figure></p>
+<p>类描述符：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">usb_device_descriptor</span> &#123;</span></span><br><span class="line">    __u8  bLength;</span><br><span class="line">    __u8  bDescriptorType;</span><br><span class="line"> </span><br><span class="line">    __le16 bcdUSB;</span><br><span class="line">    __u8  bDeviceClass;</span><br><span class="line">    __u8  bDeviceSubClass;</span><br><span class="line">    __u8  bDeviceProtocol;</span><br><span class="line">    __u8  bMaxPacketSize0;</span><br><span class="line">    __le16 idVendor;</span><br><span class="line">    __le16 idProduct;</span><br><span class="line">    __le16 bcdDevice;</span><br><span class="line">    __u8  iManufacturer;</span><br><span class="line">    __u8  iProduct;</span><br><span class="line">    __u8  iSerialNumber;</span><br><span class="line">    __u8  bNumConfigurations;</span><br><span class="line">&#125; __attribute__ ((packed));</span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> USB_DT_DEVICE_SIZE        18</span></span><br></pre></td></tr></table></figure></p>
+<p>端点描述符：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">usb_endpoint_descriptor</span> &#123;</span></span><br><span class="line">    __u8  bLength;</span><br><span class="line">    __u8  bDescriptorType;</span><br><span class="line"> </span><br><span class="line">    __u8  bEndpointAddress;</span><br><span class="line">    __u8  bmAttributes;</span><br><span class="line">    __le16 wMaxPacketSize;</span><br><span class="line">    __u8  bInterval;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/* <span class="doctag">NOTE:</span>  these two are _only_ in audio endpoints. */</span></span><br><span class="line">    <span class="comment">/* use USB_DT_ENDPOINT*_SIZE in bLength, not sizeof. */</span></span><br><span class="line">    __u8  bRefresh;</span><br><span class="line">    __u8  bSynchAddress;</span><br><span class="line">&#125; __attribute__ ((packed));</span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> USB_DT_ENDPOINT_SIZE        7</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Audio extension */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> USB_DT_ENDPOINT_AUDIO_SIZE    9</span></span><br></pre></td></tr></table></figure></p>
+<p>字符串描述符：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">usb_string_descriptor</span> &#123;</span></span><br><span class="line">    __u8  bLength;</span><br><span class="line">    __u8  bDescriptorType;</span><br><span class="line"> </span><br><span class="line">    __le16 wData[<span class="number">1</span>];        <span class="comment">/* UTF-16LE encoded */</span></span><br><span class="line">&#125; __attribute__ ((packed));</span><br></pre></td></tr></table></figure></p>
+<h4 id="常见-USB-设备类"><a href="#常见-USB-设备类" class="headerlink" title="常见 USB 设备类"></a>常见 USB 设备类</h4><p>音频类（Audio）<br>通信设备类（CDC）<br>设备固件升级类（DFU）<br>人机接口类（HID）<br>大容量存储设备类（Mass Storage）</p>
+<h3 id="USB-代码库结构"><a href="#USB-代码库结构" class="headerlink" title="USB 代码库结构"></a>USB 代码库结构</h3><p>usb_regs.c：操作USB控制寄存器。<br>usb_init.c：初始化USB控制器。<br>usb_int.c：处理中断。CTR_LP：负责USB低优先级中断的处理，CTR_HP：负责USB高优先级中断的处理。<br>usb_mem.c：处理PMA数据，是stm32内部用于USB/CAN的专用数据缓冲区。PMAToUserBufferCopy：将USB数据传送到主机UserToPMABufferCopy：将主机数据传送到USB。<br>usb_core.c：处理USB2.0协议。<br>usb_sil.c：为USB端点提供简化的读写访问函数。</p>
+<p>hw_config.c：配置硬件，比如初始化USB时钟、USB中断、低功耗模式处理等。<br>usb_desc.c：处理描述符。<br>usb_endp.c：处理正确传输中断回调函数，用于非控制传输<br>usb_istr.c：处理USB中断<br>usb_prop.c：处理所有设备相关事件<br>usb_pwr.c：管理USB控制器的电源</p>
+<h3 id="STM32F103-中使用-USB"><a href="#STM32F103-中使用-USB" class="headerlink" title="STM32F103 中使用 USB"></a>STM32F103 中使用 USB</h3><p>导入代码。</p>
+<p>加入头文件<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"hw_config.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"usb_lib.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"usb_init.h"</span></span></span><br></pre></td></tr></table></figure></p>
+<p>初始化USB<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 重启 USB</span></span><br><span class="line">USB_Port_Set(<span class="number">0</span>); </span><br><span class="line">delay_ms(<span class="number">700</span>);</span><br><span class="line">USB_Port_Set(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// 初始化 USB</span></span><br><span class="line">Set_USBClock(); </span><br><span class="line">USB_Interrupts_Config();</span><br><span class="line">USB_Init();</span><br></pre></td></tr></table></figure></p>
+<h2 id="分析-Datasheet"><a href="#分析-Datasheet" class="headerlink" title="分析 Datasheet"></a>分析 Datasheet</h2><p>一般在Datasheet里有如下几个部分：</p>
+<ul>
+<li>芯片基本信息</li>
+<li>电器特性</li>
+<li>引脚特性</li>
+<li>封装尺寸</li>
+<li>参考电路</li>
+<li>寄存器和软件</li>
+<li>其他</li>
+</ul>
+<p>阅读Datasheet的步骤：</p>
+<ul>
+<li>快速阅读</li>
+<li>应用场景和参考电路</li>
+<li>关键参数与指标</li>
+<li>涉及到的相关算法，协议，配合器件做延伸阅读</li>
+<li>读剩下的部分</li>
+<li>对比芯片家族</li>
+<li>对比类似产品</li>
+</ul>
+<p>一般文档的首页是该芯片的重要信息，有些参数如电源、封装、通道数是属于功能应用信息，而如精度、分辨率等属于性能应用信息。比较而言，功能应用信息首先要关注。</p>
+<p>参数：</p>
+<ul>
+<li>电器参数，这里只关注重要参数，且要做标记；</li>
+<li>极限参数，对于部分需要的极限参数也要看；</li>
+<li>管脚参数，防止使用不当。</li>
+</ul>
+<p>性能测试图：大概浏览即可。</p>
+<p>芯片应用：这部分需要仔细看，搞定时序，逻辑等。</p>
+<p>封装信息：在绘制封装时需要看。</p>
+<p>最后注意：不要尽信Datasheet，因为可能会有错误。</p>
+<h2 id="芯片目录"><a href="#芯片目录" class="headerlink" title="芯片目录"></a>芯片目录</h2><h3 id="模拟芯片"><a href="#模拟芯片" class="headerlink" title="模拟芯片"></a>模拟芯片</h3><h3 id="数字芯片"><a href="#数字芯片" class="headerlink" title="数字芯片"></a>数字芯片</h3><h3 id="主控"><a href="#主控" class="headerlink" title="主控"></a>主控</h3><h3 id="电压芯片"><a href="#电压芯片" class="headerlink" title="电压芯片"></a>电压芯片</h3><p>AMS-1117：线性降压<br>SX1308：升压芯片</p>
 <h2 id="uC-OS-III-参考"><a href="#uC-OS-III-参考" class="headerlink" title="uC/OS-III 参考"></a>uC/OS-III 参考</h2><h3 id="uC-OS-III-代码架构"><a href="#uC-OS-III-代码架构" class="headerlink" title="uC/OS-III 代码架构"></a>uC/OS-III 代码架构</h3><p>主要有：配置文件，应用程序，系统代码，库文件，CPU相关代码，BSP板级支持包等。</p>
 <p>配置文件：cpu_cfg.h，lib_cfg.h，os_cfg.h，os_cfg_app.h</p>
 <p>应用程序：app.c，app.h</p>
@@ -951,7 +1095,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1094,7 +1238,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Keil-标准库"><span class="nav-text">Keil 标准库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建STM32F103工程"><span class="nav-text">创建STM32F103工程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uC-OS-III-参考"><span class="nav-text">uC/OS-III 参考</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#uC-OS-III-代码架构"><span class="nav-text">uC/OS-III 代码架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uC-OS-III-代码移植"><span class="nav-text">uC/OS III 代码移植</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统综述"><span class="nav-text">系统综述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断管理"><span class="nav-text">中断管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时钟节拍"><span class="nav-text">时钟节拍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间管理"><span class="nav-text">时间管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件定时器"><span class="nav-text">软件定时器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多值信号量"><span class="nav-text">多值信号量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#互斥信号量"><span class="nav-text">互斥信号量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息队列"><span class="nav-text">消息队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件标志组"><span class="nav-text">事件标志组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#等待多个内核对象"><span class="nav-text">等待多个内核对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务信号量"><span class="nav-text">任务信号量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务消息队列"><span class="nav-text">任务消息队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存管理"><span class="nav-text">内存管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务管理"><span class="nav-text">任务管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断管理-1"><span class="nav-text">中断管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统计信息"><span class="nav-text">统计信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uC-OS-II-与-uC-OS-III-区别"><span class="nav-text">uC/OS-II 与 uC/OS-III 区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uC-OS-II-参考"><span class="nav-text">uC/OS-II 参考</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务管理-1"><span class="nav-text">任务管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务调度"><span class="nav-text">任务调度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时钟"><span class="nav-text">时钟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信号量"><span class="nav-text">信号量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息邮箱"><span class="nav-text">消息邮箱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息队列-1"><span class="nav-text">消息队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存管理-1"><span class="nav-text">内存管理</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Keil-标准库"><span class="nav-text">Keil 标准库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建STM32F103工程"><span class="nav-text">创建STM32F103工程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#USB"><span class="nav-text">USB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#USB-协议"><span class="nav-text">USB 协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#物理层"><span class="nav-text">物理层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#USB-连接与断开"><span class="nav-text">USB 连接与断开</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据传输"><span class="nav-text">数据传输</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#USB-传输"><span class="nav-text">USB 传输</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#包"><span class="nav-text">包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务"><span class="nav-text">事务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传输"><span class="nav-text">传输</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#批量传输"><span class="nav-text">批量传输</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#中断传输"><span class="nav-text">中断传输</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#等时传输"><span class="nav-text">等时传输</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#控制传输"><span class="nav-text">控制传输</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#USB-标准请求"><span class="nav-text">USB 标准请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设备枚举和描述符"><span class="nav-text">设备枚举和描述符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见-USB-设备类"><span class="nav-text">常见 USB 设备类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#USB-代码库结构"><span class="nav-text">USB 代码库结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STM32F103-中使用-USB"><span class="nav-text">STM32F103 中使用 USB</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析-Datasheet"><span class="nav-text">分析 Datasheet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#芯片目录"><span class="nav-text">芯片目录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模拟芯片"><span class="nav-text">模拟芯片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字芯片"><span class="nav-text">数字芯片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主控"><span class="nav-text">主控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#电压芯片"><span class="nav-text">电压芯片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uC-OS-III-参考"><span class="nav-text">uC/OS-III 参考</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#uC-OS-III-代码架构"><span class="nav-text">uC/OS-III 代码架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uC-OS-III-代码移植"><span class="nav-text">uC/OS III 代码移植</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统综述"><span class="nav-text">系统综述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断管理"><span class="nav-text">中断管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时钟节拍"><span class="nav-text">时钟节拍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间管理"><span class="nav-text">时间管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件定时器"><span class="nav-text">软件定时器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多值信号量"><span class="nav-text">多值信号量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#互斥信号量"><span class="nav-text">互斥信号量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息队列"><span class="nav-text">消息队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件标志组"><span class="nav-text">事件标志组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#等待多个内核对象"><span class="nav-text">等待多个内核对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务信号量"><span class="nav-text">任务信号量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务消息队列"><span class="nav-text">任务消息队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存管理"><span class="nav-text">内存管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务管理"><span class="nav-text">任务管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断管理-1"><span class="nav-text">中断管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统计信息"><span class="nav-text">统计信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uC-OS-II-与-uC-OS-III-区别"><span class="nav-text">uC/OS-II 与 uC/OS-III 区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uC-OS-II-参考"><span class="nav-text">uC/OS-II 参考</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务管理-1"><span class="nav-text">任务管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务调度"><span class="nav-text">任务调度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时钟"><span class="nav-text">时钟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信号量"><span class="nav-text">信号量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息邮箱"><span class="nav-text">消息邮箱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息队列-1"><span class="nav-text">消息队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存管理-1"><span class="nav-text">内存管理</span></a></li></ol></li></ol></div>
             
 
           </div>

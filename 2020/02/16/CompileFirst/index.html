@@ -113,7 +113,7 @@
 <meta property="og:image" content="https://withz.github.io/2020/02/16/CompileFirst/zijifa-5.png">
 <meta property="og:image" content="https://withz.github.io/2020/02/16/CompileFirst/dfahuajian.png">
 <meta property="og:image" content="https://withz.github.io/2020/02/16/CompileFirst/dfahuajian-2.png">
-<meta property="og:updated_time" content="2020-02-18T08:59:38.680Z">
+<meta property="og:updated_time" content="2020-02-25T11:16:55.123Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CompileFirst">
 <meta name="twitter:description" content="编译原理序章翻译程序编译程序是一种翻译程序，它是高级语言翻译为低级语言的过程，这个低级语言可以在计算机上运行。 编译程序有：  诊断编译程序 优化编译程序 交叉编译程序 可变目标编译程序  解释程序把源语言写的源程序作为输入，但不产生目标程序，而是边编译边执行。 计算思维计算思维就是计算机科学的思维方法：  抽象：提取一般过程； 自动化：将思维物化的过程； 问题分解：做全局性决策，再分解为小问题；">
@@ -289,7 +289,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">19</span></a>
 
   </li>
 
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-02-18 16:59:38" itemprop="dateModified" datetime="2020-02-18T16:59:38+08:00">2020-02-18</time>
+                <time title="修改时间：2020-02-25 19:16:55" itemprop="dateModified" datetime="2020-02-25T19:16:55+08:00">2020-02-25</time>
               
             
           </span>
@@ -915,7 +915,23 @@
 <li>i –r1–&gt; j 和 i –r2–&gt; j 换为 i –r1|r2–&gt; k</li>
 <li>i –r1–&gt; j –r2–&gt; j –r3–&gt; k 换为 i –r1r2*r3–&gt; k</li>
 </ul>
-<h3 id="为正规式构造-NFA"><a href="#为正规式构造-NFA" class="headerlink" title="为正规式构造 NFA"></a>为正规式构造 NFA</h3>
+<h3 id="为正规式构造-NFA"><a href="#为正规式构造-NFA" class="headerlink" title="为正规式构造 NFA"></a>为正规式构造 NFA</h3><p>r1r2遍r1-&gt;j-&gt;r2<br>闭包，转换为指向自己的弧</p>
+<h2 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h2><p>使用上下文无关文法。G=(VT,VN,S,P)</p>
+<p>句子是仅含有终结符的句型。</p>
+<p>分析方法：<br>自下而上：从输入串开始归约，LR分析，算符优先分析法<br>自上而下：从文法开始，寻找匹配，构造语法树，递归下降分析法</p>
+<h3 id="自上而下"><a href="#自上而下" class="headerlink" title="自上而下"></a>自上而下</h3><p>从文法开始符号，推出句子。</p>
+<p>出错时，就需要回溯。</p>
+<p>在非终结符上要有候选，会产生回溯。</p>
+<p>还会产生左递归问题。</p>
+<h4 id="消除左递归"><a href="#消除左递归" class="headerlink" title="消除左递归"></a>消除左递归</h4><p>左递归变右递归。</p>
+<p>P-&gt;bP’<br>P’-&gt;aP’|e</p>
+<p>间接左递归变右递归。</p>
+<p>要求：不含回路，不含以e为右部的产生式</p>
+<p>带入式子，消除多余非终结符。</p>
+<p>再利用直接左递归方式。</p>
+<h4 id="消除回溯"><a href="#消除回溯" class="headerlink" title="消除回溯"></a>消除回溯</h4><p>FIRST集合。以指针指向的终结符开头。</p>
+<p>制造FIRST，提取公共左因子。</p>
+<h3 id="自下而上"><a href="#自下而上" class="headerlink" title="自下而上"></a>自下而上</h3>
       
     </div>
 
@@ -1031,7 +1047,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1174,7 +1190,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译原理序章"><span class="nav-text">编译原理序章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#翻译程序"><span class="nav-text">翻译程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释程序"><span class="nav-text">解释程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算思维"><span class="nav-text">计算思维</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级语言"><span class="nav-text">高级语言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法和语义和语用"><span class="nav-text">语法和语义和语用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文法"><span class="nav-text">文法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-text">基本概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#词法分析"><span class="nav-text">词法分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#词法分析器"><span class="nav-text">词法分析器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态转换图"><span class="nav-text">状态转换图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动机"><span class="nav-text">自动机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正规集，正规式"><span class="nav-text">正规集，正规式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确定有限自动机-DFA"><span class="nav-text">确定有限自动机 DFA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非确定有限自动机-NFA"><span class="nav-text">非确定有限自动机 NFA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NFA-转换为-DFA"><span class="nav-text">NFA 转换为 DFA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DFA-化简"><span class="nav-text">DFA 化简</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正规式与有限自动机"><span class="nav-text">正规式与有限自动机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为-NFA-构造正规式"><span class="nav-text">为 NFA 构造正规式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为正规式构造-NFA"><span class="nav-text">为正规式构造 NFA</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译原理序章"><span class="nav-text">编译原理序章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#翻译程序"><span class="nav-text">翻译程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释程序"><span class="nav-text">解释程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算思维"><span class="nav-text">计算思维</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级语言"><span class="nav-text">高级语言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法和语义和语用"><span class="nav-text">语法和语义和语用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文法"><span class="nav-text">文法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-text">基本概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#词法分析"><span class="nav-text">词法分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#词法分析器"><span class="nav-text">词法分析器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态转换图"><span class="nav-text">状态转换图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动机"><span class="nav-text">自动机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正规集，正规式"><span class="nav-text">正规集，正规式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确定有限自动机-DFA"><span class="nav-text">确定有限自动机 DFA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非确定有限自动机-NFA"><span class="nav-text">非确定有限自动机 NFA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NFA-转换为-DFA"><span class="nav-text">NFA 转换为 DFA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DFA-化简"><span class="nav-text">DFA 化简</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正规式与有限自动机"><span class="nav-text">正规式与有限自动机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为-NFA-构造正规式"><span class="nav-text">为 NFA 构造正规式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为正规式构造-NFA"><span class="nav-text">为正规式构造 NFA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法分析"><span class="nav-text">语法分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自上而下"><span class="nav-text">自上而下</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#消除左递归"><span class="nav-text">消除左递归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消除回溯"><span class="nav-text">消除回溯</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自下而上"><span class="nav-text">自下而上</span></a></li></ol></li></ol></div>
             
 
           </div>
