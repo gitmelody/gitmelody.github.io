@@ -103,10 +103,13 @@
 <meta property="og:site_name" content="Withz">
 <meta property="og:description" content="基础基本数学基础包括：  导数 向量 L-P范数：L1，绝对值和；L2，向量长度 线性相关与线性无关   矩阵 偏导 梯度：多元函数对各自自变量偏导形成的向量 雅克比矩阵：对于两个向量有映射：$y=f(x)$，则雅克比矩阵是输出向量对输入向量的偏导数矩阵 Hessian矩阵：一个多元函数的二阶偏导矩阵，一般是一个对称矩阵 简写：▽^2 f(x) 正定，有极小值；负定：极大值；不定，不是极值点">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-03T13:49:43.191Z">
+<meta property="og:image" content="https://withz.github.io/2020/02/23/MachineLearnFirst/fisher-steps.png">
+<meta property="og:image" content="https://withz.github.io/2020/02/23/MachineLearnFirst/pca-steps.png">
+<meta property="og:updated_time" content="2020-03-18T04:19:59.954Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MachineLearnFirst">
 <meta name="twitter:description" content="基础基本数学基础包括：  导数 向量 L-P范数：L1，绝对值和；L2，向量长度 线性相关与线性无关   矩阵 偏导 梯度：多元函数对各自自变量偏导形成的向量 雅克比矩阵：对于两个向量有映射：$y=f(x)$，则雅克比矩阵是输出向量对输入向量的偏导数矩阵 Hessian矩阵：一个多元函数的二阶偏导矩阵，一般是一个对称矩阵 简写：▽^2 f(x) 正定，有极小值；负定：极大值；不定，不是极值点">
+<meta name="twitter:image" content="https://withz.github.io/2020/02/23/MachineLearnFirst/fisher-steps.png">
 
 
 
@@ -278,7 +281,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">19</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">21</span></a>
 
   </li>
 
@@ -428,7 +431,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-03-03 21:49:43" itemprop="dateModified" datetime="2020-03-03T21:49:43+08:00">2020-03-03</time>
+                <time title="修改时间：2020-03-18 12:19:59" itemprop="dateModified" datetime="2020-03-18T12:19:59+08:00">2020-03-18</time>
               
             
           </span>
@@ -559,6 +562,46 @@
 <li>协方差阵相等，超平面</li>
 <li>协方差阵不等，超曲面</li>
 </ol>
+<h2 id="线性分类器"><a href="#线性分类器" class="headerlink" title="线性分类器"></a>线性分类器</h2><p>简单，体积小，但比贝叶斯错误率高。</p>
+<h3 id="线性判别函数"><a href="#线性判别函数" class="headerlink" title="线性判别函数"></a>线性判别函数</h3><p>直接使用样本设计分类器。<br>判别函数：<code>g(x) = w^T * x + w0</code><br>w为权向量。g(x)为决策面方程。</p>
+<p>x到决策面垂足的距离：<code>r = g(x)/||w||</code></p>
+<p>线性判别相关软件包：<code>Liblinear</code></p>
+<p>线性回归：<code>f(x; w, b) = wT * x + b</code><br>增广化：<code>f(x; w^) = wT^ * x^</code></p>
+<p>学习准则：<code>R(w) = 1/2 || y - XT * w||^2</code>，求R(w)导数为0。</p>
+<h3 id="Fisher线性判别分析"><a href="#Fisher线性判别分析" class="headerlink" title="Fisher线性判别分析"></a>Fisher线性判别分析</h3><p>sample向线上投影，同类的聚集，不同的分开。重要的是投影的方向w。</p>
+<p>求每一类的中心，再算每类到各自中心的类内离散度<code>S = (xj - m)(xj - m)T</code>。</p>
+<p>总类内离散度矩阵为<code>SW = S1 + S2</code>。</p>
+<p>类间离散度矩阵<code>SB = (m1 - m2)(m1 - m2)T</code>。</p>
+<p>类间尽量分开，类内尽量紧致。</p>
+<p>投影后的中心为M，则<code>(M1-M2)=(wT(m1-m2))^2</code></p>
+<p><code>J(w) = (M1 - M2)^2 / (S1^2 + S2^2)</code> 类间分子尽量大，类内分母尽量小</p>
+<p>也就是：<code>J(w) = wT * SB * w / wT * SW * w</code></p>
+<p><img src="/2020/02/23/MachineLearnFirst/fisher-steps.png" alt="计算步骤"></p>
+<p>分类好后再划线分割原始数据。</p>
+<p>主成分分析PCA：对一组数据向某一个方向投影，使其方差尽量大，尽量散开。</p>
+<p><img src="/2020/02/23/MachineLearnFirst/pca-steps.png" alt="计算步骤"></p>
+<p>看奇异值大小，得出分到几维。</p>
+<p>LDA 与 PCA。<br>都是降维，都使用矩阵特征分解，都假设数据符合高斯分布。<br>LDA是有监督，PCA无监督。<br>LDA最多降维到C类数据的C-1维。<br>LDA还可以用于分类。<br>LDA选择分类性能最好的投影方向，PCA选择方差最大方向。</p>
+<p>PCA各种变种：<br>Sparse PCA<br>Online PCA<br>Robust PCA，鲁棒主成分分析。<br>Probabilistic PCA</p>
+<p>Laplacian Eigenmaps 拉布拉斯特征映射，降维，同类尽量紧凑。<br><code>E(y) = w(ij) * (yi - yj)^2</code>, 约束 <code>yTy = 1</code>。<br>算法：</p>
+<ul>
+<li>构建近邻图</li>
+<li>计算每条边的权重（不相连为0）<ul>
+<li>热核权重</li>
+<li>01权重</li>
+</ul>
+</li>
+<li>求特征向量方差，<code>Ly=λy</code>，将点xi映射到(y1, y2, …)i</li>
+</ul>
+<h3 id="感知器"><a href="#感知器" class="headerlink" title="感知器"></a>感知器</h3><p>线性可分。</p>
+<p>解向量和解区。</p>
+<h3 id="最小平方误差判别"><a href="#最小平方误差判别" class="headerlink" title="最小平方误差判别"></a>最小平方误差判别</h3><p>不知道是否线性可分。</p>
+<h3 id="线性支持向量机"><a href="#线性支持向量机" class="headerlink" title="线性支持向量机"></a>线性支持向量机</h3><h3 id="多类线性分类器"><a href="#多类线性分类器" class="headerlink" title="多类线性分类器"></a>多类线性分类器</h3><h2 id="参数估计"><a href="#参数估计" class="headerlink" title="参数估计"></a>参数估计</h2><h3 id="最大似然估计"><a href="#最大似然估计" class="headerlink" title="最大似然估计"></a>最大似然估计</h3><p>仅从训练样本出发，参数看做确定变量。</p>
+<h3 id="贝叶斯估计"><a href="#贝叶斯估计" class="headerlink" title="贝叶斯估计"></a>贝叶斯估计</h3><p>从参数的先验知识和样本出发，把参数看成未知的随机变量。</p>
+<p>将离散的决策状态变为连续的估计。<br>条件风险：损失函数*概率密度 的 积分。</p>
+<h3 id="差别"><a href="#差别" class="headerlink" title="差别"></a>差别</h3><p>最大似然估计：没有先验知识，假设模型不变，计算简单。</p>
+<p>贝叶斯：利用参数的先验信息，估计的概率模型相比于假设模型会发生变化，可理解性差，计算复杂。</p>
+<p>吉布斯采样：对后验分布随机采样，用参数的算数平均来估计期望。<br>Statistical Pattern Recognition<br>蒙特卡洛<br>马尔科夫链 </p>
 
       
     </div>
@@ -675,7 +718,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -818,7 +861,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础"><span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数学"><span class="nav-text">基本数学</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最优化方法"><span class="nav-text">最优化方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概率论"><span class="nav-text">概率论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分类"><span class="nav-text">算法分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型评价"><span class="nav-text">模型评价</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型选择"><span class="nav-text">模型选择</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贝叶斯分类器"><span class="nav-text">贝叶斯分类器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#朴素贝叶斯分类器"><span class="nav-text">朴素贝叶斯分类器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贝叶斯决策"><span class="nav-text">贝叶斯决策</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最小错误率贝叶斯决策"><span class="nav-text">最小错误率贝叶斯决策</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最小风险贝叶斯决策"><span class="nav-text">最小风险贝叶斯决策</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Neyman-Pearson-准则"><span class="nav-text">Neyman-Pearson 准则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正态分布的统计决策"><span class="nav-text">正态分布的统计决策</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础"><span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数学"><span class="nav-text">基本数学</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最优化方法"><span class="nav-text">最优化方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概率论"><span class="nav-text">概率论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法分类"><span class="nav-text">算法分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型评价"><span class="nav-text">模型评价</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型选择"><span class="nav-text">模型选择</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贝叶斯分类器"><span class="nav-text">贝叶斯分类器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#朴素贝叶斯分类器"><span class="nav-text">朴素贝叶斯分类器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贝叶斯决策"><span class="nav-text">贝叶斯决策</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最小错误率贝叶斯决策"><span class="nav-text">最小错误率贝叶斯决策</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最小风险贝叶斯决策"><span class="nav-text">最小风险贝叶斯决策</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Neyman-Pearson-准则"><span class="nav-text">Neyman-Pearson 准则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正态分布的统计决策"><span class="nav-text">正态分布的统计决策</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性分类器"><span class="nav-text">线性分类器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性判别函数"><span class="nav-text">线性判别函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fisher线性判别分析"><span class="nav-text">Fisher线性判别分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#感知器"><span class="nav-text">感知器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最小平方误差判别"><span class="nav-text">最小平方误差判别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性支持向量机"><span class="nav-text">线性支持向量机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多类线性分类器"><span class="nav-text">多类线性分类器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数估计"><span class="nav-text">参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最大似然估计"><span class="nav-text">最大似然估计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贝叶斯估计"><span class="nav-text">贝叶斯估计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#差别"><span class="nav-text">差别</span></a></li></ol></li></ol></div>
             
 
           </div>
