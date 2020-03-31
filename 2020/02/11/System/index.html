@@ -96,17 +96,18 @@
 
 
 
-  <meta name="description" content="Windows其他操作文件夹映射为磁盘1234# 映射z盘为dir文件夹subst z: e:\dir# 取消映射subst z: /d LinuxShell">
+  <meta name="description" content="Windows文件磁盘文件名在Windows系统中有对文件名的长度限制（MAX_PATH），一般是最大为260。如果要突破这一限制，可以修改注册表：12HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem LongPathsEnabled = 1 另外Windows API还提供了一个方法来绕过这个MAX_PATH的限制。如果">
+<meta name="keywords" content="Windows,Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="System">
+<meta property="og:title" content="系统维护相关">
 <meta property="og:url" content="https://withz.github.io/2020/02/11/System/index.html">
 <meta property="og:site_name" content="Withz">
-<meta property="og:description" content="Windows其他操作文件夹映射为磁盘1234# 映射z盘为dir文件夹subst z: e:\dir# 取消映射subst z: /d LinuxShell">
+<meta property="og:description" content="Windows文件磁盘文件名在Windows系统中有对文件名的长度限制（MAX_PATH），一般是最大为260。如果要突破这一限制，可以修改注册表：12HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem LongPathsEnabled = 1 另外Windows API还提供了一个方法来绕过这个MAX_PATH的限制。如果">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-15T07:59:50.733Z">
+<meta property="og:updated_time" content="2020-03-30T11:49:18.488Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="System">
-<meta name="twitter:description" content="Windows其他操作文件夹映射为磁盘1234# 映射z盘为dir文件夹subst z: e:\dir# 取消映射subst z: /d LinuxShell">
+<meta name="twitter:title" content="系统维护相关">
+<meta name="twitter:description" content="Windows文件磁盘文件名在Windows系统中有对文件名的长度限制（MAX_PATH），一般是最大为260。如果要突破这一限制，可以修改注册表：12HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem LongPathsEnabled = 1 另外Windows API还提供了一个方法来绕过这个MAX_PATH的限制。如果">
 
 
 
@@ -123,7 +124,7 @@
   };
 </script>
 
-  <title>System | Withz</title>
+  <title>系统维护相关 | Withz</title>
   
 
 
@@ -240,7 +241,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">17</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">39</span></a>
 
   </li>
         
@@ -259,7 +260,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">11</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">10</span></a>
 
   </li>
         
@@ -278,7 +279,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">22</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">24</span></a>
 
   </li>
 
@@ -385,7 +386,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">System
+          <h1 class="post-title" itemprop="name headline">系统维护相关
 
               
             
@@ -428,11 +429,29 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-02-15 15:59:50" itemprop="dateModified" datetime="2020-02-15T15:59:50+08:00">2020-02-15</time>
+                <time title="修改时间：2020-03-30 19:49:18" itemprop="dateModified" datetime="2020-03-30T19:49:18+08:00">2020-03-30</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机基础/" itemprop="url" rel="index"><span itemprop="name">计算机基础</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -469,8 +488,42 @@
       
 
       
-        <h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><h3 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h3><h4 id="文件夹映射为磁盘"><a href="#文件夹映射为磁盘" class="headerlink" title="文件夹映射为磁盘"></a>文件夹映射为磁盘</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 映射z盘为dir文件夹</span></span><br><span class="line">subst z: e:\dir</span><br><span class="line"><span class="comment"># 取消映射</span></span><br><span class="line">subst z: /d</span><br></pre></td></tr></table></figure>
-<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h3>
+        <h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><h3 id="文件磁盘"><a href="#文件磁盘" class="headerlink" title="文件磁盘"></a>文件磁盘</h3><h4 id="文件名"><a href="#文件名" class="headerlink" title="文件名"></a>文件名</h4><p>在Windows系统中有对文件名的长度限制（MAX_PATH），一般是最大为260。如果要突破这一限制，可以修改注册表：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem </span><br><span class="line">LongPathsEnabled = 1</span><br></pre></td></tr></table></figure></p>
+<p>另外Windows API还提供了一个方法来绕过这个MAX_PATH的限制。如果在文件路径前面加上<code>\\?\</code>的前缀，然后调用unicode版本的Windows API，那么这个文件名的最大长度就可以达到32k了。也就是说你只要加上前缀<code>\\?\</code>就可以在Windows API中使用long path了。</p>
+<p>对于超长的环境变量，可以通过另建一个变量来存储多余环境变量的方法。</p>
+<h4 id="文件夹映射为磁盘"><a href="#文件夹映射为磁盘" class="headerlink" title="文件夹映射为磁盘"></a>文件夹映射为磁盘</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 映射z盘为dir文件夹</span></span><br><span class="line">subst z: e:\dir</span><br><span class="line"><span class="comment"># 取消映射</span></span><br><span class="line">subst z: /d</span><br></pre></td></tr></table></figure>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h3><h3 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h3><p>一般 Linux 启动过程：</p>
+<ol>
+<li>Bios 启动</li>
+<li>boot-loader 启动 </li>
+<li>启动内核</li>
+<li>内核初始化</li>
+<li>初始化最后一步，启动pid = 1的init进程 </li>
+</ol>
+<p>init：是一个守护进程，相应的机制有 sysvinit upstart<br>sysvinit：是对 /etc/init.d 配置，service也是通过配置这一项实现开机启动的<br>upstart：这一机制在ubuntu用过一段时间后抛弃<br>systemd：用于克服sysvinit的缺点，功能强大，但是系统复杂</p>
+<p>systemd 常用工具箱：</p>
+<ul>
+<li>systemctl</li>
+<li>journalctl</li>
+<li>notify</li>
+<li>analyze</li>
+<li>cgls</li>
+<li>cgtop</li>
+<li>loginctl</li>
+<li>nspawn</li>
+</ul>
+<p>service 配置文件：</p>
+<ul>
+<li>WantedBy：服务所在的target，<a href="https://www.freedesktop.org/software/systemd/man/bootup.html#System%20Manager%20Bootup" target="_blank" rel="noopener">官方有一张表</a>可以查看所有的选项。</li>
+</ul>
+<h4 id="Ubuntu-18-04"><a href="#Ubuntu-18-04" class="headerlink" title="Ubuntu 18.04"></a>Ubuntu 18.04</h4><p>在Ubuntu 18.04上完全使用SystemCtl来配置启动项，与之前的版本有很大区别，没有了<code>init.d</code>配置启动的方法。</p>
+<p>打开<code>/lib/systemd/system/rc-local.service</code>，在后面追加：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Install]  </span><br><span class="line">WantedBy=multi-user.target  </span><br><span class="line">Alias=rc-local.service</span><br></pre></td></tr></table></figure></p>
+<p>编辑启动项配置文件：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/rc.local</span><br></pre></td></tr></table></figure></p>
+<p>配置启动内容<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/sh -e</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动内容</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"abc"</span> &gt; /usr/<span class="built_in">local</span>/test.log</span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure></p>
+<p>修改启动项的权限<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /etc/rc.local</span><br></pre></td></tr></table></figure></p>
+<p>打开启动项：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> rc-local</span><br></pre></td></tr></table></figure></p>
+<p>其他SystemCtl命令<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload <span class="comment"># 重新加载配置文件</span></span><br></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -491,6 +544,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Windows/" rel="tag"># Windows</a>
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
 
       
       
@@ -500,8 +561,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/09/00.remain/PythonFirst/" rel="next" title="PythonFirst">
-                <i class="fa fa-chevron-left"></i> PythonFirst
+              <a href="/2020/02/09/PythonFirst/" rel="next" title="Python 基础语法">
+                <i class="fa fa-chevron-left"></i> Python 基础语法
               </a>
             
           </div>
@@ -586,7 +647,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -623,9 +684,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -676,7 +735,51 @@
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -729,7 +832,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows"><span class="nav-text">Windows</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#其他操作"><span class="nav-text">其他操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件夹映射为磁盘"><span class="nav-text">文件夹映射为磁盘</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux"><span class="nav-text">Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Shell"><span class="nav-text">Shell</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows"><span class="nav-text">Windows</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件磁盘"><span class="nav-text">文件磁盘</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件名"><span class="nav-text">文件名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件夹映射为磁盘"><span class="nav-text">文件夹映射为磁盘</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux"><span class="nav-text">Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Shell"><span class="nav-text">Shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开机启动"><span class="nav-text">开机启动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ubuntu-18-04"><span class="nav-text">Ubuntu 18.04</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
