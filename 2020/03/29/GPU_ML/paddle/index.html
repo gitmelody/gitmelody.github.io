@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="传统图像识别语义鸿沟：  相似的视觉特征，不同的语义概念。 不同的视觉特征，相同的语义概念。  传统识别方法：测量空间 – 特征表示 – 特征空间 – 特征匹配 – 类别空间 早期识别技术：采集图像，采集特征，相似度计算。采用全局特征提取：颜色，形状，纹理。特征变换：提高特征表示性能，降维。Manifold Learning/embedding：映射为低维空间下的向量表示，PCA MDS ISOM">
+<meta name="keywords" content="AI,百度,PaddlePaddle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="百度 PaddlePaddle">
+<meta property="og:url" content="https://withz.github.io/2020/03/29/GPU_ML/paddle/index.html">
+<meta property="og:site_name" content="Withz">
+<meta property="og:description" content="传统图像识别语义鸿沟：  相似的视觉特征，不同的语义概念。 不同的视觉特征，相同的语义概念。  传统识别方法：测量空间 – 特征表示 – 特征空间 – 特征匹配 – 类别空间 早期识别技术：采集图像，采集特征，相似度计算。采用全局特征提取：颜色，形状，纹理。特征变换：提高特征表示性能，降维。Manifold Learning/embedding：映射为低维空间下的向量表示，PCA MDS ISOM">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-07T11:58:24.159Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="百度 PaddlePaddle">
+<meta name="twitter:description" content="传统图像识别语义鸿沟：  相似的视觉特征，不同的语义概念。 不同的视觉特征，相同的语义概念。  传统识别方法：测量空间 – 特征表示 – 特征空间 – 特征匹配 – 类别空间 早期识别技术：采集图像，采集特征，相似度计算。采用全局特征提取：颜色，形状，纹理。特征变换：提高特征表示性能，降维。Manifold Learning/embedding：映射为低维空间下的向量表示，PCA MDS ISOM">
+
+
+
+
+
+
+  <link rel="canonical" href="https://withz.github.io/2020/03/29/GPU_ML/paddle/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>百度 PaddlePaddle | Withz</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Withz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">45</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">7</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">23</span></a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <a href="https://github.com/withz" class="github-corner" title="打开Github" aria-label="打开Github" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2020/03/29/GPU_ML/paddle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Peng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Withz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">百度 PaddlePaddle
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-29 22:24:42" itemprop="dateCreated datePublished" datetime="2020-03-29T22:24:42+08:00">2020-03-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-04-07 19:58:24" itemprop="dateModified" datetime="2020-04-07T19:58:24+08:00">2020-04-07</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并行计算与机器学习/" itemprop="url" rel="index"><span itemprop="name">并行计算与机器学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="传统图像识别"><a href="#传统图像识别" class="headerlink" title="传统图像识别"></a>传统图像识别</h2><p>语义鸿沟：</p>
+<ul>
+<li>相似的视觉特征，不同的语义概念。</li>
+<li>不同的视觉特征，相同的语义概念。</li>
+</ul>
+<p>传统识别方法：测量空间 – 特征表示 – 特征空间 – 特征匹配 – 类别空间</p>
+<p>早期识别技术：采集图像，采集特征，相似度计算。<br>采用全局特征提取：颜色，形状，纹理。<br>特征变换：提高特征表示性能，降维。Manifold Learning/embedding：映射为低维空间下的向量表示，PCA MDS ISOMAP LLE Laplacian Eigenmap等。<br>索引技术：穷举搜索（效率低），临近搜索（牺牲精度）。KD-Tree LSH。二进制哈希，通过哈希编码特征，快速查找（减少特征存储空间，计算复杂度）。<br>相关反馈：通过用户反馈学习调整。Explicit Feedback（正负反馈），Implicit Feedback（根据可观察的行为推断用户意图）。<br>重排序：将接近的结果放到前面。<br>主要问题：全局特征丢失了图像细节。</p>
+<p>中期图形识别：文本，词袋模型，倒排索引。图像，视觉词袋。<br>特征提取，生成视觉词典，词袋向量，倒排索引，特征提取，查询。<br>特征提取：局部特征，图像区块向量，特征检测子Harris Dog SURF HarrisAffine，特征描述子Sift glof shape context orb。<br>向量化：视觉词典生成。用特征向量，聚类（k means，affinity，propagation），找类中心，就是视觉关键词。每个图像可以找到多个视觉关键词直方图，直方图维度=聚类中心的个数，维度值=图像落在聚类中心的特征数量。<br>索引技术：倒排索引。提取局部描述，在索引中查找关键词。然后排序（tf-idf），对相似的图像投票。<br>后处理：局部几何验证，弱空间关系验证，乘积量化。提高一致性高的匹配结果，降低一致性低的匹配结果。</p>
+<h2 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a>人工智能</h2><p>时期：会推理 – 拥有知识 – 会学习 – 统计学习和神经网络</p>
+<p>机器学习：对某个任务T可以从经验E中学习，经过经验E改进，使得任务T的性能有所提升。</p>
+<p>一般过程：训练数据，测试数据，训练结果（策略，模型，算法），求函数F的过程。</p>
+<p>深度学习：学习人的神经网络，解决机器学习问题。<br>优势：在特征空间中，由人提取特征变为由深度学习提取。</p>
+<h2 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h2><p>滤波器提取：像素，边缘，特征。<br>图像识别：建立模型，损失函数（误差最小），参数学习。<br>建立模型：选择什么样的网络结构，多少层，每层多少神经元。</p>
+<ul>
+<li>线性函数：f=wa+b，</li>
+<li>激活函数（非线性）<br>损失函数：选择常用的损失函数，平方误差，交叉熵<br>参数学习：梯度下降法，反向传播</li>
+</ul>
+<p>模型：</p>
+<ul>
+<li>前馈神经网络：多隐藏层（多少层，多少结点），输出层（激活函数：softmax，概率）</li>
+</ul>
+<p>分类任务要最后接全连接层。</p>
+<h2 id="卷积网络"><a href="#卷积网络" class="headerlink" title="卷积网络"></a>卷积网络</h2><p>传统全连接结构不够灵活，参数量巨大，不适合二维图形。采用卷积网络，前后层部分连接，权值共享，下采样。卷积网络，就是学习滤波器的值。</p>
+<p>建立模型：局部连接，权值共享，下采样。为了减少参数。<br>局部连接：采用卷积核对图形（上一层）卷积，得到卷积后的结果（下一层）。<br>权值共享：卷积核的参数固定，为w1到wn。<br>下采样：缩小宽和高，常用最大值或平均值。</p>
+<p>卷积计算后，图像会缩小，新尺寸为：w-c+1<br>卷积层：input_image * kernel = feature_map<br>一个卷积层可以有多个卷积核，一个图像产生多个特征图。</p>
+<p>经典结构：LeNet-5</p>
+<p>损失函数：<br>目标分类与检测：图像经过卷积池化，再经过卷积提取特征图，之后经过全连接网络。分类损失（交叉熵损失函数），回归损失（平方损失函数）。</p>
+<p>一般结构示例：<code>((卷积层+激活层)*2+池化层)*3+全连接层*3</code><br>计算机视觉的几种任务：图像分类（为图像赋予语义标签），目标检测（把物体位置标注出来），图像语义分割（精确勾勒出其轮廓和位置），图像实例分割（多物体时，将他们区分出来）</p>
+<p>数据集：</p>
+<ul>
+<li><a href="http://www.cs.toronto.edu/~kriz/cifar.html" target="_blank" rel="noopener">Cifar-10</a>：比MNIST更高级的数据集，彩色的，50000训练+10000测试图片，几十种类别。</li>
+<li><a href="http://image-net.org/" target="_blank" rel="noopener">ImageNet</a>：强大的数据集，1281167训练+50000验证+100000测试（不对外公布），1000多个类别。</li>
+</ul>
+<p>经典CNN：Hubel&amp;Wiesel -&gt; LeNet -&gt; AlexNet -&gt; NIN,GoogleNet,InceptionV3,V4 &amp; VGG &amp; InceptionV2,BN -&gt; ResetNet<br>LeNet：使用MNIST数据集，早期用于数字识别。只接受32<em>32大小图像。<br>AlexNet：加入激活层。后来被ZF Net改进。接受`227</em>227<em>3<code>图像大小。卷积核</code>11</em>11`，每一层输出：(图像尺寸-卷积核尺寸)/步长+1，如果有padding边界延拓再修改大小。经过几轮，加一个池化，再经过几次，进入全连接。在训练过程中，使用了一些技巧：分组卷积，使用激活函数ReLU（解决梯度消失），DataAugmentation（<a href="https://github.com/aleju/imgaug" target="_blank" rel="noopener">数据增强</a>，给图像产生噪声，形变，翻转，裁剪，防止过拟合），DropOut（解决过拟合0.5），BatchSize（批训练128），SGD-Momentum（随机梯度下降0.9），LearningRate（学习率0.01），L2 Weight-Dccay（5e-4）<br>NIN,GoogleNet,InceptionV3,V4：<br>VGG：<br>InceptionV2,BN：<br>ResetNet：</p>
+<h2 id="PaddlePaddle-安装"><a href="#PaddlePaddle-安装" class="headerlink" title="PaddlePaddle 安装"></a>PaddlePaddle 安装</h2><p><a href="https://www.paddlepaddle.org.cn/install/quick" target="_blank" rel="noopener">快速安装教程</a></p>
+<p>支持Windows，MacOS，Ubuntu，CentOS。<br>支持Pip，Docker等。<br>支持CUDA 9，10，CPU版本。</p>
+<p>例如：<br>Windows + pip + Python 3 + CUDA 10 + cuDNN 7.3+<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install paddlepaddle-gpu==1.7.1.post107 -i https://mirror.baidu.com/pypi/simple</span><br></pre></td></tr></table></figure></p>
+<p>安装验证<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> paddle.fluid</span><br><span class="line">print(paddle.fluid.install_check.run_check())</span><br></pre></td></tr></table></figure></p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><p>目前支持的基本数据类型有：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">float16 <span class="comment"># 部分操作支持</span></span><br><span class="line">float32 <span class="comment"># 主要实数类型</span></span><br><span class="line">float64 <span class="comment"># 次要实数类型，支持大部分操作</span></span><br><span class="line">int32   <span class="comment"># 次要标签类型</span></span><br><span class="line">int64   <span class="comment"># 主要标签类型</span></span><br><span class="line">uint64  <span class="comment"># 次要标签类型</span></span><br><span class="line">bool    <span class="comment"># 控制流数据类型</span></span><br><span class="line">int16   <span class="comment"># 次要标签类型</span></span><br><span class="line">uint8   <span class="comment"># 输入数据类型，可用于图像像素</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Variable"><a href="#Variable" class="headerlink" title="Variable"></a>Variable</h3><p>一般可以认为Variable等价于Tensor。<br>Variable可分为三种：</p>
+<p>模型中的可学习参数：网络权重，偏置等<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建可学习参数</span></span><br><span class="line">w = fluid.layers.create_parameter(name=<span class="string">"w"</span>,shape=[<span class="number">1</span>],dtype=<span class="string">'float32'</span>)</span><br><span class="line"><span class="comment"># 一部分常见的神经网络基本计算模块被提供了封装。例如全连接模型中创建 权值，偏置 两个可学习参数：</span></span><br><span class="line">y = fluid.layers.fc(input=x, size=<span class="number">128</span>, bias_attr=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure></p>
+<p>占位Variable：表示待提供输入的Variable<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义x的维度为[3,None]，其中我们只能确定x的第一的维度为3，第二个维度未知，要在程序执行过程中才能确定</span></span><br><span class="line">x = fluid.data(name=<span class="string">"x"</span>, shape=[<span class="number">3</span>,<span class="literal">None</span>], dtype=<span class="string">"int64"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#若图片的宽度和高度在运行时可变，将宽度和高度定义为None。</span></span><br><span class="line"><span class="comment">#shape的三个维度含义分别是：batch_size, channel、图片的宽度、图片的高度</span></span><br><span class="line">b = fluid.data(name=<span class="string">"image"</span>,shape=[<span class="literal">None</span>, <span class="number">3</span>,<span class="literal">None</span>,<span class="literal">None</span>],dtype=<span class="string">"float32"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>常量Variable：常量<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = fluid.layers.fill_constant(shape=[<span class="number">1</span>], value=<span class="number">0</span>, dtype=<span class="string">'int64'</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Tensor数据"><a href="#Tensor数据" class="headerlink" title="Tensor数据"></a>Tensor数据</h3><p>对于一些batch内样本大小不一样的问题（有的大有的小），Paddle可以通过两种方式解决：</p>
+<ul>
+<li>Padding：修改到同样大小（推荐）</li>
+<li>Lod-Tensor：记录每个样本的大小，以便减少无用的计算量。如果前一个方法不可行，可以用这种方法。</li>
+</ul>
+<h3 id="LoD-Tensor"><a href="#LoD-Tensor" class="headerlink" title="LoD Tensor"></a>LoD Tensor</h3><p>Level of Detail Tensor 是Paddle的高级特性，是对Tensor的一种扩充。大部分情况下可以不必关注。</p>
+<h3 id="Operator"><a href="#Operator" class="headerlink" title="Operator"></a>Operator</h3><p>这里囊括所有对数据的操作，可以到以下模块中使用。但是Operator并不是实时的，而仅仅是提交操作，等待最后统一计算：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> paddle.fluid.layers</span><br><span class="line"><span class="keyword">import</span> paddle.fluid.nets</span><br></pre></td></tr></table></figure></p>
+<p>加法运算：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义执行器</span></span><br><span class="line">cpu = fluid.core.CPUPlace()</span><br><span class="line">exe = fluid.Executor(cpu)</span><br><span class="line">exe.run(fluid.default_startup_program())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义Tensor和运算</span></span><br><span class="line">a = fluid.data(name=<span class="string">"a"</span>,shape=[<span class="number">1</span>],dtype=<span class="string">'float32'</span>)</span><br><span class="line">b = fluid.data(name=<span class="string">"b"</span>,shape=[<span class="number">1</span>],dtype=<span class="string">'float32'</span>)</span><br><span class="line">result = fluid.layers.elementwise_add(a,b)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Numpy 数据</span></span><br><span class="line">x = numpy.array([<span class="number">5</span>]).astype(<span class="string">"float32"</span>)</span><br><span class="line">y = numpy.array([<span class="number">7</span>]).astype(<span class="string">"float32"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交数据并运行，fetch_list 为希望查看的变量</span></span><br><span class="line">outs = exe.run(</span><br><span class="line">        feed=&#123;<span class="string">'a'</span>:x,<span class="string">'b'</span>:y&#125;,</span><br><span class="line">        fetch_list=[result])</span><br></pre></td></tr></table></figure></p>
+<h3 id="Program"><a href="#Program" class="headerlink" title="Program"></a>Program</h3><p>用于描述整个计算过程。Operator会被按顺序放入Program中。一般有这几种<a href="https://www.paddlepaddle.org.cn/documentation/docs/api_guides/low_level/layers/control_flow.html" target="_blank" rel="noopener">结构</a>：</p>
+<ul>
+<li>顺序结构</li>
+<li>条件分支</li>
+<li>循环</li>
+<li>动态 RNN</li>
+<li>静态 RNN</li>
+</ul>
+<p>用户完成网络定义后，一段 Paddle 程序中通常存在 2 个 Program。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义模型参数初始化等操作，可以由框架自动生成，使用时无需显式地创建。如果调用修改了参数的默认初始化方式，框架会自动的将相关的修改加入default_startup_program</span></span><br><span class="line">fluid.default_startup_program</span><br><span class="line"><span class="comment"># 定义神经网络模型，前向反向计算，参数更新等操作，构建这个也是用户的主要任务</span></span><br><span class="line">fluid.default_main_program</span><br></pre></td></tr></table></figure></p>
+<h3 id="Executor"><a href="#Executor" class="headerlink" title="Executor"></a>Executor</h3><p>该部分相当于对Program的编译和执行。Executor将Program转换为C++后端的可执行程序<code>FluidProgram</code>，完成编译操作；Executor再执行编译好的<code>FluidProgram</code>程序。</p>
+<h3 id="动态图机制"><a href="#动态图机制" class="headerlink" title="动态图机制"></a>动态图机制</h3><p>可以通过这个机制，无需构建整个图，就可以立即执行结果。这个机制能够方便用户及时调试模型，减少大量用于构建静态图的代码。</p>
+<p>使用这一机制，需要在guard上下文环境下：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">x = np.ones([<span class="number">2</span>, <span class="number">2</span>], np.float32)</span><br><span class="line"><span class="keyword">with</span> fluid.dygraph.guard():</span><br><span class="line">    <span class="comment"># 编辑动态图代码</span></span><br><span class="line">    inputs = []</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        inputs.append(fluid.dygraph.to_variable(x)) <span class="comment"># ndarray 转 Variable</span></span><br><span class="line">    ret = fluid.layers.sums(inputs)</span><br><span class="line">    print(ret.numpy())</span><br><span class="line">    <span class="comment"># 反向计算</span></span><br><span class="line">    loss = fluid.layers.reduce_sum(ret)</span><br><span class="line">    loss.backward()</span><br><span class="line">    print(loss.gradient())</span><br></pre></td></tr></table></figure></p>
+<h2 id="疫情数据可视化（爬虫，Pyecharts）"><a href="#疫情数据可视化（爬虫，Pyecharts）" class="headerlink" title="疫情数据可视化（爬虫，Pyecharts）"></a>疫情数据可视化（爬虫，Pyecharts）</h2><h3 id="爬取数据"><a href="#爬取数据" class="headerlink" title="爬取数据"></a>爬取数据</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">today = datetime.date.today().strftime(<span class="string">'%Y%m%d'</span>)   <span class="comment">#20200315</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">crawl_dxy_data</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    爬取丁香园实时统计数据，保存到data目录下，以当前日期作为文件名，存JSON文件</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    response = requests.get(<span class="string">'https://ncov.dxy.cn/ncovh5/view/pneumonia'</span>) <span class="comment">#request.get()用于请求目标网站</span></span><br><span class="line">    print(response.status_code)                                          <span class="comment"># 打印状态码</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        url_text = response.content.decode()                             <span class="comment">#更推荐使用response.content.deocde()的方式获取响应的html页面</span></span><br><span class="line">        <span class="comment">#print(url_text)</span></span><br><span class="line">        url_content = re.search(<span class="string">r'window.getAreaStat = (.*?)&#125;]&#125;catch'</span>,   <span class="comment">#re.search():扫描字符串以查找正则表达式模式产生匹配项的第一个位置 ，然后返回相应的match对象。</span></span><br><span class="line">                                url_text, re.S)                          <span class="comment">#在字符串a中，包含换行符\n，在这种情况下：如果不使用re.S参数，则只在每一行内进行匹配，如果一行没有，就换下一行重新开始;</span></span><br><span class="line">                                                                         <span class="comment">#而使用re.S参数以后，正则表达式会将这个字符串作为一个整体，在整体中进行匹配。</span></span><br><span class="line">        texts = url_content.group()                                      <span class="comment">#获取匹配正则表达式的整体结果</span></span><br><span class="line">        content = texts.replace(<span class="string">'window.getAreaStat = '</span>, <span class="string">''</span>).replace(<span class="string">'&#125;catch'</span>, <span class="string">''</span>) <span class="comment">#去除多余的字符</span></span><br><span class="line">        json_data = json.loads(content)                                         </span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">'data/'</span> + today + <span class="string">'.json'</span>, <span class="string">'w'</span>, encoding=<span class="string">'UTF-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            json.dump(json_data, f, ensure_ascii=<span class="literal">False</span>)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">'&lt;Response [%s]&gt;'</span> % response.status_code)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">crawl_statistics_data</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    获取各个省份历史统计数据，保存到data目录下，存JSON文件</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'data/'</span>+ today + <span class="string">'.json'</span>, <span class="string">'r'</span>, encoding=<span class="string">'UTF-8'</span>) <span class="keyword">as</span> file:</span><br><span class="line">        json_array = json.loads(file.read())</span><br><span class="line"></span><br><span class="line">    statistics_data = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> province <span class="keyword">in</span> json_array:</span><br><span class="line">        response = requests.get(province[<span class="string">'statisticsData'</span>])</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            statistics_data[province[<span class="string">'provinceShortName'</span>]] = json.loads(response.content.decode())[<span class="string">'data'</span>]</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            print(<span class="string">'&lt;Response [%s]&gt; for url: [%s]'</span> % (response.status_code, province[<span class="string">'statisticsData'</span>]))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">"data/statistics_data.json"</span>, <span class="string">"w"</span>, encoding=<span class="string">'UTF-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        json.dump(statistics_data, f, ensure_ascii=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    crawl_dxy_data()</span><br><span class="line">    crawl_statistics_data()</span><br></pre></td></tr></table></figure>
+<h3 id="疫情地图"><a href="#疫情地图" class="headerlink" title="疫情地图"></a>疫情地图</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> pyecharts.charts <span class="keyword">import</span> Map</span><br><span class="line"><span class="keyword">from</span> pyecharts <span class="keyword">import</span> options <span class="keyword">as</span> opts</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读原始数据文件</span></span><br><span class="line">today = datetime.date.today().strftime(<span class="string">'%Y%m%d'</span>)   <span class="comment">#20200315</span></span><br><span class="line">datafile = <span class="string">'data/'</span>+ today + <span class="string">'.json'</span></span><br><span class="line"><span class="keyword">with</span> open(datafile, <span class="string">'r'</span>, encoding=<span class="string">'UTF-8'</span>) <span class="keyword">as</span> file:</span><br><span class="line">    json_array = json.loads(file.read())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分析全国实时确诊数据：'confirmedCount'字段</span></span><br><span class="line">china_data = []</span><br><span class="line"><span class="keyword">for</span> province <span class="keyword">in</span> json_array:</span><br><span class="line">    china_data.append((province[<span class="string">'provinceShortName'</span>], province[<span class="string">'confirmedCount'</span>]))</span><br><span class="line">china_data = sorted(china_data, key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>], reverse=<span class="literal">True</span>)                 <span class="comment">#reverse=True,表示降序，反之升序</span></span><br><span class="line"></span><br><span class="line">print(china_data)</span><br><span class="line"><span class="comment"># 全国疫情地图</span></span><br><span class="line"><span class="comment"># 自定义的每一段的范围，以及每一段的特别的样式。</span></span><br><span class="line">pieces = [</span><br><span class="line">    &#123;<span class="string">'min'</span>: <span class="number">10000</span>, <span class="string">'color'</span>: <span class="string">'#540d0d'</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'max'</span>: <span class="number">9999</span>, <span class="string">'min'</span>: <span class="number">1000</span>, <span class="string">'color'</span>: <span class="string">'#9c1414'</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'max'</span>: <span class="number">999</span>, <span class="string">'min'</span>: <span class="number">500</span>, <span class="string">'color'</span>: <span class="string">'#d92727'</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'max'</span>: <span class="number">499</span>, <span class="string">'min'</span>: <span class="number">100</span>, <span class="string">'color'</span>: <span class="string">'#ed3232'</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'max'</span>: <span class="number">99</span>, <span class="string">'min'</span>: <span class="number">10</span>, <span class="string">'color'</span>: <span class="string">'#f27777'</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'max'</span>: <span class="number">9</span>, <span class="string">'min'</span>: <span class="number">1</span>, <span class="string">'color'</span>: <span class="string">'#f7adad'</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'max'</span>: <span class="number">0</span>, <span class="string">'color'</span>: <span class="string">'#f7e4e4'</span>&#125;,</span><br><span class="line">]</span><br><span class="line">labels = [data[<span class="number">0</span>] <span class="keyword">for</span> data <span class="keyword">in</span> china_data]</span><br><span class="line">counts = [data[<span class="number">1</span>] <span class="keyword">for</span> data <span class="keyword">in</span> china_data]</span><br><span class="line"></span><br><span class="line">m = Map()</span><br><span class="line">m.add(<span class="string">"累计确诊"</span>, [list(z) <span class="keyword">for</span> z <span class="keyword">in</span> zip(labels, counts)], <span class="string">'china'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#系列配置项,可配置图元样式、文字样式、标签样式、点线样式等</span></span><br><span class="line">m.set_series_opts(label_opts=opts.LabelOpts(font_size=<span class="number">12</span>),</span><br><span class="line">                  is_show=<span class="literal">False</span>)</span><br><span class="line"><span class="comment">#全局配置项,可配置标题、动画、坐标轴、图例等</span></span><br><span class="line">m.set_global_opts(title_opts=opts.TitleOpts(title=<span class="string">'全国实时确诊数据'</span>,</span><br><span class="line">                                            subtitle=<span class="string">'数据来源：丁香园'</span>),</span><br><span class="line">                  legend_opts=opts.LegendOpts(is_show=<span class="literal">False</span>),</span><br><span class="line">                  visualmap_opts=opts.VisualMapOpts(pieces=pieces,</span><br><span class="line">                                                    is_piecewise=<span class="literal">True</span>,   <span class="comment">#是否为分段型</span></span><br><span class="line">                                                    is_show=<span class="literal">True</span>))       <span class="comment">#是否显示视觉映射配置</span></span><br><span class="line"><span class="comment">#render（）会生成本地 HTML 文件，默认会在当前目录生成 render.html 文件，也可以传入路径参数，如 m.render("mycharts.html")</span></span><br><span class="line">m.render(path=<span class="string">'/home/aistudio/data/全国实时确诊数据.html'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> pyecharts.charts <span class="keyword">import</span> Map</span><br><span class="line"><span class="keyword">from</span> pyecharts <span class="keyword">import</span> options <span class="keyword">as</span> opts</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读原始数据文件</span></span><br><span class="line">today = datetime.date.today().strftime(<span class="string">'%Y%m%d'</span>)   <span class="comment">#20200315</span></span><br><span class="line">datafile = <span class="string">'data/'</span>+ today + <span class="string">'.json'</span></span><br><span class="line"><span class="keyword">with</span> open(datafile, <span class="string">'r'</span>, encoding=<span class="string">'UTF-8'</span>) <span class="keyword">as</span> file:</span><br><span class="line">    json_array = json.loads(file.read())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分析湖北省实时确诊数据</span></span><br><span class="line"><span class="comment"># 读入规范化的城市名称，用于规范化丁香园数据中的城市简称</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'/home/aistudio/data/data24815/pycharts_city.txt'</span>, <span class="string">'r'</span>, encoding=<span class="string">'UTF-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    defined_cities = [line.strip() <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines()]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">format_city_name</span><span class="params">(name, defined_cities)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> defined_city <span class="keyword">in</span> defined_cities:</span><br><span class="line">        <span class="keyword">if</span> len((set(defined_city) &amp; set(name))) == len(name):</span><br><span class="line">            name = defined_city</span><br><span class="line">            <span class="keyword">if</span> name.endswith(<span class="string">'市'</span>) <span class="keyword">or</span> name.endswith(<span class="string">'区'</span>) <span class="keyword">or</span> name.endswith(<span class="string">'县'</span>) <span class="keyword">or</span> name.endswith(<span class="string">'自治州'</span>):</span><br><span class="line">                <span class="keyword">return</span> name</span><br><span class="line">            <span class="keyword">return</span> name + <span class="string">'市'</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">province_name = <span class="string">'湖北'</span></span><br><span class="line"><span class="keyword">for</span> province <span class="keyword">in</span> json_array:</span><br><span class="line">    <span class="keyword">if</span> province[<span class="string">'provinceName'</span>] == province_name <span class="keyword">or</span> province[<span class="string">'provinceShortName'</span>] == province_name:</span><br><span class="line">        json_array_province = province[<span class="string">'cities'</span>]</span><br><span class="line">        hubei_data = [(format_city_name(city[<span class="string">'cityName'</span>], defined_cities), city[<span class="string">'confirmedCount'</span>]) <span class="keyword">for</span> city <span class="keyword">in</span></span><br><span class="line">                      json_array_province]</span><br><span class="line">        hubei_data = sorted(hubei_data, key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>], reverse=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">        print(hubei_data)</span><br><span class="line"></span><br><span class="line">labels = [data[<span class="number">0</span>] <span class="keyword">for</span> data <span class="keyword">in</span> hubei_data]</span><br><span class="line">counts = [data[<span class="number">1</span>] <span class="keyword">for</span> data <span class="keyword">in</span> hubei_data]</span><br><span class="line">pieces = [</span><br><span class="line">    &#123;<span class="string">'min'</span>: <span class="number">10000</span>, <span class="string">'color'</span>: <span class="string">'#540d0d'</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'max'</span>: <span class="number">9999</span>, <span class="string">'min'</span>: <span class="number">1000</span>, <span class="string">'color'</span>: <span class="string">'#9c1414'</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'max'</span>: <span class="number">999</span>, <span class="string">'min'</span>: <span class="number">500</span>, <span class="string">'color'</span>: <span class="string">'#d92727'</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'max'</span>: <span class="number">499</span>, <span class="string">'min'</span>: <span class="number">100</span>, <span class="string">'color'</span>: <span class="string">'#ed3232'</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'max'</span>: <span class="number">99</span>, <span class="string">'min'</span>: <span class="number">10</span>, <span class="string">'color'</span>: <span class="string">'#f27777'</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'max'</span>: <span class="number">9</span>, <span class="string">'min'</span>: <span class="number">1</span>, <span class="string">'color'</span>: <span class="string">'#f7adad'</span>&#125;,</span><br><span class="line">    &#123;<span class="string">'max'</span>: <span class="number">0</span>, <span class="string">'color'</span>: <span class="string">'#f7e4e4'</span>&#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">m = Map()</span><br><span class="line">m.add(<span class="string">"累计确诊"</span>, [list(z) <span class="keyword">for</span> z <span class="keyword">in</span> zip(labels, counts)], <span class="string">'湖北'</span>)</span><br><span class="line">m.set_series_opts(label_opts=opts.LabelOpts(font_size=<span class="number">12</span>),</span><br><span class="line">                  is_show=<span class="literal">False</span>)</span><br><span class="line">m.set_global_opts(title_opts=opts.TitleOpts(title=<span class="string">'湖北省实时确诊数据'</span>,</span><br><span class="line">                                            subtitle=<span class="string">'数据来源：丁香园'</span>),</span><br><span class="line">                  legend_opts=opts.LegendOpts(is_show=<span class="literal">False</span>),</span><br><span class="line">                  visualmap_opts=opts.VisualMapOpts(pieces=pieces,</span><br><span class="line">                                                    is_piecewise=<span class="literal">True</span>,</span><br><span class="line">                                                    is_show=<span class="literal">True</span>))</span><br><span class="line">m.render(path=<span class="string">'/home/aistudio/data/湖北省实时确诊数据.html'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="增长曲线"><a href="#增长曲线" class="headerlink" title="增长曲线"></a>增长曲线</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> pyecharts.charts <span class="keyword">import</span> Line</span><br><span class="line"><span class="keyword">from</span> pyecharts <span class="keyword">import</span> options <span class="keyword">as</span> opts</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读原始数据文件</span></span><br><span class="line">datafile = <span class="string">'data/statistics_data.json'</span></span><br><span class="line"><span class="keyword">with</span> open(datafile, <span class="string">'r'</span>, encoding=<span class="string">'UTF-8'</span>) <span class="keyword">as</span> file:</span><br><span class="line">    json_dict = json.loads(file.read())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分析各省份2月1日至今的新增确诊数据：'confirmedIncr'</span></span><br><span class="line">statistics__data = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> province <span class="keyword">in</span> json_dict:</span><br><span class="line">    statistics__data[province] = []</span><br><span class="line">    <span class="keyword">for</span> da <span class="keyword">in</span> json_dict[province]:</span><br><span class="line">        <span class="keyword">if</span> da[<span class="string">'dateId'</span>] &gt;= <span class="number">20200201</span>:</span><br><span class="line">            statistics__data[province].append(da[<span class="string">'confirmedIncr'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取日期列表</span></span><br><span class="line">dateId = [str(da[<span class="string">'dateId'</span>])[<span class="number">4</span>:<span class="number">6</span>] + <span class="string">'-'</span> + str(da[<span class="string">'dateId'</span>])[<span class="number">6</span>:<span class="number">8</span>] <span class="keyword">for</span> da <span class="keyword">in</span> json_dict[<span class="string">'湖北'</span>] <span class="keyword">if</span></span><br><span class="line">          da[<span class="string">'dateId'</span>] &gt;= <span class="number">20200201</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 全国新增趋势</span></span><br><span class="line">all_statis = np.array([<span class="number">0</span>] * len(dateId))</span><br><span class="line"><span class="keyword">for</span> province <span class="keyword">in</span> statistics__data:</span><br><span class="line">    all_statis = all_statis + np.array(statistics__data[province])</span><br><span class="line"></span><br><span class="line">all_statis = all_statis.tolist()</span><br><span class="line"><span class="comment"># 湖北新增趋势</span></span><br><span class="line">hubei_statis = statistics__data[<span class="string">'湖北'</span>]</span><br><span class="line"><span class="comment"># 湖北以外的新增趋势</span></span><br><span class="line">other_statis = [all_statis[i] - hubei_statis[i] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(dateId))]</span><br><span class="line"></span><br><span class="line">line = Line()</span><br><span class="line">line.add_xaxis(dateId)</span><br><span class="line">line.add_yaxis(<span class="string">"全国新增确诊病例"</span>,   <span class="comment">#图例</span></span><br><span class="line">                all_statis,       <span class="comment">#数据</span></span><br><span class="line">                is_smooth=<span class="literal">True</span>,   <span class="comment">#是否平滑曲线</span></span><br><span class="line">               linestyle_opts=opts.LineStyleOpts(width=<span class="number">4</span>, color=<span class="string">'#B44038'</span>),<span class="comment">#线样式配置项</span></span><br><span class="line">               itemstyle_opts=opts.ItemStyleOpts(color=<span class="string">'#B44038'</span>,          <span class="comment">#图元样式配置项</span></span><br><span class="line">                                                 border_color=<span class="string">"#B44038"</span>,   <span class="comment">#颜色</span></span><br><span class="line">                                                 border_width=<span class="number">10</span>))         <span class="comment">#图元的大小</span></span><br><span class="line">line.add_yaxis(<span class="string">"湖北新增确诊病例"</span>, hubei_statis, is_smooth=<span class="literal">True</span>,</span><br><span class="line">               linestyle_opts=opts.LineStyleOpts(width=<span class="number">2</span>, color=<span class="string">'#4E87ED'</span>),</span><br><span class="line">               label_opts=opts.LabelOpts(position=<span class="string">'bottom'</span>),              <span class="comment">#标签在折线的底部</span></span><br><span class="line">               itemstyle_opts=opts.ItemStyleOpts(color=<span class="string">'#4E87ED'</span>,</span><br><span class="line">                                                 border_color=<span class="string">"#4E87ED"</span>,</span><br><span class="line">                                                 border_width=<span class="number">3</span>))</span><br><span class="line">line.add_yaxis(<span class="string">"其他省份新增病例"</span>, other_statis, is_smooth=<span class="literal">True</span>,</span><br><span class="line">               linestyle_opts=opts.LineStyleOpts(width=<span class="number">2</span>, color=<span class="string">'#F1A846'</span>),</span><br><span class="line">               label_opts=opts.LabelOpts(position=<span class="string">'bottom'</span>),              <span class="comment">#标签在折线的底部</span></span><br><span class="line">               itemstyle_opts=opts.ItemStyleOpts(color=<span class="string">'#F1A846'</span>,</span><br><span class="line">                                                 border_color=<span class="string">"#F1A846"</span>,</span><br><span class="line">                                                 border_width=<span class="number">3</span>))</span><br><span class="line">line.set_global_opts(title_opts=opts.TitleOpts(title=<span class="string">"新增确诊病例"</span>, subtitle=<span class="string">'数据来源：丁香园'</span>),</span><br><span class="line">                     yaxis_opts=opts.AxisOpts(max_=<span class="number">16000</span>, min_=<span class="number">1</span>, type_=<span class="string">"log"</span>,    <span class="comment">#坐标轴配置项</span></span><br><span class="line">                                              splitline_opts=opts.SplitLineOpts(is_show=<span class="literal">True</span>),<span class="comment">#分割线配置项</span></span><br><span class="line">                                              axisline_opts=opts.AxisLineOpts(is_show=<span class="literal">True</span>)))<span class="comment">#坐标轴刻度线配置项</span></span><br><span class="line">line.render(path=<span class="string">'/home/aistudio/data/新增确诊趋势图.html'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="手势识别"><a href="#手势识别" class="headerlink" title="手势识别"></a>手势识别</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> paddle</span><br><span class="line"><span class="keyword">import</span> paddle.fluid <span class="keyword">as</span> fluid</span><br><span class="line"><span class="keyword">import</span> paddle.fluid.layers <span class="keyword">as</span> layers</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> cpu_count</span><br><span class="line"><span class="keyword">from</span> paddle.fluid.dygraph <span class="keyword">import</span> Pool2D,Conv2D</span><br><span class="line"><span class="keyword">from</span> paddle.fluid.dygraph <span class="keyword">import</span> Linear</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成图像列表</span></span><br><span class="line">data_path = <span class="string">'/home/aistudio/data/data23668/Dataset'</span></span><br><span class="line">character_folders = os.listdir(data_path)</span><br><span class="line"><span class="comment"># print(character_folders)</span></span><br><span class="line"><span class="keyword">if</span>(os.path.exists(<span class="string">'./train_data.list'</span>)):</span><br><span class="line">    os.remove(<span class="string">'./train_data.list'</span>)</span><br><span class="line"><span class="keyword">if</span>(os.path.exists(<span class="string">'./test_data.list'</span>)):</span><br><span class="line">    os.remove(<span class="string">'./test_data.list'</span>)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">for</span> character_folder <span class="keyword">in</span> character_folders:</span><br><span class="line">    <span class="comment"># 生成测试集和训练集</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'./train_data.list'</span>, <span class="string">'a'</span>) <span class="keyword">as</span> f_train:</span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">'./test_data.list'</span>, <span class="string">'a'</span>) <span class="keyword">as</span> f_test:</span><br><span class="line">            <span class="keyword">if</span> character_folder == <span class="string">'.DS_Store'</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            character_imgs = os.listdir(os.path.join(data_path,character_folder))</span><br><span class="line">            count = <span class="number">0</span> </span><br><span class="line">            <span class="keyword">for</span> img <span class="keyword">in</span> character_imgs:</span><br><span class="line">                <span class="keyword">if</span> img ==<span class="string">'.DS_Store'</span>:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">if</span> count%<span class="number">10</span> == <span class="number">0</span>:</span><br><span class="line">                    f_test.write(os.path.join(data_path,character_folder,img) + <span class="string">'\t'</span> + character_folder + <span class="string">'\n'</span>)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    f_train.write(os.path.join(data_path,character_folder,img) + <span class="string">'\t'</span> + character_folder + <span class="string">'\n'</span>)</span><br><span class="line">                count +=<span class="number">1</span></span><br><span class="line">print(<span class="string">'列表已生成'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用于训练的数据提供器</span></span><br><span class="line">train_reader = paddle.batch(reader=paddle.reader.shuffle(reader=data_reader(<span class="string">'./train_data.list'</span>), buf_size=<span class="number">256</span>), batch_size=<span class="number">32</span>)</span><br><span class="line"><span class="comment"># 用于测试的数据提供器</span></span><br><span class="line">test_reader = paddle.batch(reader=data_reader(<span class="string">'./test_data.list'</span>), batch_size=<span class="number">32</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment">#定义DNN网络</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyDNN</span><span class="params">(fluid.dygraph.Layer)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(MyDNN,self).__init__()</span><br><span class="line">        super(MyDNN, self).__init__()</span><br><span class="line">        self.hidden1 = Linear(<span class="number">100</span>, <span class="number">100</span>, act=<span class="string">'relu'</span>)</span><br><span class="line">        self.hidden2 = Linear(<span class="number">100</span>, <span class="number">100</span>, act=<span class="string">'relu'</span>)</span><br><span class="line">        self.hidden3 = Linear(<span class="number">100</span>, <span class="number">100</span>, act=<span class="string">'relu'</span>)</span><br><span class="line">        self.hidden4 = Linear(<span class="number">3</span>*<span class="number">100</span>*<span class="number">100</span>, <span class="number">10</span>, act=<span class="string">'softmax'</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self,input)</span>:</span></span><br><span class="line">        x=self.hidden1(input)</span><br><span class="line">        x=self.hidden2(x)</span><br><span class="line">        x=self.hidden3(x)</span><br><span class="line">        x=fluid.layers.reshape(x, shape=[<span class="number">-1</span>,<span class="number">3</span>*<span class="number">100</span>*<span class="number">100</span>])</span><br><span class="line">        y=self.hidden4(x)</span><br><span class="line">       </span><br><span class="line">        <span class="keyword">return</span> y</span><br><span class="line"></span><br><span class="line"><span class="comment">#用动态图进行训练</span></span><br><span class="line"><span class="keyword">with</span> fluid.dygraph.guard():</span><br><span class="line">    model=MyDNN() <span class="comment">#模型实例化</span></span><br><span class="line">    model.train() <span class="comment">#训练模式</span></span><br><span class="line">    opt=fluid.optimizer.SGDOptimizer(learning_rate=<span class="number">0.01</span>, parameter_list=model.parameters())<span class="comment">#优化器选用SGD随机梯度下降，学习率为0.001.</span></span><br><span class="line"></span><br><span class="line">    epochs_num=<span class="number">10</span> <span class="comment">#迭代次数</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> pass_num <span class="keyword">in</span> range(epochs_num):</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> batch_id,data <span class="keyword">in</span> enumerate(train_reader()):</span><br><span class="line">            </span><br><span class="line">            images=np.array([x[<span class="number">0</span>].reshape(<span class="number">3</span>,<span class="number">100</span>,<span class="number">100</span>) <span class="keyword">for</span> x <span class="keyword">in</span> data],np.float32)</span><br><span class="line">            </span><br><span class="line">            labels = np.array([x[<span class="number">1</span>] <span class="keyword">for</span> x <span class="keyword">in</span> data]).astype(<span class="string">'int64'</span>)</span><br><span class="line">            labels = labels[:, np.newaxis]</span><br><span class="line">            <span class="comment"># print(images.shape)</span></span><br><span class="line">            image=fluid.dygraph.to_variable(images)</span><br><span class="line">            label=fluid.dygraph.to_variable(labels)</span><br><span class="line">            predict=model(image)<span class="comment">#预测</span></span><br><span class="line">            <span class="comment"># print(predict)</span></span><br><span class="line">            loss=fluid.layers.cross_entropy(predict,label)</span><br><span class="line">            avg_loss=fluid.layers.mean(loss)<span class="comment">#获取loss值</span></span><br><span class="line">            </span><br><span class="line">            acc=fluid.layers.accuracy(predict,label)<span class="comment">#计算精度</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> batch_id!=<span class="number">0</span> <span class="keyword">and</span> batch_id%<span class="number">50</span>==<span class="number">0</span>:</span><br><span class="line">                print(<span class="string">"train_pass:&#123;&#125;,batch_id:&#123;&#125;,train_loss:&#123;&#125;,train_acc:&#123;&#125;"</span>.format(pass_num,batch_id,avg_loss.numpy(),acc.numpy()))</span><br><span class="line">            </span><br><span class="line">            avg_loss.backward()</span><br><span class="line">            opt.minimize(avg_loss)</span><br><span class="line">            model.clear_gradients()</span><br><span class="line">            </span><br><span class="line">    fluid.save_dygraph(model.state_dict(),<span class="string">'MyDNN'</span>)<span class="comment">#保存模型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#模型校验</span></span><br><span class="line"><span class="keyword">with</span> fluid.dygraph.guard():</span><br><span class="line">    accs = []</span><br><span class="line">    model_dict, _ = fluid.load_dygraph(<span class="string">'MyDNN'</span>)</span><br><span class="line">    model = MyDNN()</span><br><span class="line">    model.load_dict(model_dict) <span class="comment">#加载模型参数</span></span><br><span class="line">    model.eval() <span class="comment">#训练模式</span></span><br><span class="line">    <span class="keyword">for</span> batch_id,data <span class="keyword">in</span> enumerate(test_reader()):<span class="comment">#测试集</span></span><br><span class="line">        images=np.array([x[<span class="number">0</span>].reshape(<span class="number">3</span>,<span class="number">100</span>,<span class="number">100</span>) <span class="keyword">for</span> x <span class="keyword">in</span> data],np.float32)</span><br><span class="line">        labels = np.array([x[<span class="number">1</span>] <span class="keyword">for</span> x <span class="keyword">in</span> data]).astype(<span class="string">'int64'</span>)</span><br><span class="line">        labels = labels[:, np.newaxis]</span><br><span class="line"></span><br><span class="line">        image=fluid.dygraph.to_variable(images)</span><br><span class="line">        label=fluid.dygraph.to_variable(labels)</span><br><span class="line">        </span><br><span class="line">        predict=model(image)       </span><br><span class="line">        acc=fluid.layers.accuracy(predict,label)</span><br><span class="line">        accs.append(acc.numpy()[<span class="number">0</span>])</span><br><span class="line">        avg_acc = np.mean(accs)</span><br><span class="line">    print(avg_acc)</span><br><span class="line"></span><br><span class="line"><span class="comment">#读取预测图像，进行预测</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_image</span><span class="params">(path)</span>:</span></span><br><span class="line">    img = Image.open(path)</span><br><span class="line">    img = img.resize((<span class="number">100</span>, <span class="number">100</span>), Image.ANTIALIAS)</span><br><span class="line">    img = np.array(img).astype(<span class="string">'float32'</span>)</span><br><span class="line">    img = img.transpose((<span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line">    img = img/<span class="number">255.0</span></span><br><span class="line">    print(img.shape)</span><br><span class="line">    <span class="keyword">return</span> img</span><br><span class="line"></span><br><span class="line"><span class="comment">#构建预测动态图过程</span></span><br><span class="line"><span class="keyword">with</span> fluid.dygraph.guard():</span><br><span class="line">    infer_path = <span class="string">'手势.JPG'</span></span><br><span class="line">    model=MyDNN()<span class="comment">#模型实例化</span></span><br><span class="line">    model_dict,_=fluid.load_dygraph(<span class="string">'MyDNN'</span>)</span><br><span class="line">    model.load_dict(model_dict)<span class="comment">#加载模型参数</span></span><br><span class="line">    model.eval()<span class="comment">#评估模式</span></span><br><span class="line">    infer_img = load_image(infer_path)</span><br><span class="line">    infer_img=np.array(infer_img).astype(<span class="string">'float32'</span>)</span><br><span class="line">    infer_img=infer_img[np.newaxis,:, : ,:]</span><br><span class="line">    infer_img = fluid.dygraph.to_variable(infer_img)</span><br><span class="line">    result=model(infer_img)</span><br><span class="line">    display(Image.open(<span class="string">'手势.JPG'</span>))</span><br><span class="line">    print(np.argmax(result.numpy()))</span><br></pre></td></tr></table></figure>
+<h2 id="车牌识别"><a href="#车牌识别" class="headerlink" title="车牌识别"></a>车牌识别</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入需要的包</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> paddle <span class="keyword">as</span> paddle</span><br><span class="line"><span class="keyword">import</span> paddle.fluid <span class="keyword">as</span> fluid</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> cpu_count</span><br><span class="line"><span class="keyword">from</span> paddle.fluid.dygraph <span class="keyword">import</span> Pool2D,Conv2D</span><br><span class="line"><span class="comment"># from paddle.fluid.dygraph import FC</span></span><br><span class="line"><span class="keyword">from</span> paddle.fluid.dygraph <span class="keyword">import</span> Linear</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成车牌字符图像列表</span></span><br><span class="line">data_path = <span class="string">'/home/aistudio/data'</span></span><br><span class="line">character_folders = os.listdir(data_path)</span><br><span class="line">label = <span class="number">0</span></span><br><span class="line">LABEL_temp = &#123;&#125;</span><br><span class="line"><span class="keyword">if</span>(os.path.exists(<span class="string">'./train_data.list'</span>)):</span><br><span class="line">    os.remove(<span class="string">'./train_data.list'</span>)</span><br><span class="line"><span class="keyword">if</span>(os.path.exists(<span class="string">'./test_data.list'</span>)):</span><br><span class="line">    os.remove(<span class="string">'./test_data.list'</span>)</span><br><span class="line"><span class="keyword">for</span> character_folder <span class="keyword">in</span> character_folders:</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'./train_data.list'</span>, <span class="string">'a'</span>) <span class="keyword">as</span> f_train:</span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">'./test_data.list'</span>, <span class="string">'a'</span>) <span class="keyword">as</span> f_test:</span><br><span class="line">            <span class="keyword">if</span> character_folder == <span class="string">'.DS_Store'</span> <span class="keyword">or</span> character_folder == <span class="string">'.ipynb_checkpoints'</span> <span class="keyword">or</span> character_folder == <span class="string">'data23617'</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            print(character_folder + <span class="string">" "</span> + str(label))</span><br><span class="line">            LABEL_temp[str(label)] = character_folder <span class="comment">#存储一下标签的对应关系</span></span><br><span class="line">            character_imgs = os.listdir(os.path.join(data_path, character_folder))</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(character_imgs)):</span><br><span class="line">                <span class="keyword">if</span> i%<span class="number">10</span> == <span class="number">0</span>: </span><br><span class="line">                    f_test.write(os.path.join(os.path.join(data_path, character_folder), character_imgs[i]) + <span class="string">"\t"</span> + str(label) + <span class="string">'\n'</span>)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    f_train.write(os.path.join(os.path.join(data_path, character_folder), character_imgs[i]) + <span class="string">"\t"</span> + str(label) + <span class="string">'\n'</span>)</span><br><span class="line">    label = label + <span class="number">1</span></span><br><span class="line">print(<span class="string">'图像列表已生成'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用上一步生成的图像列表定义车牌字符训练集和测试集的reader</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">data_mapper</span><span class="params">(sample)</span>:</span></span><br><span class="line">    img, label = sample</span><br><span class="line">    img = paddle.dataset.image.load_image(file=img, is_color=<span class="literal">False</span>)</span><br><span class="line">    img = img.flatten().astype(<span class="string">'float32'</span>) / <span class="number">255.0</span></span><br><span class="line">    <span class="keyword">return</span> img, label</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">data_reader</span><span class="params">(data_list_path)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reader</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">with</span> open(data_list_path, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            lines = f.readlines()</span><br><span class="line">            <span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">                img, label = line.split(<span class="string">'\t'</span>)</span><br><span class="line">                <span class="keyword">yield</span> img, int(label)</span><br><span class="line">    <span class="keyword">return</span> paddle.reader.xmap_readers(data_mapper, reader, cpu_count(), <span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用于训练的数据提供器</span></span><br><span class="line">train_reader = paddle.batch(reader=paddle.reader.shuffle(reader=data_reader(<span class="string">'./train_data.list'</span>), buf_size=<span class="number">512</span>), batch_size=<span class="number">128</span>)</span><br><span class="line"><span class="comment"># 用于测试的数据提供器</span></span><br><span class="line">test_reader = paddle.batch(reader=data_reader(<span class="string">'./test_data.list'</span>), batch_size=<span class="number">128</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#定义网络</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyLeNet</span><span class="params">(fluid.dygraph.Layer)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(MyLeNet,self).__init__()</span><br><span class="line">        self.hidden1_1 = Conv2D(<span class="number">1</span>, <span class="number">28</span>, <span class="number">5</span>, <span class="number">1</span>)</span><br><span class="line">        self.hidden1_2 = Pool2D(pool_size=<span class="number">2</span>, pool_type=<span class="string">"max"</span>, pool_stride=<span class="number">1</span>)</span><br><span class="line">        self.hidden2_1 = Conv2D(<span class="number">28</span>, <span class="number">32</span>, <span class="number">3</span>, <span class="number">1</span>)</span><br><span class="line">        self.hidden2_2 = Pool2D(pool_size=<span class="number">2</span>, pool_type=<span class="string">"max"</span>, pool_stride=<span class="number">1</span>)</span><br><span class="line">        self.hidden3 = Conv2D(<span class="number">32</span>, <span class="number">32</span>, <span class="number">3</span>, <span class="number">1</span>)</span><br><span class="line">        self.hidden4 = Linear(<span class="number">32</span>*<span class="number">10</span>*<span class="number">10</span>, <span class="number">65</span>, act=<span class="string">"softmax"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self,input)</span>:</span></span><br><span class="line">        x = self.hidden1_1(input)</span><br><span class="line">        x = self.hidden1_2(x)</span><br><span class="line">        x = self.hidden2_1(x)</span><br><span class="line">        x = self.hidden2_2(x)</span><br><span class="line">        x = self.hidden3(x)</span><br><span class="line">        x = fluid.layers.reshape(x, shape=[<span class="number">-1</span>, <span class="number">32</span>*<span class="number">10</span>*<span class="number">10</span>])</span><br><span class="line">        y = self.hidden4(x)</span><br><span class="line">        <span class="keyword">return</span> y</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> fluid.dygraph.guard():</span><br><span class="line">    lr = <span class="number">0.005</span></span><br><span class="line">    model=MyLeNet() <span class="comment">#模型实例化</span></span><br><span class="line">    model.train() <span class="comment">#训练模式</span></span><br><span class="line">    opt=fluid.optimizer.SGDOptimizer(learning_rate=<span class="number">0.001</span>, parameter_list=model.parameters())<span class="comment">#优化器选用SGD随机梯度下降，学习率为0.001.</span></span><br><span class="line">    epochs_num=<span class="number">100</span> <span class="comment">#迭代次数为2</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> pass_num <span class="keyword">in</span> range(epochs_num):</span><br><span class="line">        <span class="keyword">if</span> pass_num &gt; <span class="number">10</span>:</span><br><span class="line">            lr = <span class="number">0.002</span></span><br><span class="line">        <span class="keyword">if</span> pass_num &gt; <span class="number">30</span>:</span><br><span class="line">            lr = <span class="number">0.001</span></span><br><span class="line">        <span class="keyword">if</span> pass_num &gt; <span class="number">60</span>:</span><br><span class="line">            lr = <span class="number">0.0005</span></span><br><span class="line">        <span class="keyword">for</span> batch_id,data <span class="keyword">in</span> enumerate(train_reader()):</span><br><span class="line">            images=np.array([x[<span class="number">0</span>].reshape(<span class="number">1</span>,<span class="number">20</span>,<span class="number">20</span>) <span class="keyword">for</span> x <span class="keyword">in</span> data],np.float32)</span><br><span class="line">            labels = np.array([x[<span class="number">1</span>] <span class="keyword">for</span> x <span class="keyword">in</span> data]).astype(<span class="string">'int64'</span>)</span><br><span class="line">            labels = labels[:, np.newaxis]</span><br><span class="line">            image=fluid.dygraph.to_variable(images)</span><br><span class="line">            label=fluid.dygraph.to_variable(labels)</span><br><span class="line">            </span><br><span class="line">            predict=model(image)<span class="comment">#预测</span></span><br><span class="line">            </span><br><span class="line">            loss=fluid.layers.cross_entropy(predict,label)</span><br><span class="line">            avg_loss=fluid.layers.mean(loss)<span class="comment">#获取loss值</span></span><br><span class="line">            </span><br><span class="line">            acc=fluid.layers.accuracy(predict,label)<span class="comment">#计算精度</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> batch_id!=<span class="number">0</span> <span class="keyword">and</span> batch_id%<span class="number">50</span>==<span class="number">0</span>:</span><br><span class="line">                print(<span class="string">"train_pass:&#123;&#125;,batch_id:&#123;&#125;,train_loss:&#123;&#125;,train_acc:&#123;&#125;"</span>.format(pass_num,batch_id,avg_loss.numpy(),acc.numpy()))</span><br><span class="line">            </span><br><span class="line">            avg_loss.backward()</span><br><span class="line">            opt.minimize(avg_loss)</span><br><span class="line">            model.clear_gradients()            </span><br><span class="line">            </span><br><span class="line">    fluid.save_dygraph(model.state_dict(),<span class="string">'MyLeNet'</span>)<span class="comment">#保存模型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#模型校验</span></span><br><span class="line"><span class="keyword">with</span> fluid.dygraph.guard():</span><br><span class="line">    accs = []</span><br><span class="line">    model=MyLeNet()<span class="comment">#模型实例化</span></span><br><span class="line">    model_dict,_=fluid.load_dygraph(<span class="string">'MyLeNet'</span>)</span><br><span class="line">    model.load_dict(model_dict)<span class="comment">#加载模型参数</span></span><br><span class="line">    model.eval()<span class="comment">#评估模式</span></span><br><span class="line">    <span class="keyword">for</span> batch_id,data <span class="keyword">in</span> enumerate(test_reader()):<span class="comment">#测试集</span></span><br><span class="line">        images=np.array([x[<span class="number">0</span>].reshape(<span class="number">1</span>,<span class="number">20</span>,<span class="number">20</span>) <span class="keyword">for</span> x <span class="keyword">in</span> data],np.float32)</span><br><span class="line">        labels = np.array([x[<span class="number">1</span>] <span class="keyword">for</span> x <span class="keyword">in</span> data]).astype(<span class="string">'int64'</span>)</span><br><span class="line">        labels = labels[:, np.newaxis]</span><br><span class="line">            </span><br><span class="line">        image=fluid.dygraph.to_variable(images)</span><br><span class="line">        label=fluid.dygraph.to_variable(labels)</span><br><span class="line">            </span><br><span class="line">        predict=model(image)<span class="comment">#预测</span></span><br><span class="line">        acc=fluid.layers.accuracy(predict,label)</span><br><span class="line">        accs.append(acc.numpy()[<span class="number">0</span>])</span><br><span class="line">        avg_acc = np.mean(accs)</span><br><span class="line">    print(avg_acc)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对车牌图片进行处理，分割出车牌中的每一个字符并保存</span></span><br><span class="line">license_plate = cv2.imread(<span class="string">'./车牌.png'</span>)</span><br><span class="line">gray_plate = cv2.cvtColor(license_plate, cv2.COLOR_RGB2GRAY)</span><br><span class="line">ret, binary_plate = cv2.threshold(gray_plate, <span class="number">175</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</span><br><span class="line">result = []</span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> range(binary_plate.shape[<span class="number">1</span>]):</span><br><span class="line">    result.append(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> range(binary_plate.shape[<span class="number">0</span>]):</span><br><span class="line">        result[col] = result[col] + binary_plate[row][col]/<span class="number">255</span></span><br><span class="line">character_dict = &#123;&#125;</span><br><span class="line">num = <span class="number">0</span></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> i &lt; len(result):</span><br><span class="line">    <span class="keyword">if</span> result[i] == <span class="number">0</span>:</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        index = i + <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> result[index] != <span class="number">0</span>:</span><br><span class="line">            index += <span class="number">1</span></span><br><span class="line">        character_dict[num] = [i, index<span class="number">-1</span>]</span><br><span class="line">        num += <span class="number">1</span></span><br><span class="line">        i = index</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">8</span>):</span><br><span class="line">    <span class="keyword">if</span> i==<span class="number">2</span>:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    padding = (<span class="number">170</span> - (character_dict[i][<span class="number">1</span>] - character_dict[i][<span class="number">0</span>])) / <span class="number">2</span></span><br><span class="line">    ndarray = np.pad(binary_plate[:,character_dict[i][<span class="number">0</span>]:character_dict[i][<span class="number">1</span>]], ((<span class="number">0</span>,<span class="number">0</span>), (int(padding), int(padding))), <span class="string">'constant'</span>, constant_values=(<span class="number">0</span>,<span class="number">0</span>))</span><br><span class="line">    ndarray = cv2.resize(ndarray, (<span class="number">20</span>,<span class="number">20</span>))</span><br><span class="line">    cv2.imwrite(<span class="string">'./'</span> + str(i) + <span class="string">'.png'</span>, ndarray)</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_image</span><span class="params">(path)</span>:</span></span><br><span class="line">    img = paddle.dataset.image.load_image(file=path, is_color=<span class="literal">False</span>)</span><br><span class="line">    img = img.astype(<span class="string">'float32'</span>)</span><br><span class="line">    img = img[np.newaxis, ] / <span class="number">255.0</span></span><br><span class="line">    <span class="keyword">return</span> img</span><br><span class="line"></span><br><span class="line"><span class="comment">#将标签进行转换</span></span><br><span class="line">print(<span class="string">'Label:'</span>,LABEL_temp)</span><br><span class="line">match = &#123;<span class="string">'A'</span>:<span class="string">'A'</span>,<span class="string">'B'</span>:<span class="string">'B'</span>,<span class="string">'C'</span>:<span class="string">'C'</span>,<span class="string">'D'</span>:<span class="string">'D'</span>,<span class="string">'E'</span>:<span class="string">'E'</span>,<span class="string">'F'</span>:<span class="string">'F'</span>,<span class="string">'G'</span>:<span class="string">'G'</span>,<span class="string">'H'</span>:<span class="string">'H'</span>,<span class="string">'I'</span>:<span class="string">'I'</span>,<span class="string">'J'</span>:<span class="string">'J'</span>,<span class="string">'K'</span>:<span class="string">'K'</span>,<span class="string">'L'</span>:<span class="string">'L'</span>,<span class="string">'M'</span>:<span class="string">'M'</span>,<span class="string">'N'</span>:<span class="string">'N'</span>,</span><br><span class="line">        <span class="string">'O'</span>:<span class="string">'O'</span>,<span class="string">'P'</span>:<span class="string">'P'</span>,<span class="string">'Q'</span>:<span class="string">'Q'</span>,<span class="string">'R'</span>:<span class="string">'R'</span>,<span class="string">'S'</span>:<span class="string">'S'</span>,<span class="string">'T'</span>:<span class="string">'T'</span>,<span class="string">'U'</span>:<span class="string">'U'</span>,<span class="string">'V'</span>:<span class="string">'V'</span>,<span class="string">'W'</span>:<span class="string">'W'</span>,<span class="string">'X'</span>:<span class="string">'X'</span>,<span class="string">'Y'</span>:<span class="string">'Y'</span>,<span class="string">'Z'</span>:<span class="string">'Z'</span>,</span><br><span class="line">        <span class="string">'yun'</span>:<span class="string">'云'</span>,<span class="string">'cuan'</span>:<span class="string">'川'</span>,<span class="string">'hei'</span>:<span class="string">'黑'</span>,<span class="string">'zhe'</span>:<span class="string">'浙'</span>,<span class="string">'ning'</span>:<span class="string">'宁'</span>,<span class="string">'jin'</span>:<span class="string">'津'</span>,<span class="string">'gan'</span>:<span class="string">'赣'</span>,<span class="string">'hu'</span>:<span class="string">'沪'</span>,<span class="string">'liao'</span>:<span class="string">'辽'</span>,<span class="string">'jl'</span>:<span class="string">'吉'</span>,<span class="string">'qing'</span>:<span class="string">'青'</span>,<span class="string">'zang'</span>:<span class="string">'藏'</span>,</span><br><span class="line">        <span class="string">'e1'</span>:<span class="string">'鄂'</span>,<span class="string">'meng'</span>:<span class="string">'蒙'</span>,<span class="string">'gan1'</span>:<span class="string">'甘'</span>,<span class="string">'qiong'</span>:<span class="string">'琼'</span>,<span class="string">'shan'</span>:<span class="string">'陕'</span>,<span class="string">'min'</span>:<span class="string">'闽'</span>,<span class="string">'su'</span>:<span class="string">'苏'</span>,<span class="string">'xin'</span>:<span class="string">'新'</span>,<span class="string">'wan'</span>:<span class="string">'皖'</span>,<span class="string">'jing'</span>:<span class="string">'京'</span>,<span class="string">'xiang'</span>:<span class="string">'湘'</span>,<span class="string">'gui'</span>:<span class="string">'贵'</span>,</span><br><span class="line">        <span class="string">'yu1'</span>:<span class="string">'渝'</span>,<span class="string">'yu'</span>:<span class="string">'豫'</span>,<span class="string">'ji'</span>:<span class="string">'冀'</span>,<span class="string">'yue'</span>:<span class="string">'粤'</span>,<span class="string">'gui1'</span>:<span class="string">'桂'</span>,<span class="string">'sx'</span>:<span class="string">'晋'</span>,<span class="string">'lu'</span>:<span class="string">'鲁'</span>,</span><br><span class="line">        <span class="string">'0'</span>:<span class="string">'0'</span>,<span class="string">'1'</span>:<span class="string">'1'</span>,<span class="string">'2'</span>:<span class="string">'2'</span>,<span class="string">'3'</span>:<span class="string">'3'</span>,<span class="string">'4'</span>:<span class="string">'4'</span>,<span class="string">'5'</span>:<span class="string">'5'</span>,<span class="string">'6'</span>:<span class="string">'6'</span>,<span class="string">'7'</span>:<span class="string">'7'</span>,<span class="string">'8'</span>:<span class="string">'8'</span>,<span class="string">'9'</span>:<span class="string">'9'</span>&#125;</span><br><span class="line">L = <span class="number">0</span></span><br><span class="line">LABEL =&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> V <span class="keyword">in</span> LABEL_temp.values():</span><br><span class="line">    LABEL[str(L)] = match[V]</span><br><span class="line">    L += <span class="number">1</span></span><br><span class="line">print(LABEL)</span><br><span class="line"></span><br><span class="line"><span class="comment">#构建预测动态图过程</span></span><br><span class="line"><span class="keyword">with</span> fluid.dygraph.guard():</span><br><span class="line">    model=MyLeNet()<span class="comment">#模型实例化</span></span><br><span class="line">    model_dict,_=fluid.load_dygraph(<span class="string">'MyLeNet'</span>)</span><br><span class="line">    model.load_dict(model_dict)<span class="comment">#加载模型参数</span></span><br><span class="line">    model.eval()<span class="comment">#评估模式</span></span><br><span class="line">    lab=[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">8</span>):</span><br><span class="line">        <span class="keyword">if</span> i==<span class="number">2</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        infer_imgs = []</span><br><span class="line">        infer_imgs.append(load_image(<span class="string">'./'</span> + str(i) + <span class="string">'.png'</span>))</span><br><span class="line">        infer_imgs = np.array(infer_imgs)</span><br><span class="line">        infer_imgs = fluid.dygraph.to_variable(infer_imgs)</span><br><span class="line">        result=model(infer_imgs)</span><br><span class="line">        lab.append(np.argmax(result.numpy()))</span><br><span class="line"><span class="comment"># print(lab)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">display(Image.open(<span class="string">'./车牌.png'</span>))</span><br><span class="line">print(<span class="string">'\n车牌识别结果为：'</span>,end=<span class="string">''</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(lab)):</span><br><span class="line">    print(LABEL[str(lab[i])],end=<span class="string">''</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AI/" rel="tag"># AI</a>
+          
+            <a href="/tags/百度/" rel="tag"># 百度</a>
+          
+            <a href="/tags/PaddlePaddle/" rel="tag"># PaddlePaddle</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/29/Others/EnvInit/" rel="next" title="配置各种环境">
+                <i class="fa fa-chevron-left"></i> 配置各种环境
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MzY0MS8yMDE4MA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Peng</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/yourname" title="GitHub &rarr; https://github.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#传统图像识别"><span class="nav-text">传统图像识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人工智能"><span class="nav-text">人工智能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深度学习"><span class="nav-text">深度学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积网络"><span class="nav-text">卷积网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PaddlePaddle-安装"><span class="nav-text">PaddlePaddle 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数据类型"><span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Variable"><span class="nav-text">Variable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tensor数据"><span class="nav-text">Tensor数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LoD-Tensor"><span class="nav-text">LoD Tensor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Operator"><span class="nav-text">Operator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Program"><span class="nav-text">Program</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Executor"><span class="nav-text">Executor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态图机制"><span class="nav-text">动态图机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#疫情数据可视化（爬虫，Pyecharts）"><span class="nav-text">疫情数据可视化（爬虫，Pyecharts）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#爬取数据"><span class="nav-text">爬取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#疫情地图"><span class="nav-text">疫情地图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增长曲线"><span class="nav-text">增长曲线</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#手势识别"><span class="nav-text">手势识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#车牌识别"><span class="nav-text">车牌识别</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Peng</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,255,128" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2020/03/29/GPU_ML/paddle/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '600px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+
+
+<!-- <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script> -->
+
+
+</body>
+</html>
