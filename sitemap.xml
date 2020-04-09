@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://withz.github.io/2020/04/09/BasicLanguage/ShellLanguage/</loc>
+    
+    <lastmod>2020-04-09T12:32:56.195Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://withz.github.io/2020/04/07/BasicLanguage/AdvancedC/</loc>
+    
+    <lastmod>2020-04-09T12:30:36.330Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://withz.github.io/2020/01/30/WebApp/DjangoFirst/</loc>
+    
+    <lastmod>2020-04-07T12:11:25.180Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://withz.github.io/2020/03/24/WebApp/wechatprogram/</loc>
     
     <lastmod>2020-04-07T11:59:53.221Z</lastmod>
@@ -26,13 +47,6 @@
     <loc>https://withz.github.io/2019/03/29/WebApp/GitBlogInit/</loc>
     
     <lastmod>2020-04-07T11:59:27.881Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://withz.github.io/2020/01/30/WebApp/DjangoFirst/</loc>
-    
-    <lastmod>2020-04-07T11:59:25.729Z</lastmod>
     
   </url>
   
