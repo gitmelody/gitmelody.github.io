@@ -96,22 +96,25 @@
 
 
 
-  <meta name="keywords" content="Linux,Shell">
+  <meta name="description" content="参考 动态规划动态规划问题的一般形式就是求最值，例如：最长递增子序列呀，最小编辑距离等。求解动态规划的核心问题是穷举。 动态规划三要素：  重叠子问题：需要「备忘录」或者「DP table」来优化穷举过程，避免不必要的计算。 最优子结构：子问题间必须互相独立。 状态转移方程：最困难部分，思路：明确「状态」 -&amp;gt; 定义 dp 数组/函数的含义 -&amp;gt; 明确「选择」-&amp;gt; 明确 base">
+<meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Shell">
-<meta property="og:url" content="https://withz.github.io/2020/04/09/BasicLanguage/ShellLanguage/index.html">
+<meta property="og:title" content="算法">
+<meta property="og:url" content="https://withz.github.io/2020/04/11/BasicLanguage/algorithm/index.html">
 <meta property="og:site_name" content="Withz">
+<meta property="og:description" content="参考 动态规划动态规划问题的一般形式就是求最值，例如：最长递增子序列呀，最小编辑距离等。求解动态规划的核心问题是穷举。 动态规划三要素：  重叠子问题：需要「备忘录」或者「DP table」来优化穷举过程，避免不必要的计算。 最优子结构：子问题间必须互相独立。 状态转移方程：最困难部分，思路：明确「状态」 -&amp;gt; 定义 dp 数组/函数的含义 -&amp;gt; 明确「选择」-&amp;gt; 明确 base">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-09T12:32:56.195Z">
+<meta property="og:updated_time" content="2020-05-21T03:00:58.568Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Shell">
+<meta name="twitter:title" content="算法">
+<meta name="twitter:description" content="参考 动态规划动态规划问题的一般形式就是求最值，例如：最长递增子序列呀，最小编辑距离等。求解动态规划的核心问题是穷举。 动态规划三要素：  重叠子问题：需要「备忘录」或者「DP table」来优化穷举过程，避免不必要的计算。 最优子结构：子问题间必须互相独立。 状态转移方程：最困难部分，思路：明确「状态」 -&amp;gt; 定义 dp 数组/函数的含义 -&amp;gt; 明确「选择」-&amp;gt; 明确 base">
 
 
 
 
 
 
-  <link rel="canonical" href="https://withz.github.io/2020/04/09/BasicLanguage/ShellLanguage/">
+  <link rel="canonical" href="https://withz.github.io/2020/04/11/BasicLanguage/algorithm/">
 
 
 
@@ -121,7 +124,7 @@
   };
 </script>
 
-  <title>Shell | Withz</title>
+  <title>算法 | Withz</title>
   
 
 
@@ -238,7 +241,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">47</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">49</span></a>
 
   </li>
         
@@ -276,7 +279,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">25</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">26</span></a>
 
   </li>
 
@@ -366,7 +369,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2020/04/09/BasicLanguage/ShellLanguage/">
+    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2020/04/11/BasicLanguage/algorithm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Peng">
@@ -383,7 +386,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Shell
+          <h1 class="post-title" itemprop="name headline">算法
 
               
             
@@ -409,12 +412,24 @@
                 
               
 
-              <time title="创建时间：2020-04-09 20:32:09 / 修改时间：20:32:56" itemprop="dateCreated datePublished" datetime="2020-04-09T20:32:09+08:00">2020-04-09</time>
+              <time title="创建时间：2020-04-11 17:14:47" itemprop="dateCreated datePublished" datetime="2020-04-11T17:14:47+08:00">2020-04-11</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-05-21 11:00:58" itemprop="dateModified" datetime="2020-05-21T11:00:58+08:00">2020-05-21</time>
               
             
           </span>
@@ -473,7 +488,61 @@
       
 
       
-        
+        <p><a href="https://labuladong.gitbook.io/algo/" target="_blank" rel="noopener">参考</a></p>
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>动态规划问题的一般形式就是求最值，例如：最长递增子序列呀，最小编辑距离等。求解动态规划的核心问题是穷举。</p>
+<p>动态规划三要素：</p>
+<ul>
+<li>重叠子问题：需要「备忘录」或者「DP table」来优化穷举过程，避免不必要的计算。</li>
+<li>最优子结构：子问题间必须互相独立。</li>
+<li>状态转移方程：最困难部分，思路：明确「状态」 -&gt; 定义 dp 数组/函数的含义 -&gt; 明确「选择」-&gt; 明确 base case。</li>
+</ul>
+<p>备忘录：一般使用数组，也可以使用哈希表。<br>DP table：采用自底向上的方法，去除递归，改为循环。<br>进一步优化：采用自底向上方法，还可以节省空间，去除不再需要的历史状态。</p>
+<p>时间复杂度计算：子问题总数 * 每个子问题的时间</p>
+<p>解题思路</p>
+<ol>
+<li>首先确定子问题以及子问题是否相互独立。</li>
+<li>列出状态转义方程。<ol>
+<li>确定状态：原问题和子问题中变换的变量。</li>
+<li>确定dp函数：被递归调用的函数（自变量，因变量）。</li>
+<li>确定选择状态的条件</li>
+<li>明确最小子问题base case</li>
+</ol>
+</li>
+<li>解除重复子问题<ol>
+<li>使用备忘录</li>
+<li>使用dp table，定义dp数组（自变量，因变量）</li>
+</ol>
+</li>
+</ol>
+<p>最优子结构：并不是动态规划问题专有的。也就是说，很多问题其实都具有最优子结构，只是其中大部分不具有重叠子问题。</p>
+<p>如果问题中没有最优子结构，那么久改造它，让它有。找最优子结构的过程，其实就是证明状态转移方程正确性的过程，方程符合最优子结构就可以写暴力解了，写出暴力解就可以看出有没有重叠子问题了，有则优化，无则 OK。</p>
+<h2 id="回溯"><a href="#回溯" class="headerlink" title="回溯"></a>回溯</h2><p>解决一个回溯问题，实际上就是一个决策树的遍历过程。不像动态规划存在重叠子问题可以优化，回溯算法就是纯暴力穷举，复杂度一般都很高。</p>
+<ul>
+<li>路径：也就是已经做出的选择。</li>
+<li>选择列表：也就是你当前可以做的选择。</li>
+<li>结束条件：也就是到达决策树底层，无法再做选择的条件。</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">result = []</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">backtrack</span><span class="params">(路径, 选择列表)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> 满足结束条件:</span><br><span class="line">        result.add(路径)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> 选择 <span class="keyword">in</span> 选择列表:</span><br><span class="line">        做选择</span><br><span class="line">        backtrack(路径, 选择列表)</span><br><span class="line">        撤销选择</span><br></pre></td></tr></table></figure>
+<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><p>二分查找：思路很简单，细节是魔鬼。<br>为了能够清晰展示所有细节，尽量用<code>else if</code>而不是<code>else</code><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>, right = ...;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(...) &#123;</span><br><span class="line">        <span class="comment">// 这样是为了防止数值过大导致溢出</span></span><br><span class="line">        <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">            left = ...</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target) &#123;</span><br><span class="line">            right = ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ...;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>一般的查找一个数（没有重复元素）<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>; </span><br><span class="line">    <span class="keyword">int</span> right = nums.length - <span class="number">1</span>; <span class="comment">// 注意，是最后一个元素的索引，用的是闭区间 [x, y]</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(left &lt;= right) &#123; <span class="comment">// right = nums.length - 1 所有用 &lt;=</span></span><br><span class="line">        <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] == target)</span><br><span class="line">            <span class="keyword">return</span> mid; </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target)</span><br><span class="line">            left = mid + <span class="number">1</span>; <span class="comment">// 注意</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target)</span><br><span class="line">            right = mid - <span class="number">1</span>; <span class="comment">// 注意</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 跳出循环的条件 left == right + 1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>A: <code>while(left &lt; right)</code> 的终止条件是 <code>left == right</code>，这时候区间<code>[x, x]</code>被漏掉，要在最后单独判断该区间。否则就用<code>while(left &lt;= right)</code>作为终止条件。</p>
+<p>B: <code>left = mid + 1</code>，<code>right = mid - 1</code>，由于<code>mid</code>已经被搜索过了，因此在新的区间中去掉<code>mid</code>。</p>
+<p>寻找左侧边界的二分搜索<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">left_bound</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> right = nums.length; <span class="comment">// 注意，用了左闭右开区间 [x, y)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123; <span class="comment">// 注意，结束条件是 [x, x)</span></span><br><span class="line">        <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums[mid] == target) &#123; <span class="comment">// 当找到target时，不会立即退出，而是继续缩小搜索范围</span></span><br><span class="line">            right = mid;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">            left = mid + <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target) &#123;</span><br><span class="line">            right = mid; <span class="comment">// 注意，由于左闭右开区间，取左半区间时已经消除mid了</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> left; <span class="comment">// 结果含义：比target小的数有几个</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 因此也可以是</span></span><br><span class="line">    <span class="comment">// target 比所有数都大</span></span><br><span class="line">    <span class="keyword">if</span> (left == nums.length) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="comment">// 类似之前算法的处理方式</span></span><br><span class="line">    <span class="keyword">return</span> nums[left] == target ? left : <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">left_bound</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>, right = nums.length - <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 搜索区间为 [left, right]</span></span><br><span class="line">    <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">            <span class="comment">// 搜索区间变为 [mid+1, right]</span></span><br><span class="line">            left = mid + <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target) &#123;</span><br><span class="line">            <span class="comment">// 搜索区间变为 [left, mid-1]</span></span><br><span class="line">            right = mid - <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">            <span class="comment">// 收缩右侧边界</span></span><br><span class="line">            right = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果使用了闭区间，那么在得到结果区间[x, x]后，不会返回，而是计算了一次 right = mid - 1 变成了[x, x-1]</span></span><br><span class="line">    <span class="comment">// 由于 while 的退出条件是 left == right + 1，当 target 比 nums 中所有元素都大时，会存在索引越界</span></span><br><span class="line">    <span class="comment">// 检查出界情况</span></span><br><span class="line">    <span class="keyword">if</span> (left &gt;= nums.length || nums[left] != target)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h2><p><code>unordered_map</code> 就是哈希表（字典），它的一个方法 <code>count(key)</code> 相当于 <code>containsKey(key)</code> 可以判断键 key 是否存在。可以使用方括号访问键对应的值 <code>map[key]</code>。需要注意的是，如果该 key 不存在，C++ 会自动创建这个 key，并把 <code>map[key]</code> 赋值为 <code>0</code>。</p>
+<p>滑动窗口：</p>
+<ol>
+<li>初始化 left = right = 0，把索引闭区间 [left, right] 称为一个「窗口」。</li>
+<li>不断地增加 right 指针扩大窗口 [left, right]，直到窗口中的字符串符合要求。</li>
+<li>我们停止增加 right，转而不断增加 left 指针缩小窗口 [left, right]，直到窗口中的字符串不再符合要求。</li>
+<li>重复第 2 和第 3 步，直到 right 到达字符串 S 的尽头。</li>
+</ol>
+<p>总结：先移动右指针找到可行解，再移动左指针优化可行解。最后找到所有优化的可行解。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (right &lt; s.size()) &#123;</span><br><span class="line">    <span class="comment">// window 滑动窗口，采用哈希表，用于判断是否含有某字符</span></span><br><span class="line">    window.add(s[right]);</span><br><span class="line">    right++;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (valid) &#123;</span><br><span class="line">        window.remove(s[left]);</span><br><span class="line">        left++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>快慢指针：<br>判定链表中是否含有环：如果有环，那么快指针总会碰到慢指针。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">boolean <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode fast, slow;</span><br><span class="line">    fast = slow = head;</span><br><span class="line">    <span class="keyword">while</span> (fast != null &amp;&amp; fast.next != null) &#123;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">        slow = slow.next;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (fast == slow) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>找到环：当快慢指针相遇时，让其中任一个指针指向头节点，然后让它俩以相同速度前进，再次相遇时所在的节点位置就是环开始的位置。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 判断有环</span></span><br><span class="line">    ListNode fast, slow;</span><br><span class="line">    fast = slow = head;</span><br><span class="line">    <span class="keyword">while</span> (fast != null &amp;&amp; fast.next != null) &#123;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">        <span class="keyword">if</span> (fast == slow) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 上面的代码类似 hasCycle 函数</span></span><br><span class="line">    slow = head;</span><br><span class="line">    <span class="keyword">while</span> (slow != fast) &#123;</span><br><span class="line">        fast = fast.next;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> slow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>找链表中点；<br>找链表倒数第K个元素。</p>
+<p>左右指针：一般初始化为 left = 0, right = nums.length - 1 。<br>二分查找；<br>两数之和；<br>反转数组；<br>滑动窗口。</p>
+
       
     </div>
 
@@ -496,9 +565,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag"># Linux</a>
-          
-            <a href="/tags/Shell/" rel="tag"># Shell</a>
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
           
         </div>
       
@@ -520,6 +587,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/23/Hardware_IOT/raspberryNew/" rel="prev" title="raspberryNew">
+                raspberryNew <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -568,8 +639,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -584,7 +664,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -726,7 +806,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">47</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -768,6 +852,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#动态规划"><span class="nav-text">动态规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回溯"><span class="nav-text">回溯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分查找"><span class="nav-text">二分查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双指针"><span class="nav-text">双指针</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -955,7 +1056,7 @@
   
     <script>
   window.livereOptions = {
-    refer: '2020/04/09/BasicLanguage/ShellLanguage/'
+    refer: '2020/04/11/BasicLanguage/algorithm/'
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];
