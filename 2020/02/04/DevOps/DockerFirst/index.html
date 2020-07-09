@@ -112,7 +112,7 @@
 <meta property="og:image" content="https://withz.github.io/2020/02/04/DevOps/DockerFirst/k8s_node.jpg">
 <meta property="og:image" content="https://withz.github.io/2020/02/04/DevOps/DockerFirst/devops.png">
 <meta property="og:image" content="https://withz.github.io/2020/02/04/DevOps/DockerFirst/vagrant_search.jpg">
-<meta property="og:updated_time" content="2020-07-08T09:36:42.044Z">
+<meta property="og:updated_time" content="2020-07-09T03:04:54.776Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker">
 <meta name="twitter:description" content="Docker 准备工作Docker PlaygroundDocker Playground 这是一个不用下载的，在线就可以用的Docker。使用需要使用Docker的账号密码，可以去注册一个。 下载 DockerDocker分为社区版和企业版。这里主要介绍社区版。 进入官方DockerToolbox下载页面，按照安装教程安装Docker Toolbox。 国内阿里云[DockerToolBox下载">
@@ -438,7 +438,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-07-08 17:36:42" itemprop="dateModified" datetime="2020-07-08T17:36:42+08:00">2020-07-08</time>
+                <time title="修改时间：2020-07-09 11:04:54" itemprop="dateModified" datetime="2020-07-09T11:04:54+08:00">2020-07-09</time>
               
             
           </span>
@@ -539,6 +539,11 @@
 <p>配置<code>VS Code</code>远程开发，修改<code>/lib/systemd/system/docker.service</code>文件<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecStart=/usr/bin/dockerd -H unix:///var/run/docker.sock -H tcp://0.0.0.0:2375</span><br></pre></td></tr></table></figure></p>
 <p>再重新加载Docker<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload  <span class="comment"># 加载阿里云加速镜像</span></span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure></p>
 <p><code>VS Code</code>安装<code>docker</code>插件，打开配置，输入<code>docker:host</code>，编辑<code>host</code>。</p>
+<p>下载<a href="https://github.com/StefanScherer/docker-cli-builder/releases/" target="_blank" rel="noopener">Docker Cli</a>，加入到环境变量中。</p>
+<p>在<code>任务管理器-&gt;服务-&gt;右键-&gt;打开服务</code>中启动<code>SSH Agent</code>服务（OpenSSH Authentication Agent）。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get-service ssh*  <span class="comment"># 查看服务状态</span></span><br></pre></td></tr></table></figure></p>
+<p>在本地主机上配置SSH，生成公钥<code>id_rsa.pub</code>和私钥<code>id_rsa</code>。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure></p>
+<p>公钥放到远程主机上，追加到<code>~/.ssh/authorized_keys</code>文件中。<br>本地执行命令，添加私钥。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add id_rsa</span><br></pre></td></tr></table></figure></p>
+<p>配置本地Docker的Context<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker context create context_name --docker <span class="string">"host=ssh://user@host"</span></span><br><span class="line">docker context use context_name</span><br><span class="line">docker info  <span class="comment"># 测试结果</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="GPU-支持"><a href="#GPU-支持" class="headerlink" title="GPU 支持"></a>GPU 支持</h3><p><a href="https://github.com/NVIDIA/nvidia-docker" target="_blank" rel="noopener">NVIDIA Docker</a></p>
 <p>如果要安装Docker的GPU支持，可以下载该模块。实现GPU支持后，可以使用Tensorflow-GPU的Docker。</p>
 <h2 id="Docker-原理与架构"><a href="#Docker-原理与架构" class="headerlink" title="Docker 原理与架构"></a>Docker 原理与架构</h2><p>Docker 是一个平台，它通过Docker Engine把底层的设备与上层应用隔离开。Docker Engine是一个后台进程，即是一个REST API Server，它还有一个CLI接口（docker）。</p>
