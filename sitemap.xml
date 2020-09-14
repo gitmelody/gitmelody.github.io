@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://withz.github.io/2020/09/13/BasicLanguage/CPPSTL/</loc>
+    
+    <lastmod>2020-09-14T13:44:38.558Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://withz.github.io/2020/02/14/GPU_ML/cudaFirst/</loc>
+    
+    <lastmod>2020-08-19T01:53:01.565Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://withz.github.io/2020/03/29/Others/EnvInit/</loc>
     
     <lastmod>2020-07-24T09:10:40.123Z</lastmod>
@@ -72,14 +86,14 @@
   </url>
   
   <url>
-    <loc>https://withz.github.io/2020/01/30/WebApp/DjangoFirst/</loc>
+    <loc>https://withz.github.io/2019/03/29/WebApp/GitBlogInit/</loc>
     
     <lastmod>2020-05-21T03:01:00.618Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://withz.github.io/2019/03/29/WebApp/GitBlogInit/</loc>
+    <loc>https://withz.github.io/2020/01/30/WebApp/DjangoFirst/</loc>
     
     <lastmod>2020-05-21T03:01:00.618Z</lastmod>
     
@@ -93,7 +107,14 @@
   </url>
   
   <url>
-    <loc>https://withz.github.io/2020/02/04/Hardware_IOT/ALI-IOT/</loc>
+    <loc>https://withz.github.io/2020/02/23/GPU_ML/MachineLearnFirst/</loc>
+    
+    <lastmod>2020-05-21T03:00:58.569Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://withz.github.io/2020/03/29/GPU_ML/paddle/</loc>
     
     <lastmod>2020-05-21T03:00:58.569Z</lastmod>
     
@@ -114,6 +135,13 @@
   </url>
   
   <url>
+    <loc>https://withz.github.io/2020/02/04/Hardware_IOT/ALI-IOT/</loc>
+    
+    <lastmod>2020-05-21T03:00:58.569Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://withz.github.io/2020/02/03/WebApp/RedisFirst/</loc>
     
     <lastmod>2020-05-21T03:00:58.569Z</lastmod>
@@ -128,7 +156,7 @@
   </url>
   
   <url>
-    <loc>https://withz.github.io/2020/02/23/GPU_ML/MachineLearnFirst/</loc>
+    <loc>https://withz.github.io/2020/02/19/BasicLanguage/JavaScriptFirst/</loc>
     
     <lastmod>2020-05-21T03:00:58.569Z</lastmod>
     
@@ -136,27 +164,6 @@
   
   <url>
     <loc>https://withz.github.io/2020/01/14/WebApp/WebInfoA/</loc>
-    
-    <lastmod>2020-05-21T03:00:58.569Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://withz.github.io/2020/03/29/GPU_ML/paddle/</loc>
-    
-    <lastmod>2020-05-21T03:00:58.569Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://withz.github.io/2020/02/14/GPU_ML/cudaFirst/</loc>
-    
-    <lastmod>2020-05-21T03:00:58.569Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://withz.github.io/2020/02/19/BasicLanguage/JavaScriptFirst/</loc>
     
     <lastmod>2020-05-21T03:00:58.569Z</lastmod>
     
