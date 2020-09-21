@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="Withz">
 <meta property="og:description" content="标准库STL 六大部件(Components)容器：占用内存，存放数据分配器：为容器分配内存，管理内存算法：关于容器的通用算法迭代器：算法访问容器的桥梁适配器：迭代器，容器，仿函数适配器，对他们做转换仿函数：给自定义类准备的基本方法 容器ArrayVectorDequeList  双向链表，含空结点（end指向）Forward-ListSlist 非标准 等同于FList &amp;lt;ext\slis">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-14T13:44:38.558Z">
+<meta property="og:updated_time" content="2020-09-15T01:10:08.657Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ STL">
 <meta name="twitter:description" content="标准库STL 六大部件(Components)容器：占用内存，存放数据分配器：为容器分配内存，管理内存算法：关于容器的通用算法迭代器：算法访问容器的桥梁适配器：迭代器，容器，仿函数适配器，对他们做转换仿函数：给自定义类准备的基本方法 容器ArrayVectorDequeList  双向链表，含空结点（end指向）Forward-ListSlist 非标准 等同于FList &amp;lt;ext\slis">
@@ -278,7 +278,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">28</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">29</span></a>
 
   </li>
 
@@ -428,7 +428,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-09-14 21:44:38" itemprop="dateModified" datetime="2020-09-14T21:44:38+08:00">2020-09-14</time>
+                <time title="修改时间：2020-09-15 09:10:08" itemprop="dateModified" datetime="2020-09-15T09:10:08+08:00">2020-09-15</time>
               
             
           </span>
@@ -494,6 +494,8 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">array</span>&lt;<span class="keyword">int</span>, 5&gt; arr&#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec&#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">list</span>&lt;<span class="keyword">int</span>&gt; li&#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line">__gnu_cxx::slist&lt;<span class="keyword">int</span>&gt; sl&#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">multiset</span>&lt;<span class="built_in">string</span>&gt;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">multimap</span>&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">unordered_multiset</span>&lt;<span class="built_in">string</span>&gt;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">unordered_multimap</span>&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">set</span>&lt;<span class="built_in">string</span>&gt;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt;;</span><br><span class="line"><span class="built_in">std</span>::hash_set</span><br><span class="line"><span class="built_in">std</span>::hash_set</span><br><span class="line"><span class="built_in">std</span>::hash_multiset</span><br><span class="line"><span class="built_in">std</span>::hash_multimap</span><br></pre></td></tr></table></figure>
 <p>复合关系：<br>set/map 底层是 红黑树。<br>priority_queue 底层是 heap。<br>heap 底层是 vector。<br>stack/queue 底层是 deque。<br>hash_xxx 底层是hashtable。</p>
 <h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><p>不能原地扩充，必须复制。<br>容量不足时，将2倍扩充。<br>包含3个指针：数据开始，数据结尾，存储空间结尾。<br>由于扩充时进行了拷贝，因此<strong>会大量调用拷贝构造函数和析构函数</strong>。</p>
+<h3 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h3><p>没有构造和析构函数。没有用malloc。模拟了原生的数组。</p>
+<h3 id="ForwordList"><a href="#ForwordList" class="headerlink" title="ForwordList"></a>ForwordList</h3><p>含有头节点。</p>
 <h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p>使用<code>双向链表迭代器</code>，底层是双向链表。双向链表中有一个空结点（end指向）。<br>GNU2.9中，内部包含一个结点指针，结点中包含前后结点的指针。<br>GNU4.9中，改为更复杂的机制，List基类包含2个指针，子类继承后加入结点数据。</p>
 <h2 id="分配器"><a href="#分配器" class="headerlink" title="分配器"></a>分配器</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory&gt;  // 标准分配器 std::allocator</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ext\array_allocator.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ext\mt_allocator.h&gt;    // 多线程 分配器</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ext\debug_allocator.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ext\pool_allocator.h&gt;  // 内存池 分配器</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ext\bitmap_allocator.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ext\malloc_allocator.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ext\new_allocator.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">list</span>&lt;<span class="built_in">string</span>, __gnu_cxx::__pool_alloc&lt;<span class="built_in">string</span>&gt;&gt; c;</span><br></pre></td></tr></table></figure>
 <h3 id="New-与-Malloc"><a href="#New-与-Malloc" class="headerlink" title="New 与 Malloc"></a>New 与 Malloc</h3><p>allocate 底层调用 operator new。<br>deallocate 底层调用 delete。<br>new 底层调用 malloc。<br>delete 底层调用 free。<br>malloc 不只分配了需要的内存，还有Debug信息，填充字节，上下边界符号等。<br>在VC6+，BC5中，allocator 中只使用new和delete，没有其他特殊设计。也就是，分配的只有指针，外部开销巨大（每个指针还要malloc，而每个malloc自带信息就已经远大于指针的大小了）。<br>在GNU2.9中，并未使用STL标准规定的分配器（&lt;defalloc.h&gt;没有特殊设计），而使用的是alloc分配器&lt;stl_alloc.h&gt;。这种优势在于，外部开销小（malloc次数很少）。容器的元素大小会被调整到8的倍数，然后malloc一大块内存，再进行切分。<br>在GNU4.9中，使用了<code>__gnu_cxx::new_allocator</code>，也就是VC6+一样的分配器。而原来的分配器改为__pool_alloc。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>* p = allocator&lt;<span class="keyword">int</span>&gt;().allocate(<span class="number">512</span>, (<span class="keyword">int</span>*)<span class="number">0</span>);</span><br><span class="line">allocator&lt;<span class="keyword">int</span>&gt;().deallocate(p, <span class="number">512</span>);</span><br></pre></td></tr></table></figure></p>
@@ -550,6 +552,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/20/BasicLanguage/KaliLearn/" rel="prev" title="Kali 学习">
+                Kali 学习 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -623,7 +629,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -820,7 +826,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#标准库"><span class="nav-text">标准库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容器"><span class="nav-text">容器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vector"><span class="nav-text">Vector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List"><span class="nav-text">List</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分配器"><span class="nav-text">分配器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#New-与-Malloc"><span class="nav-text">New 与 Malloc</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器"><span class="nav-text">迭代器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#比较大小"><span class="nav-text">比较大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序"><span class="nav-text">排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器-1"><span class="nav-text">迭代器</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#标准库"><span class="nav-text">标准库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容器"><span class="nav-text">容器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vector"><span class="nav-text">Vector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array"><span class="nav-text">Array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ForwordList"><span class="nav-text">ForwordList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List"><span class="nav-text">List</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分配器"><span class="nav-text">分配器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#New-与-Malloc"><span class="nav-text">New 与 Malloc</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器"><span class="nav-text">迭代器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#比较大小"><span class="nav-text">比较大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序"><span class="nav-text">排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器-1"><span class="nav-text">迭代器</span></a></li></ol></div>
             
 
           </div>
