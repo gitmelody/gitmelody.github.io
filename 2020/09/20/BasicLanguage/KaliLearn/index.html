@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="综述网络安全：要求数据在互联网上：真实，可靠，完整，可控的传输与存储。 Kali 渗透测试标准PETS：  前期交互，获取范围，一次一个系统 情报收集，安全防护机制 威胁建模 漏洞分析 渗透攻击 后渗透测试 报告  Linux 扫描与防御主机扫描netstat 查看端口123-l # 正在监听的端口-t # TCP 协议-n # 不解析主机名 禁用 ICMP 连接1sysctl -w net.ip">
+  <meta name="description" content="综述网络安全：要求数据在互联网上：真实，可靠，完整，可控的传输与存储。 工具WindowsIDA快捷键：  Space 切换 列表 图形 视图 F5 切换 伪代码 Tab 补全命令 双击 跳转到定义 X 跳转到引用 G 跳转到地址 Ctrl + T 跳转到上一级 Ctrl + E 查看函数列表 Ctrl + S 跳转到段 / 搜索 Alt + T 打开文本搜索对话框 Alt + I 搜索立即数 A">
 <meta name="keywords" content="Kali,汇编,逆向">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络安全学习">
 <meta property="og:url" content="https://withz.github.io/2020/09/20/BasicLanguage/KaliLearn/index.html">
 <meta property="og:site_name" content="Withz">
-<meta property="og:description" content="综述网络安全：要求数据在互联网上：真实，可靠，完整，可控的传输与存储。 Kali 渗透测试标准PETS：  前期交互，获取范围，一次一个系统 情报收集，安全防护机制 威胁建模 漏洞分析 渗透攻击 后渗透测试 报告  Linux 扫描与防御主机扫描netstat 查看端口123-l # 正在监听的端口-t # TCP 协议-n # 不解析主机名 禁用 ICMP 连接1sysctl -w net.ip">
+<meta property="og:description" content="综述网络安全：要求数据在互联网上：真实，可靠，完整，可控的传输与存储。 工具WindowsIDA快捷键：  Space 切换 列表 图形 视图 F5 切换 伪代码 Tab 补全命令 双击 跳转到定义 X 跳转到引用 G 跳转到地址 Ctrl + T 跳转到上一级 Ctrl + E 查看函数列表 Ctrl + S 跳转到段 / 搜索 Alt + T 打开文本搜索对话框 Alt + I 搜索立即数 A">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-10T03:31:28.920Z">
+<meta property="og:updated_time" content="2020-10-10T14:58:05.246Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络安全学习">
-<meta name="twitter:description" content="综述网络安全：要求数据在互联网上：真实，可靠，完整，可控的传输与存储。 Kali 渗透测试标准PETS：  前期交互，获取范围，一次一个系统 情报收集，安全防护机制 威胁建模 漏洞分析 渗透攻击 后渗透测试 报告  Linux 扫描与防御主机扫描netstat 查看端口123-l # 正在监听的端口-t # TCP 协议-n # 不解析主机名 禁用 ICMP 连接1sysctl -w net.ip">
+<meta name="twitter:description" content="综述网络安全：要求数据在互联网上：真实，可靠，完整，可控的传输与存储。 工具WindowsIDA快捷键：  Space 切换 列表 图形 视图 F5 切换 伪代码 Tab 补全命令 双击 跳转到定义 X 跳转到引用 G 跳转到地址 Ctrl + T 跳转到上一级 Ctrl + E 查看函数列表 Ctrl + S 跳转到段 / 搜索 Alt + T 打开文本搜索对话框 Alt + I 搜索立即数 A">
 
 
 
@@ -429,7 +429,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-10-10 11:31:28" itemprop="dateModified" datetime="2020-10-10T11:31:28+08:00">2020-10-10</time>
+                <time title="修改时间：2020-10-10 22:58:05" itemprop="dateModified" datetime="2020-10-10T22:58:05+08:00">2020-10-10</time>
               
             
           </span>
@@ -489,7 +489,127 @@
 
       
         <h1 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h1><p>网络安全：要求数据在互联网上：真实，可靠，完整，可控的传输与存储。</p>
-<h1 id="Kali-渗透测试"><a href="#Kali-渗透测试" class="headerlink" title="Kali 渗透测试"></a>Kali 渗透测试</h1><h2 id="标准"><a href="#标准" class="headerlink" title="标准"></a>标准</h2><p><a href="http://www.pentest-standard.org" target="_blank" rel="noopener">PETS</a>：</p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><h3 id="IDA"><a href="#IDA" class="headerlink" title="IDA"></a>IDA</h3><p>快捷键：</p>
+<ul>
+<li>Space 切换 列表 图形 视图</li>
+<li>F5 切换 伪代码</li>
+<li>Tab 补全命令</li>
+<li>双击 跳转到定义</li>
+<li>X 跳转到引用</li>
+<li>G 跳转到地址</li>
+<li>Ctrl + T 跳转到上一级</li>
+<li>Ctrl + E 查看函数列表</li>
+<li>Ctrl + S 跳转到段 / 搜索</li>
+<li>Alt + T 打开文本搜索对话框</li>
+<li>Alt + I 搜索立即数</li>
+<li>Alt + B 搜索二进制</li>
+<li><p>Shift + F12 打开字符串窗口</p>
+</li>
+<li><p>Alt + M 添加书签</p>
+</li>
+<li><p>Ctrl + M 列出所有书签</p>
+</li>
+<li><p>Ctrl + Alt + B 列出断点列表</p>
+</li>
+<li>F7 单步进入</li>
+<li>F8 单步跳过</li>
+<li>Ctrl + F7 运行到函数返回地址</li>
+<li><p>F4 运行到光标处</p>
+</li>
+<li><p>R ASCII 数字 切换显示</p>
+</li>
+<li><p>H 十进制 十六进制 切换显示</p>
+</li>
+<li><p><code>;</code> 注释 交叉参考处显示</p>
+</li>
+<li><code>:</code> 注释 只在该处显示</li>
+<li><code>-/+</code> 合并/展开 可视化视图</li>
+<li><p>Ctrl + Enter 下一项</p>
+</li>
+<li><p>N 重命名</p>
+</li>
+<li>Y 修改 函数签名 或 变量类型</li>
+<li>D 数据类型转化 byte word dword qword</li>
+<li><code>*</code> 转化 变量 为 数组</li>
+<li>Alt + * 设置数组大小</li>
+<li>A 转化为 字符串首地址</li>
+<li>Alt + A 设置字符串编码格式</li>
+<li>Shift + S 创建结构体</li>
+</ul>
+<h3 id="OD"><a href="#OD" class="headerlink" title="OD"></a>OD</h3><p>快捷键：</p>
+<ul>
+<li>Ctrl + F2 重启程序</li>
+<li>Alt + F2 关闭程序</li>
+<li>F3 打开程序</li>
+</ul>
+<ul>
+<li>Alt + F5 OD总在最前</li>
+<li>Alt + B 断点窗口</li>
+<li>Alt + C CPU窗口</li>
+<li>Alt + E 模块列表</li>
+<li>Alt + K 调用栈</li>
+<li>Alt + L 日志</li>
+<li>Alt + M 内存</li>
+<li>Alt + O 选项</li>
+<li>Alt + X 关闭 OD</li>
+<li>Ctrl + P 补丁窗口</li>
+<li>Ctrl + T RUN 对话框</li>
+<li><p>F10 打开快捷菜单</p>
+</li>
+<li><p>Enter 将当前命令添加到历史</p>
+</li>
+<li>Backspace 移除该部分的自动分析信息</li>
+<li><p>Alt + Backspace 撤销</p>
+</li>
+<li><p>Ctrl + A 分析当前代码</p>
+</li>
+<li>Ctrl + B 二进制搜索</li>
+<li>Ctrl + C 复制</li>
+<li>Ctrl + E 二进制编辑</li>
+<li>Ctrl + F 命令搜索</li>
+<li>Ctrl + G 跳转到地址</li>
+<li>Ctrl + J 列出相关的调用和跳转</li>
+<li>Ctrl + K 查看调用树</li>
+<li>Ctrl + L 搜索下一个</li>
+<li>Ctrl + N 打开名称列表</li>
+<li>Ctrl + O 扫描Object</li>
+<li>Ctrl + R 搜索所选命令</li>
+<li>Ctrl + S 命令搜索</li>
+<li><p>Space 修改命令</p>
+</li>
+<li><p>F2 切换断点</p>
+</li>
+<li>F4 执行到这一行</li>
+<li>Shift + F4 设置记录断点</li>
+<li>F7 单步进入</li>
+<li>F8 单步跳过</li>
+<li>F9 运行到断点</li>
+<li>Alt + F9 执行到返回用户代码段</li>
+<li>F12 停止执行</li>
+<li>Esc 停止自动跟踪</li>
+</ul>
+<p>命令插件：</p>
+<ul>
+<li>calc 判断表达式</li>
+<li>watch 监视表达式</li>
+<li>at 跳转到地址</li>
+<li>orig 反汇编与EIP</li>
+<li>dump 转存</li>
+<li>da 转存为反汇编</li>
+<li>db 16进制转存</li>
+<li>dc ASCII 转存</li>
+<li>dd 存入堆栈</li>
+<li>du unicode 转存</li>
+<li>dw word 转存</li>
+<li>bp 下断点</li>
+<li>bpd 清除全部调用中的断点</li>
+<li>bc 清除断点</li>
+<li>brk 查看断点窗口</li>
+<li>opt 打开选项设置窗口</li>
+<li>rst 重新运行当前程序</li>
+<li>help 查看 API 函数的帮助</li>
+</ul>
+<h2 id="Kali"><a href="#Kali" class="headerlink" title="Kali"></a>Kali</h2><h3 id="GDB"><a href="#GDB" class="headerlink" title="GDB"></a>GDB</h3><h3 id="PWNDGB"><a href="#PWNDGB" class="headerlink" title="PWNDGB"></a>PWNDGB</h3><h1 id="Kali-渗透测试"><a href="#Kali-渗透测试" class="headerlink" title="Kali 渗透测试"></a>Kali 渗透测试</h1><h2 id="标准"><a href="#标准" class="headerlink" title="标准"></a>标准</h2><p><a href="http://www.pentest-standard.org" target="_blank" rel="noopener">PETS</a>：</p>
 <ul>
 <li>前期交互，获取范围，一次一个系统</li>
 <li>情报收集，安全防护机制</li>
@@ -516,7 +636,10 @@
 <h2 id="攻击防御"><a href="#攻击防御" class="headerlink" title="攻击防御"></a>攻击防御</h2><p>攻击者伪造源IP，发送SYN包，耗尽目标机器资源。<br>防御方式：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方式1：设置重置次数，默认都是5次</span></span><br><span class="line">sysctl -w net.ipv4.tcp_synack_retries=3</span><br><span class="line">sysctl -w net.ipv4.tcp_syn_retries=3</span><br><span class="line"><span class="comment"># 方式2：设置SYN Cookies</span></span><br><span class="line">sysctl -w net.ipv4.tcp_syncookies=1</span><br><span class="line"><span class="comment"># 方式3：增大backlog队列（保存SYN请求的缓冲区）</span></span><br><span class="line">sysctl -w net.ipv4.tcp_max_syn_backlog=2048</span><br></pre></td></tr></table></figure></p>
 <p>关闭ICMP：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -w net.ipv4.icmp_echo_ignore_all=1</span><br></pre></td></tr></table></figure></p>
 <p>设置IP Tables防止扫描。</p>
-<h2 id="IP-Tables"><a href="#IP-Tables" class="headerlink" title="IP Tables"></a>IP Tables</h2><h1 id="Web-漏洞"><a href="#Web-漏洞" class="headerlink" title="Web 漏洞"></a>Web 漏洞</h1><h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><p>跨站脚本攻击：通过在网站中提交含可执行代码的内容，被其他用户访问的时候执行。</p>
+<h2 id="IP-Tables"><a href="#IP-Tables" class="headerlink" title="IP Tables"></a>IP Tables</h2><h1 id="ASLR"><a href="#ASLR" class="headerlink" title="ASLR"></a>ASLR</h1><p>ASLR（Address space layout randomization）是一种针对缓冲区溢出的安全保护技术，通过对堆、栈、共享库映射等线性区布局的随机化，通过增加攻击者预测目的地址的难度，防止攻击者直接定位攻击代码位置，达到阻止溢出攻击的目的。</p>
+<h2 id="Windows-1"><a href="#Windows-1" class="headerlink" title="Windows"></a>Windows</h2><p>关闭方法：打开<code>Windows Defender</code>，<code>应用和浏览器控制</code>，<code>Exploit Protection</code>，先关闭<code>ASLR</code>，再关闭其余两项。之后重启。</p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>Ubuntu 关闭方法：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前配置</span></span><br><span class="line"><span class="comment"># 0 关闭 1 半随机 2 全随机（包含HEAP）</span></span><br><span class="line">cat /proc/sys/kernel/randomize_va_space </span><br><span class="line"><span class="comment"># 查看地址空间随机效果</span></span><br><span class="line">ldd /bin/bash </span><br><span class="line"></span><br><span class="line"><span class="comment"># 临时关闭 ASLR</span></span><br><span class="line">sysctl -w kernel.randomize_va_space=0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 永久关闭 ASLR</span></span><br><span class="line">vim /etc/sysctl.conf</span><br><span class="line"><span class="comment"># 增加</span></span><br><span class="line">kernel.randomize_va_space=0</span><br><span class="line"></span><br><span class="line"><span class="comment"># GDB 下关闭 ASLR</span></span><br><span class="line"><span class="built_in">set</span> <span class="built_in">disable</span>-randomization on   <span class="comment"># 关闭 ASLR</span></span><br><span class="line"><span class="built_in">set</span> <span class="built_in">disable</span>-randomization off  <span class="comment"># 开启 ASLR</span></span><br><span class="line">show <span class="built_in">disable</span>-randomization     <span class="comment"># 查看</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="Web-漏洞"><a href="#Web-漏洞" class="headerlink" title="Web 漏洞"></a>Web 漏洞</h1><h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><p>跨站脚本攻击：通过在网站中提交含可执行代码的内容，被其他用户访问的时候执行。</p>
 <p>类型包括：<br>反射型：URL带注入。可以用短网址隐藏。<br>存储型：存到数据库。其他用户访问时被攻击。</p>
 <h3 id="注入点"><a href="#注入点" class="headerlink" title="注入点"></a>注入点</h3><p>HTML 结点内容：用户输入的动态信息。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>HTML 属性：由用户输入。<br>用户输入了 <code>1&quot; onerror=&quot;alert(1)</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"1"</span> <span class="attr">onerror</span>=<span class="string">"alert(1)"</span> /&gt;</span></span><br></pre></td></tr></table></figure></p>
@@ -587,7 +710,42 @@
 <li><p>设置验证码</p>
 </li>
 </ul>
-<h2 id="HTTP-传输窃听"><a href="#HTTP-传输窃听" class="headerlink" title="HTTP 传输窃听"></a>HTTP 传输窃听</h2><h1 id="Windows-逆向"><a href="#Windows-逆向" class="headerlink" title="Windows 逆向"></a>Windows 逆向</h1><h2 id="OD"><a href="#OD" class="headerlink" title="OD"></a>OD</h2><h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p>打开程序：F3<br>执行单步语句：F8<br>断点：F2</p>
+<h2 id="HTTP-传输窃听"><a href="#HTTP-传输窃听" class="headerlink" title="HTTP 传输窃听"></a>HTTP 传输窃听</h2><p>使用AnyProxy作为HTTP代理。<br>攻击:</p>
+<ul>
+<li>中间人通过替换常用脚本，插入攻击代码。 </li>
+<li>查看传输的数据</li>
+<li>插入广告</li>
+<li>重定向网站</li>
+<li>无法防御XSS, CRSF</li>
+</ul>
+<p>防御:</p>
+<ul>
+<li>使用HTTPS (TLS)</li>
+<li>防止中间人攻击, 使用证书机制 CA<ul>
+<li>浏览器内置信任列表 </li>
+<li>服务器申请证书</li>
+<li>CA 颁发证书</li>
+<li>浏览器发起请求, 得到证书, 验证通过</li>
+</ul>
+</li>
+<li>证书攻击: 证书无法伪造, 私钥不泄露(存在服务器上), 域名管理权不丢失, CA不出错</li>
+<li>Windows 上查看证书 <code>Win+R</code>, <code>mmc</code></li>
+</ul>
+<p>为网站添加证书:</p>
+<ol>
+<li><p>安装脚本</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl https://get.acme.sh |sh</span><br><span class="line"><span class="built_in">cd</span> /root/.acme.sh</span><br><span class="line">./acme.sh  --issue -d mydomain.com -d www.mydomain.com --webroot /home/wwwroot/html/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>得到证书, 私钥等。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/root/.acme.sh/.../name.cer         <span class="comment"># 证书</span></span><br><span class="line">/root/.acme.sh/.../name.key         <span class="comment"># 私钥</span></span><br><span class="line">/root/.acme.sh/.../ca.cer           <span class="comment"># CA 证书</span></span><br><span class="line">/root/.acme.sh/.../fullchain.cer    <span class="comment"># 合并证书</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置Nginx</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>          <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">listen</span>          <span class="number">443</span> ssl http2;</span><br><span class="line">    <span class="attribute">server_name</span>     www.mydomain.com;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">ssl_certificate</span> /root/.acme.sh/.../fullchain.cer;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /root/.acme.sh/.../name.key;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">        <span class="attribute">root</span> /home/wwwroot/html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启Nginx</p>
+</li>
+</ol>
+<h2 id="密码安全"><a href="#密码安全" class="headerlink" title="密码安全"></a>密码安全</h2><h1 id="Windows-逆向"><a href="#Windows-逆向" class="headerlink" title="Windows 逆向"></a>Windows 逆向</h1><h2 id="OD-1"><a href="#OD-1" class="headerlink" title="OD"></a>OD</h2><h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p>打开程序：F3<br>执行单步语句：F8<br>断点：F2</p>
 <h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>CmdBar<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db 0x12FFDC  <span class="comment"># d 表示查看数据  b 表示 byte</span></span><br><span class="line"><span class="comment"># 还可以是 dw dd</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="汇编"><a href="#汇编" class="headerlink" title="汇编"></a>汇编</h2><h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><p>32位寄存器：<br>EAX 累加器<br>EBX DS段数据指针<br>ECX 计数<br>EDX IO指针<br>ESI 字符串操作源指针 SS段指针<br>ESP 堆栈指针<br>EBP SS段指针<br>EDI 字符串目标指针 ES段指针</p>
 <p>16位寄存器：<br>AX, CX, DX, BX, SP, BP, SI, DI<br>0 , 1 , 2 , 3 , 4 , 5 , 6 , 7</p>
@@ -1067,7 +1225,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#综述"><span class="nav-text">综述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kali-渗透测试"><span class="nav-text">Kali 渗透测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标准"><span class="nav-text">标准</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-扫描与防御"><span class="nav-text">Linux 扫描与防御</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主机扫描"><span class="nav-text">主机扫描</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#netstat-查看端口"><span class="nav-text">netstat 查看端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁用-ICMP-连接"><span class="nav-text">禁用 ICMP 连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-Dump"><span class="nav-text">TCP Dump</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fping-批量主机扫描工具（ICMP）"><span class="nav-text">fping 批量主机扫描工具（ICMP）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hping-批量主机扫描工具（TCP-IP）"><span class="nav-text">hping 批量主机扫描工具（TCP/IP）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由扫描"><span class="nav-text">路由扫描</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Trace-Route"><span class="nav-text">Trace Route</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MTR"><span class="nav-text">MTR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扫描服务"><span class="nav-text">扫描服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NMAP"><span class="nav-text">NMAP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NCAT"><span class="nav-text">NCAT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#攻击防御"><span class="nav-text">攻击防御</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP-Tables"><span class="nav-text">IP Tables</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web-漏洞"><span class="nav-text">Web 漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS"><span class="nav-text">XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注入点"><span class="nav-text">注入点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拦截"><span class="nav-text">拦截</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS-拦截集成库"><span class="nav-text">XSS 拦截集成库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSP-内容安全策略"><span class="nav-text">CSP 内容安全策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSRF-跨站请求伪造"><span class="nav-text">CSRF 跨站请求伪造</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#防御"><span class="nav-text">防御</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookies"><span class="nav-text">Cookies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#点击劫持"><span class="nav-text">点击劫持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-传输窃听"><span class="nav-text">HTTP 传输窃听</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows-逆向"><span class="nav-text">Windows 逆向</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OD"><span class="nav-text">OD</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快捷键"><span class="nav-text">快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插件"><span class="nav-text">插件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#汇编"><span class="nav-text">汇编</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#寄存器"><span class="nav-text">寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MOV-类"><span class="nav-text">MOV 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADD-SUB"><span class="nav-text">ADD / SUB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AND-OR-XOR-NOT"><span class="nav-text">AND / OR / XOR / NOT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADC-SBB"><span class="nav-text">ADC / SBB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CMP-TEST"><span class="nav-text">CMP / TEST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JCC-类"><span class="nav-text">JCC 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SET-类"><span class="nav-text">SET 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XCHG"><span class="nav-text">XCHG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STOS"><span class="nav-text">STOS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REP"><span class="nav-text">REP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位运算"><span class="nav-text">位运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存"><span class="nav-text">内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆栈"><span class="nav-text">堆栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标志寄存器"><span class="nav-text">标志寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆栈图"><span class="nav-text">堆栈图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows-堆栈"><span class="nav-text">Windows 堆栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#裸函数"><span class="nav-text">裸函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用约定"><span class="nav-text">调用约定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序入口"><span class="nav-text">程序入口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构体"><span class="nav-text">结构体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sizeof"><span class="nav-text">Sizeof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存图"><span class="nav-text">内存图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支语句"><span class="nav-text">分支语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环语句"><span class="nav-text">循环语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针"><span class="nav-text">指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加壳"><span class="nav-text">加壳</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PE"><span class="nav-text">PE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空白区加代码"><span class="nav-text">空白区加代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节"><span class="nav-text">节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据字典"><span class="nav-text">数据字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导出表"><span class="nav-text">导出表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导入表"><span class="nav-text">导入表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重定位表"><span class="nav-text">重定位表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IAT表"><span class="nav-text">IAT表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows-API"><span class="nav-text">Windows API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关键字"><span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-text">函数</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#综述"><span class="nav-text">综述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工具"><span class="nav-text">工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows"><span class="nav-text">Windows</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IDA"><span class="nav-text">IDA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OD"><span class="nav-text">OD</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kali"><span class="nav-text">Kali</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GDB"><span class="nav-text">GDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PWNDGB"><span class="nav-text">PWNDGB</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kali-渗透测试"><span class="nav-text">Kali 渗透测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标准"><span class="nav-text">标准</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-扫描与防御"><span class="nav-text">Linux 扫描与防御</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主机扫描"><span class="nav-text">主机扫描</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#netstat-查看端口"><span class="nav-text">netstat 查看端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁用-ICMP-连接"><span class="nav-text">禁用 ICMP 连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-Dump"><span class="nav-text">TCP Dump</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fping-批量主机扫描工具（ICMP）"><span class="nav-text">fping 批量主机扫描工具（ICMP）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hping-批量主机扫描工具（TCP-IP）"><span class="nav-text">hping 批量主机扫描工具（TCP/IP）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由扫描"><span class="nav-text">路由扫描</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Trace-Route"><span class="nav-text">Trace Route</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MTR"><span class="nav-text">MTR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扫描服务"><span class="nav-text">扫描服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NMAP"><span class="nav-text">NMAP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NCAT"><span class="nav-text">NCAT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#攻击防御"><span class="nav-text">攻击防御</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP-Tables"><span class="nav-text">IP Tables</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ASLR"><span class="nav-text">ASLR</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-1"><span class="nav-text">Windows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux"><span class="nav-text">Linux</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web-漏洞"><span class="nav-text">Web 漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS"><span class="nav-text">XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注入点"><span class="nav-text">注入点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拦截"><span class="nav-text">拦截</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS-拦截集成库"><span class="nav-text">XSS 拦截集成库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSP-内容安全策略"><span class="nav-text">CSP 内容安全策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSRF-跨站请求伪造"><span class="nav-text">CSRF 跨站请求伪造</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#防御"><span class="nav-text">防御</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookies"><span class="nav-text">Cookies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#点击劫持"><span class="nav-text">点击劫持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-传输窃听"><span class="nav-text">HTTP 传输窃听</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密码安全"><span class="nav-text">密码安全</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows-逆向"><span class="nav-text">Windows 逆向</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OD-1"><span class="nav-text">OD</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快捷键"><span class="nav-text">快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插件"><span class="nav-text">插件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#汇编"><span class="nav-text">汇编</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#寄存器"><span class="nav-text">寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MOV-类"><span class="nav-text">MOV 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADD-SUB"><span class="nav-text">ADD / SUB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AND-OR-XOR-NOT"><span class="nav-text">AND / OR / XOR / NOT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADC-SBB"><span class="nav-text">ADC / SBB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CMP-TEST"><span class="nav-text">CMP / TEST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JCC-类"><span class="nav-text">JCC 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SET-类"><span class="nav-text">SET 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XCHG"><span class="nav-text">XCHG</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STOS"><span class="nav-text">STOS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REP"><span class="nav-text">REP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位运算"><span class="nav-text">位运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存"><span class="nav-text">内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆栈"><span class="nav-text">堆栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标志寄存器"><span class="nav-text">标志寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆栈图"><span class="nav-text">堆栈图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows-堆栈"><span class="nav-text">Windows 堆栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#裸函数"><span class="nav-text">裸函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用约定"><span class="nav-text">调用约定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序入口"><span class="nav-text">程序入口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构体"><span class="nav-text">结构体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sizeof"><span class="nav-text">Sizeof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存图"><span class="nav-text">内存图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支语句"><span class="nav-text">分支语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环语句"><span class="nav-text">循环语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针"><span class="nav-text">指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加壳"><span class="nav-text">加壳</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PE"><span class="nav-text">PE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空白区加代码"><span class="nav-text">空白区加代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节"><span class="nav-text">节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据字典"><span class="nav-text">数据字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导出表"><span class="nav-text">导出表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导入表"><span class="nav-text">导入表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重定位表"><span class="nav-text">重定位表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IAT表"><span class="nav-text">IAT表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows-API"><span class="nav-text">Windows API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关键字"><span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-text">函数</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
