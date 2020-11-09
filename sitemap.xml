@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://withz.github.io/2020/02/04/DevOps/DockerFirst/</loc>
+    
+    <lastmod>2020-11-09T14:11:44.992Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://withz.github.io/2020/09/20/BasicLanguage/KaliLearn/</loc>
     
-    <lastmod>2020-10-16T07:09:10.680Z</lastmod>
+    <lastmod>2020-10-30T14:51:31.166Z</lastmod>
     
   </url>
   
@@ -33,13 +40,6 @@
     <loc>https://withz.github.io/2020/03/29/Others/EnvInit/</loc>
     
     <lastmod>2020-07-24T09:10:40.123Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://withz.github.io/2020/02/04/DevOps/DockerFirst/</loc>
-    
-    <lastmod>2020-07-24T08:04:14.804Z</lastmod>
     
   </url>
   
