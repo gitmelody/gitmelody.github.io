@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="Withz">
 <meta property="og:description" content="NginxIO 多路复用技术。 CPU 亲和：每个进程绑定一个核心，减少Cache Miss。 Sendfile：Httpd要将静态文件从内核空间传输到用户空间再转义到内核空间Socket。而Sendfile只在内核中传输，实现零拷贝。对于静态网站速度快。 压测工具：12# 一共 20000 个，每次并发 10 个ab -n 20000 -c 10 url IO 多路复用单线程或单进程同时监测若干">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-11-29T08:07:13.751Z">
+<meta property="og:updated_time" content="2020-12-08T06:29:20.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx">
 <meta name="twitter:description" content="NginxIO 多路复用技术。 CPU 亲和：每个进程绑定一个核心，减少Cache Miss。 Sendfile：Httpd要将静态文件从内核空间传输到用户空间再转义到内核空间Socket。而Sendfile只在内核中传输，实现零拷贝。对于静态网站速度快。 压测工具：12# 一共 20000 个，每次并发 10 个ab -n 20000 -c 10 url IO 多路复用单线程或单进程同时监测若干">
@@ -240,7 +240,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">50</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">52</span></a>
 
   </li>
         
@@ -278,7 +278,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">30</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">31</span></a>
 
   </li>
 
@@ -428,7 +428,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-11-29 16:07:13" itemprop="dateModified" datetime="2020-11-29T16:07:13+08:00">2020-11-29</time>
+                <time title="修改时间：2020-12-08 14:29:20" itemprop="dateModified" datetime="2020-12-08T14:29:20+08:00">2020-12-08</time>
               
             
           </span>
@@ -643,7 +643,7 @@
 <h3 id="模块：valid-referers"><a href="#模块：valid-referers" class="headerlink" title="模块：valid_referers"></a>模块：<code>valid_referers</code></h3><p>用于防盗链。</p>
 <p>语法规则：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Syntax: valid_referes none|blocked|server_names|string ...;</span><br><span class="line">Defualt: --;</span><br><span class="line">Context: server, location;</span><br></pre></td></tr></table></figure></p>
 <h3 id="模块：proxy-pass"><a href="#模块：proxy-pass" class="headerlink" title="模块：proxy_pass"></a>模块：<code>proxy_pass</code></h3><p>用于代理。可以实现正向代理，反向代理，负载均衡等。</p>
-<p>语法规则：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Syntax: proxy_pass url;</span><br><span class="line">Defualt: --;</span><br><span class="line">Context: location, if in location, limit_except;</span><br></pre></td></tr></table></figure></p>
+<p>语法规则：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Syntax: proxy_pass uri;</span><br><span class="line">Defualt: --;</span><br><span class="line">Context: location, if in location, limit_except;</span><br></pre></td></tr></table></figure></p>
 <p>语法规则（头信息）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Syntax: proxy_set_header field value;</span><br><span class="line">Defualt: proxy_set_header Host $proxy_host; proxy_set_header Connection close; </span><br><span class="line">Context: http, server, location;</span><br></pre></td></tr></table></figure></p>
 <p>语法规则（跳转重定向）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Syntax: proxy_redirect default|off|(redirect replacement);</span><br><span class="line">Defualt: proxy_redirect default;</span><br><span class="line">Context: http, server, location;</span><br></pre></td></tr></table></figure></p>
 <p>语法规则（超时）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Syntax: proxy_connect_timeout time;</span><br><span class="line">Defualt: proxy_connect_timeout 60s;</span><br><span class="line">Context: http, server, location;</span><br></pre></td></tr></table></figure></p>
@@ -669,7 +669,7 @@
 <li>url_hash</li>
 <li>hash关键数值 hash自定义key</li>
 </ul>
-<p>例如：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="attribute">upstream</span> mystream1 &#123;</span><br><span class="line">        <span class="attribute">server</span> xx.xx.xx.xx:<span class="number">8001</span> weight=<span class="number">5</span>;</span><br><span class="line">        <span class="attribute">server</span> xx.xx.xx.xx:<span class="number">8002</span>;</span><br><span class="line">        <span class="attribute">server</span> unix:/tep/backend;</span><br><span class="line">        <span class="attribute">server</span> xx.xx.xx.xx:<span class="number">8003</span> backup;</span><br><span class="line">        <span class="attribute">server</span> xx.xx.xx.xx:<span class="number">8004</span> backup;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">upstream</span> mystream2 &#123;</span><br><span class="line">        ip_hash;</span><br><span class="line">        <span class="attribute">server</span> xx.xx.xx.xx:<span class="number">8001</span>;</span><br><span class="line">        <span class="attribute">server</span> xx.xx.xx.xx:<span class="number">8002</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">upstream</span> mystream3 &#123;</span><br><span class="line">        <span class="attribute">hash</span> <span class="variable">$request_url</span>;</span><br><span class="line">        <span class="attribute">server</span> xx.xx.xx.xx:<span class="number">8001</span>;</span><br><span class="line">        <span class="attribute">server</span> xx.xx.xx.xx:<span class="number">8002</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>例如：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="attribute">upstream</span> mystream1 &#123;</span><br><span class="line">        <span class="attribute">server</span> xx.xx.xx.xx:<span class="number">8001</span> weight=<span class="number">5</span>;</span><br><span class="line">        <span class="attribute">server</span> xx.xx.xx.xx:<span class="number">8002</span>;</span><br><span class="line">        <span class="attribute">server</span> unix:/tep/backend;</span><br><span class="line">        <span class="attribute">server</span> xx.xx.xx.xx:<span class="number">8003</span> backup;</span><br><span class="line">        <span class="attribute">server</span> xx.xx.xx.xx:<span class="number">8004</span> backup;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">upstream</span> mystream2 &#123;</span><br><span class="line">        ip_hash;</span><br><span class="line">        <span class="attribute">server</span> xx.xx.xx.xx:<span class="number">8001</span>;</span><br><span class="line">        <span class="attribute">server</span> xx.xx.xx.xx:<span class="number">8002</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">upstream</span> mystream3 &#123;</span><br><span class="line">        <span class="attribute">hash</span> <span class="variable">$request_uri</span>;</span><br><span class="line">        <span class="attribute">server</span> xx.xx.xx.xx:<span class="number">8001</span>;</span><br><span class="line">        <span class="attribute">server</span> xx.xx.xx.xx:<span class="number">8002</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="模块：rewrite"><a href="#模块：rewrite" class="headerlink" title="模块：rewrite"></a>模块：<code>rewrite</code></h3><p>用于匹配URL。</p>
 <p>语法规则：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Syntax: rewrite regex replacement [flag];</span><br><span class="line">Defualt: --;</span><br><span class="line">Context: server, location, if;</span><br></pre></td></tr></table></figure></p>
 <p>flag可以是：</p>
@@ -708,7 +708,7 @@
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="attribute">location</span> <span class="regexp">~ .*\.(htm|html)$</span> &#123;</span><br><span class="line">        <span class="attribute">valid_referers</span> <span class="literal">none</span> <span class="literal">blocked</span> xx.xx.xx.xx;</span><br><span class="line">        if($invalid_referer)&#123;  // 非0，表示被限制了</span><br><span class="line">            <span class="attribute">return</span> <span class="number">403</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="attribute">root</span> /var/www/html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h3><p>可以代理HTTP，HTTPS，邮件，RTMP等，既可以正向代理，也可以反向代理。</p>
 <p>反向代理：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="attribute">location</span> <span class="regexp">~ /test.html$</span> &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://localhost:8080;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>正向代理：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="attribute">resolver</span> <span class="number">8.8.8.8</span>;</span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://<span class="variable">$http_host</span><span class="variable">$request_url</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>正向代理：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="attribute">resolver</span> <span class="number">8.8.8.8</span>;</span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://<span class="variable">$http_host</span><span class="variable">$request_uri</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>然后配置浏览器配置代理服务器。</p>
 <h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><p>按照范围分为：GSLB（全国范围），SLB（地域范围）。</p>
 <p>按照OSI模型分类分为：4层负载均衡（TCP/IP），7层负载均衡（应用层）。</p>
@@ -783,6 +783,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/12/29/BasicLanguage/java/" rel="prev" title="Java">
+                Java <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -855,7 +859,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1003,7 +1007,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">50</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1084,7 +1092,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
